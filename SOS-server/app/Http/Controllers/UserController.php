@@ -9,6 +9,15 @@ use App\Models\Alert;
 
 class UserController extends Controller
 {
+    public function getUserInfo(Request $request){
+        $user = User::find($request->id);
+    
+        return response()->json([
+            "status" => "Success",
+            "user" => $user
+        ], 200);
+    }
+
     public function getAllroles(){
         $role = Role::all();
         
