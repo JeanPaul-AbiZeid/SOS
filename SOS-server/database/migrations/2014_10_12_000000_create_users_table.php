@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('picture')->nullable();;
             $table->string('dob')->nullable();;
             $table->string('number')->nullable();;
-            $table->string('preffere_contact')->nullable();;
+            $table->string('preffered_contact')->nullable();;
             $table->string('address')->nullable();;
             $table->string('gender')->nullable();;
             $table->timestamps();
