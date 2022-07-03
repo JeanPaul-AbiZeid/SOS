@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Role;
+use App\Models\User;
 use App\Models\Alert;
 
 class UserController extends Controller
@@ -20,8 +21,13 @@ class UserController extends Controller
     public function getAllalerts($id = null){
         if($id != null){
             $alert = Alert::find($id);
+            $alert->user_info = User::find($alert->user_id);
         }else{
             $alert = Alert::all();
+            for ($i = 0; $i < count($alert); $i++){
+                $alert[$i]->user_info = User::find($alert[$i]->user_id);
+            }
+            
         }
         
         return response()->json([
