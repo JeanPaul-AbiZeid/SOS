@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->integer('role_id');
             $table->string('picture')->nullable();;
-            $table->string('dob')->nullable();;
+            $table->date('dob')->nullable();;
             $table->string('number')->nullable();;
             $table->string('preffered_contact')->nullable();;
             $table->string('address')->nullable();;
