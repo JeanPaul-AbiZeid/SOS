@@ -17,6 +17,6 @@ Route::controller(AuthController::class)->group(function () {
 
 Route::controller(UserController::class)->group(function () {
     Route::get('/getroles', 'getAllroles');
-    Route::get('/getalerts', 'getAllalerts');
+    Route::get('/getalerts/{id?}', 'getAllalerts');
     Route::post('/createalert', 'createAlert');
 });

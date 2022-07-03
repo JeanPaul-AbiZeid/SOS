@@ -17,8 +17,12 @@ class UserController extends Controller
         ], 200);
     }
 
-    public function getAllalerts(){
-        $alert = Alert::all();
+    public function getAllalerts($id = null){
+        if($id != null){
+            $alert = Alert::find($id);
+        }else{
+            $alert = Alert::all();
+        }
         
         return response()->json([
             "status" => "Success",
