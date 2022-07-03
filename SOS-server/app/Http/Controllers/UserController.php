@@ -25,4 +25,16 @@ class UserController extends Controller
             "alerts" => $alert
         ], 200);
     }
+
+    public function createAlert(Request $request){
+        $alert = Alert::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'image' => $request->image
+        ]);
+
+        return response()->json([
+            "status" => "Success"
+        ], 200);
+    }
 }
