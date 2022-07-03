@@ -12,6 +12,7 @@ class Alert extends Model
     protected $fillable = [
         'title',
         'description',
-        'image'
+        'image',
+        'user_id'
     ];
 }

@@ -34,7 +34,8 @@ class UserController extends Controller
         $alert = Alert::create([
             'title' => $request->title,
             'description' => $request->description,
-            'image' => $request->image
+            'image' => $request->image,
+            'user_id' => $request->user_id
         ]);
 
         return response()->json([
