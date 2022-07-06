@@ -4,7 +4,7 @@
 
 > Hello world! This is the project’s summary that describes the project plain and simple, limited to the space available.  
 
-**[PROJECT PHILOSOPHY](https://github.com/JeanPaul-AbiZeid/SOS#-project-philosophy) • [WIREFRAMES](https://github.com/JeanPaul-AbiZeid/SOS#-wireframes) • [TECH STACK](https://github.com/JeanPaul-AbiZeid/SOS#-tech-stack) • [IMPLEMENTATION](https://github.com/JeanPaul-AbiZeid/SOS#-impplementation) • [HOW TO RUN?](https://github.com/julescript/well_app#-how-to-run)**
+**[PROJECT PHILOSOPHY](https://github.com/JeanPaul-AbiZeid/SOS#-project-philosophy) • [WIREFRAMES](https://github.com/JeanPaul-AbiZeid/SOS#-wireframes) • [TECH STACK](https://github.com/JeanPaul-AbiZeid/SOS#-tech-stack) • [IMPLEMENTATION](https://github.com/JeanPaul-AbiZeid/SOS#-impplementation) • [HOW TO RUN?](https://github.com/JeanPaul-AbiZeid/SOS#-how-to-run)**
 
 </div>
 
@@ -32,11 +32,11 @@ Note that i didn't use any styling library or theme, all from scratch and using 
 
 | Landing  | Home/Search  |
 | -----------------| -----|
-| ![Landing](https://github.com/julescript/spotifyndr/blob/master/demo/Landing_Page.jpg) | ![Home/Search](https://github.com/julescript/spotifyndr/blob/master/demo/Search_Page.jpg) |
+<!-- | ![Landing](https://github.com/julescript/spotifyndr/blob/master/demo/Landing_Page.jpg) | ![Home/Search](https://github.com/julescript/spotifyndr/blob/master/demo/Search_Page.jpg) | -->
 
 | Artists results  | Artist's Albums  |
 | -----------------| -----|
-| ![Artists results](https://github.com/julescript/spotifyndr/blob/master/demo/Artists_Page.jpg) | ![Artist's Albums](https://github.com/julescript/spotifyndr/blob/master/demo/Albums_Page.jpg) |
+<!-- | ![Artists results](https://github.com/julescript/spotifyndr/blob/master/demo/Artists_Page.jpg) | ![Artist's Albums](https://github.com/julescript/spotifyndr/blob/master/demo/Albums_Page.jpg) | -->
 
 
 <br><br>
