@@ -1,9 +1,13 @@
+import React from 'react';
 import { Pressable, ScrollView, Text, TextInput, View } from 'react-native';
 import RNPickerSelect from "react-native-picker-select";
 import DatePicker from 'react-native-modern-datepicker';
 import styles from './styles';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { toggle } from '../../hooks/toggle';
 
 export default function Signup() {
+    const { passwordVisibility, rightIcon, handlePasswordVisibility } = toggle();
   return (
     <View style={styles.main}>
     <ScrollView contentContainerStyle={styles.container}>
@@ -26,7 +30,11 @@ export default function Signup() {
       
       <View>
         <Text>Password</Text>
-        <TextInput placeholder='Password' style={styles.input}/>
+        <View style={[styles.input, styles.password]}><TextInput 
+        placeholder='Password'
+        secureTextEntry={passwordVisibility}
+        onChangeText={newText => setPassword(newText)}/>
+        <Pressable onPress={handlePasswordVisibility}><MaterialCommunityIcons name={rightIcon} size={22} color="#232323" /></Pressable></View>
       </View>
       
       <View>

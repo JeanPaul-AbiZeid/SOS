@@ -51,7 +51,12 @@ const styles = StyleSheet.create({
       color: 'white',
       fontSize: 30,
       fontWeight: '500',
-    }
+    },
+    password: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+    },
 });
 
 export default styles;
