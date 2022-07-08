@@ -1,11 +1,11 @@
-import { Button, Text, TextInput, View } from 'react-native';
+import { Button, ScrollView, Text, TextInput, View } from 'react-native';
 import RNPickerSelect from "react-native-picker-select";
 import DatePicker from 'react-native-modern-datepicker';
 import styles from './styles';
 
 export default function Signup() {
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Text>SOS</Text>
       <Text>Sign Up</Text>
       <Text>First Name</Text>
@@ -42,6 +42,6 @@ export default function Signup() {
             ]}
         />
       <Button title="Sign Up" color="red"/>
-    </View>
+    </ScrollView>
   );
 }
