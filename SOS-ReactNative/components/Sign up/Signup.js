@@ -7,6 +7,14 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { toggle } from '../../hooks/toggle';
 
 export default function Signup() {
+    const [first_name, setFname] = React.useState("");
+    const [last_name, setLname] = React.useState("");
+    const [email, setEmail] = React.useState("");
+    const [password, setPassword] = React.useState("");
+    const [phone, setPhone] = React.useState("");
+    const [blood_type, setBtype] = React.useState("");
+    const [date, setDate] = React.useState("");
+    const [gender, setGender] = React.useState("");
     const { passwordVisibility, rightIcon, handlePasswordVisibility } = toggle();
   return (
     <View style={styles.main}>
@@ -42,31 +50,51 @@ export default function Signup() {
         <TextInput placeholder='Phone' style={styles.input}/>
       </View>
       
-      <Text>Blood type</Text>
-      <RNPickerSelect
-            onValueChange={(value) => console.log(value)}
-            items={[
-                { label: "O+", value: "O+" },
-                { label: "O-", value: "O-" },
-                { label: "A+", value: "A+" },
-                { label: "A-", value: "A-" },
-                { label: "B+", value: "B+" },
-                { label: "B-", value: "B-" },
-                { label: "AB+", value: "AB+" },
-                { label: "AB-", value: "AB-" },
-            ]}
-        />
+      <View>
+        <Text>Blood type</Text>
+        <View style={styles.dropdown}>
+          <RNPickerSelect
+                placeholder={{
+                  label: 'Select a blood type',
+                  value: null,
+                }}
+                onValueChange={(value) => console.log(value)}
+                items={[
+                    { label: "O+", value: "O+" },
+                    { label: "O-", value: "O-" },
+                    { label: "A+", value: "A+" },
+                    { label: "A-", value: "A-" },
+                    { label: "B+", value: "B+" },
+                    { label: "B-", value: "B-" },
+                    { label: "AB+", value: "AB+" },
+                    { label: "AB-", value: "AB-" },
+                ]}
+            />
+        </View>
+        
+      </View>
+      
         <Text>Date of Birth</Text>
         <DatePicker mode="calendar"/>
-        <Text>Gender</Text>
-        <RNPickerSelect
-            onValueChange={(value) => console.log(value)}
-            items={[
-                { label: "Male", value: "Male" },
-                { label: "Female", value: "Female" },
-                { label: "Other", value: "Other" },
-            ]}
-        />
+        <View>
+          <Text>Gender</Text>
+          <View style={styles.dropdown}>
+            <RNPickerSelect
+                  
+                  placeholder={{
+                    label: 'Select a gender',
+                    value: null,
+                }}
+                onValueChange={(value) => console.log(value)}
+                items={[
+                    { label: "Male", value: "Male" },
+                    { label: "Female", value: "Female" },
+                    { label: "Other", value: "Other" },
+                ]}
+            />
+          </View>
+        </View>
+        
       <Pressable style={styles.button}>
         <Text style={styles.btnText}>Sign Up</Text>
       </Pressable>

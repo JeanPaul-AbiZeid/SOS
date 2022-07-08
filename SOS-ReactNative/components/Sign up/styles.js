@@ -57,6 +57,9 @@ const styles = StyleSheet.create({
       justifyContent: 'space-between',
       alignItems: 'center',
     },
+    dropdown: {
+      width: 250,
+    }
 });
 
 export default styles;
