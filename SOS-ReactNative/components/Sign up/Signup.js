@@ -1,5 +1,6 @@
 import { Button, Text, TextInput, View } from 'react-native';
 import RNPickerSelect from "react-native-picker-select";
+import DatePicker from 'react-native-modern-datepicker';
 import styles from './styles';
 
 export default function Signup() {
@@ -25,6 +26,8 @@ export default function Signup() {
                 { label: "AB-", value: "AB-" },
             ]}
         />
+        <Text>Date of Birth</Text>
+        <DatePicker mode="calendar"/>
         <Text>Gender</Text>
         <RNPickerSelect
             onValueChange={(value) => console.log(value)}
