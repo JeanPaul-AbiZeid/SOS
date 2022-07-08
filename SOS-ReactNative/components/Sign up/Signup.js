@@ -1,4 +1,4 @@
-import { Button, ScrollView, Text, TextInput, View } from 'react-native';
+import { Pressable, ScrollView, Text, TextInput, View } from 'react-native';
 import RNPickerSelect from "react-native-picker-select";
 import DatePicker from 'react-native-modern-datepicker';
 import styles from './styles';
@@ -59,7 +59,9 @@ export default function Signup() {
                 { label: "Other", value: "Other" },
             ]}
         />
-      <Button title="Sign Up" color="red"/>
+      <Pressable style={styles.button}>
+        <Text style={styles.btnText}>Sign Up</Text>
+      </Pressable>
     </ScrollView>
     </View>
   );

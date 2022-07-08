@@ -25,7 +25,7 @@ export default function LogIn() {
       
       <Pressable style={styles.button}>
         <Text style={styles.btnText}>Sign in</Text>
-        </Pressable>
+      </Pressable>
       <Text>New Account? Sign up</Text>
     </ScrollView>
   );
