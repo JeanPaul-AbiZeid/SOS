@@ -1,4 +1,4 @@
-import { Pressable, Text, TextInput, View } from 'react-native';
+import { Pressable, ScrollView, Text, TextInput, View } from 'react-native';
 import React from "react";
 import styles from './styles';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -10,7 +10,7 @@ export default function LogIn() {
     const { passwordVisibility, rightIcon, handlePasswordVisibility } = toggle();
 
   return (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.title}>SOS</Text>
       <Text style={styles.head}>Sign In</Text>
       <TextInput 
@@ -27,6 +27,6 @@ export default function LogIn() {
         <Text style={styles.btnText}>Sign in</Text>
         </Pressable>
       <Text>New Account? Sign up</Text>
-    </View>
+    </ScrollView>
   );
 }

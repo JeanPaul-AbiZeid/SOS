@@ -6,7 +6,6 @@ const styles = StyleSheet.create({
       marginTop: StatusBar.currentHeight,
       backgroundColor: '#e6e6e6',
       alignItems: 'center',
-      
     },
     title: {
       color: 'red',
