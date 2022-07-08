@@ -1,10 +1,13 @@
 import { Pressable, Text, TextInput, View } from 'react-native';
 import React from "react";
 import styles from './styles';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { toggle } from '../../hooks/toggle';
 
 export default function LogIn() {
     const [email, setEmail] = React.useState("");
     const [password, setPassword] = React.useState("");
+    const { passwordVisibility, rightIcon, handlePasswordVisibility } = toggle();
 
   return (
     <View style={styles.container}>
@@ -14,10 +17,12 @@ export default function LogIn() {
       placeholder='Email' 
       style={styles.input}
       onChangeText={newText => setEmail(newText)}/>
-      <TextInput 
-      placeholder='Password' 
-      style={styles.input}
+      <View style={[styles.input, styles.password]}><TextInput 
+      placeholder='Password'
+      secureTextEntry={passwordVisibility}
       onChangeText={newText => setPassword(newText)}/>
+      <Pressable onPress={handlePasswordVisibility}><MaterialCommunityIcons name={rightIcon} size={22} color="#232323" /></Pressable></View>
+      
       <Pressable style={styles.button}>
         <Text style={styles.btnText}>Sign in</Text>
         </Pressable>
