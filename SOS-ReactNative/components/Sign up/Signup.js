@@ -5,17 +5,35 @@ import styles from './styles';
 
 export default function Signup() {
   return (
-    <ScrollView style={styles.container}>
-      <Text>SOS</Text>
-      <Text>Sign Up</Text>
-      <Text>First Name</Text>
-      <TextInput placeholder='First Name'/>
-      <Text>Last Name</Text>
-      <TextInput placeholder='Last Name'/>
-      <Text>Email</Text>
-      <TextInput placeholder='Email'/>
-      <Text>Password</Text>
-      <TextInput placeholder='Password'/>
+    <View style={styles.main}>
+    <ScrollView contentContainerStyle={styles.container}>
+      <Text style={styles.title}>SOS</Text>
+      <Text style={styles.head}>Sign Up</Text>
+      <View>
+        <Text>First Name</Text>
+        <TextInput placeholder='First Name' style={styles.input}/>
+      </View>
+      
+      <View>
+        <Text>Last Name</Text>
+        <TextInput placeholder='Last Name' style={styles.input}/>
+      </View>
+      
+      <View>
+        <Text>Email</Text>
+        <TextInput placeholder='Email' style={styles.input}/>
+      </View>
+      
+      <View>
+        <Text>Password</Text>
+        <TextInput placeholder='Password' style={styles.input}/>
+      </View>
+      
+      <View>
+        <Text>Phone Number</Text>
+        <TextInput placeholder='Phone' style={styles.input}/>
+      </View>
+      
       <Text>Blood type</Text>
       <RNPickerSelect
             onValueChange={(value) => console.log(value)}
@@ -43,5 +61,6 @@ export default function Signup() {
         />
       <Button title="Sign Up" color="red"/>
     </ScrollView>
+    </View>
   );
 }

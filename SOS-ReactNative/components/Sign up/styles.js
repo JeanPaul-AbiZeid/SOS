@@ -2,11 +2,39 @@ import { StyleSheet, StatusBar } from 'react-native';
 
 const styles = StyleSheet.create({
     container: {
-      flex: 1,
+      flexGrow: 1,
       marginTop: StatusBar.currentHeight,
-      backgroundColor: '#f5f5f5',
+      backgroundColor: '#e6e6e6',
       paddingHorizontal: 20,
-      paddingBottom: 20,
+      paddingBottom: 100,
+      alignItems: 'center',
+    },
+    main: {
+      flexGrow: 1,
+    },
+    title: {
+      color: 'red',
+      fontSize: 60,
+      fontWeight: '700',
+      marginTop: 100,
+    },
+    head: {
+      color: 'red',
+      fontSize: 30,
+      fontWeight: '500',
+      marginTop: 60,
+      marginBottom: 20,
+    },
+    input: {
+      backgroundColor: 'white',
+      marginTop: 5,
+      marginBottom: 5,
+      borderWidth: 1,
+      padding: 5,
+      paddingLeft: 10,
+      paddingRight: 10,
+      width: 250,
+      borderColor: 'gray',
     },
 });
 
