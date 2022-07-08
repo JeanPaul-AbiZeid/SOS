@@ -8,9 +8,13 @@ export default function Signup() {
     <View style={styles.container}>
       <Text>SOS</Text>
       <Text>Sign Up</Text>
+      <Text>First Name</Text>
       <TextInput placeholder='First Name'/>
+      <Text>Last Name</Text>
       <TextInput placeholder='Last Name'/>
+      <Text>Email</Text>
       <TextInput placeholder='Email'/>
+      <Text>Password</Text>
       <TextInput placeholder='Password'/>
       <Text>Blood type</Text>
       <RNPickerSelect
