@@ -3,7 +3,7 @@ import Signup from './components/Sign up/Signup';
 
 export default function App() {
   return (
-    <Signup/>
+    <LogIn/>
   );
 }
 

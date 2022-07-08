@@ -1,12 +1,57 @@
-import { StyleSheet } from 'react-native';
+import { StatusBar, StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#f5f5f5',
+      marginTop: StatusBar.currentHeight,
+      backgroundColor: '#e6e6e6',
+      alignItems: 'center',
+      
+    },
+    title: {
+      color: 'red',
+      fontSize: 60,
+      fontWeight: '700',
+      marginTop: 100,
+    },
+    head: {
+      color: 'red',
+      fontSize: 30,
+      fontWeight: '500',
+      marginTop: 60,
+      marginBottom: 20,
+    },
+    input: {
+      backgroundColor: 'white',
+      marginTop: 10,
+      borderWidth: 1,
+      padding: 5,
+      paddingLeft: 10,
+      width: 250,
+      borderColor: 'gray',
+    },
+    pass: {
+      flexDirection: 'row',
+      width: 270,
+      alignItems: 'center',
+      marginTop: 5,
+    },
+    button: {
+      backgroundColor: 'red',
+      width: 250,
+      marginTop: 50,
       alignItems: 'center',
       justifyContent: 'center',
+      paddingVertical: 2,
+      borderRadius: 4,
+      elevation: 3,
+      marginBottom: 30,
     },
-});
+    btnText: {
+      color: 'white',
+      fontSize: 30,
+      fontWeight: '500',
+    }
+  });
 
 export default styles;
