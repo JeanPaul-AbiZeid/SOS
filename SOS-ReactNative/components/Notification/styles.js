@@ -7,24 +7,27 @@ const styles = StyleSheet.create({
         backgroundColor: '#e6e6e6',
         paddingHorizontal: 20,
         paddingBottom: 100,
-        // alignItems: 'center',
-      },
-      main: {
+    },
+    main: {
         flexGrow: 1,
-      },
-      header: {
+    },
+    header: {
         flexDirection: 'row',
-        marginTop: 20,
+        marginTop: 30,
         justifyContent: 'space-between',
         alignSelf: 'stretch',
         marginHorizontal: 20,
         alignItems: 'center'
-      },
-      title: {
+    },
+    title: {
         color: 'red',
         fontSize: 24,
         fontWeight: '400',
-      }
+    },
+    notification: {
+        marginTop: 30,
+        marginHorizontal: 20,
+    },
 });
 
 export default styles;
