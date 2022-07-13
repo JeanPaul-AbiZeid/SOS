@@ -18,6 +18,11 @@ const styles = StyleSheet.create({
         width: 250,
         borderColor: 'gray',
       },
+      description: {
+        flex: 0.5,
+        justifyContent: 'flex-start',
+        textAlignVertical: 'top'
+      }
 });
 
 export default styles;
