@@ -8,10 +8,14 @@ export default function Home() {
     return (
         <ScrollView contentContainerStyle={styles.container}>
             <Text style={styles.title}>SOS</Text>
-            <Image source={require('../../assets/police-logo.png')}/>
-            <Image source={require('../../assets/ambulance-logo.png')}/>
-            <Image source={require('../../assets/fire-logo.png')}/>
-            <Image source={require('../../assets/contact-logo.png')}/>
+            <View style={styles.imageContainer}>
+                <Image style={styles.image} source={require('../../assets/police-logo.png')}/>
+                <Image style={styles.image} source={require('../../assets/ambulance-logo.png')}/>
+            </View>
+            <View style={styles.imageContainer}>
+                <Image style={styles.image} source={require('../../assets/fire-logo.png')}/>
+                <Image style={styles.image} source={require('../../assets/contact-logo.png')}/>
+            </View>
             <Pressable style={styles.button}>
                 <Text style={styles.btnText}>Alert</Text>
             </Pressable>

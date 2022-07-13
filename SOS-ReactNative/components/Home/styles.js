@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
         fontSize: 60,
         fontWeight: '700',
         marginTop: 70,
+        marginBottom: 20
       },
       
     button: {
@@ -34,6 +35,19 @@ const styles = StyleSheet.create({
         color: 'white',
         fontSize: 30,
         fontWeight: '500',
+      },
+      image: {
+        borderColor: "gray",
+        borderWidth: 1,
+        width: 120,
+        height: 120,
+      },
+      imageContainer: {
+        marginHorizontal: 20,
+        alignSelf: 'stretch',
+        marginTop: 30,
+        flexDirection: 'row',
+        justifyContent: 'space-between'
       }
 });
 
