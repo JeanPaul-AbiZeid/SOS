@@ -8,6 +8,7 @@ export default function Home() {
     return (
         <ScrollView contentContainerStyle={styles.container}>
             <Text style={styles.title}>SOS</Text>
+            
         </ScrollView>
     )
     
