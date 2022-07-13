@@ -22,6 +22,35 @@ const styles = StyleSheet.create({
         flex: 0.5,
         justifyContent: 'flex-start',
         textAlignVertical: 'top'
+      },
+      choose:{
+        marginTop: 20,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignSelf: 'stretch',
+        marginHorizontal: 55
+      },
+      upload: {
+        backgroundColor: 'lightgray',
+        padding: 3,
+        borderWidth: 1,
+        borderColor: 'black'
+      },
+      button: {
+        backgroundColor: 'red',
+        width: 250,
+        marginTop: 50,
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingVertical: 2,
+        borderRadius: 4,
+        elevation: 3,
+        marginBottom: 30,
+      },
+      btnText: {
+        color: 'white',
+        fontSize: 30,
+        fontWeight: '500',
       }
 });
 

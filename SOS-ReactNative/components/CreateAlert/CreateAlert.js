@@ -14,6 +14,18 @@ export default function CreateAlert() {
         placeholder='Description' 
         multiline = {true}
         style={[styles.input, styles.description]}/>
+
+        <View style={styles.choose}>
+            <Text>Upload image:</Text>
+            <Pressable style={styles.upload}>
+                <Text>Choose image</Text>
+            </Pressable>
+        </View>
+
+        <Pressable style={styles.button}>
+            <Text style={styles.btnText}>Send Alert</Text>
+        </Pressable>
+        
         
     </ScrollView>
   );
