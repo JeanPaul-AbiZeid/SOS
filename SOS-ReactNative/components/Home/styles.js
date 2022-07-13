@@ -18,6 +18,23 @@ const styles = StyleSheet.create({
         fontWeight: '700',
         marginTop: 70,
       },
+      
+    button: {
+        backgroundColor: 'red',
+        width: 250,
+        marginTop: 50,
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingVertical: 2,
+        borderRadius: 4,
+        elevation: 3,
+        marginBottom: 30,
+      },
+      btnText: {
+        color: 'white',
+        fontSize: 30,
+        fontWeight: '500',
+      }
 });
 
 export default styles;

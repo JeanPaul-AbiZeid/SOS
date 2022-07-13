@@ -12,6 +12,9 @@ export default function Home() {
             <Image source={require('../../assets/ambulance-logo.png')}/>
             <Image source={require('../../assets/fire-logo.png')}/>
             <Image source={require('../../assets/contact-logo.png')}/>
+            <Pressable style={styles.button}>
+                <Text style={styles.btnText}>Alert</Text>
+            </Pressable>
         </ScrollView>
     )
     
