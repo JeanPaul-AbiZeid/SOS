@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#e6e6e6',
         paddingHorizontal: 20,
         paddingBottom: 100,
-        alignItems: 'center',
+        // alignItems: 'center',
       },
       main: {
         flexGrow: 1,
