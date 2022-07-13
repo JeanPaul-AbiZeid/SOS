@@ -1,7 +1,7 @@
 import React from 'react';
 import { Pressable, ScrollView, Text, TextInput, View } from 'react-native';
 import RNPickerSelect from "react-native-picker-select";
-import DatePicker from 'react-native-modern-datepicker';
+// import DatePicker from 'react-native-modern-datepicker';
 import styles from './styles';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { toggle } from '../../hooks/toggle';
@@ -75,7 +75,7 @@ export default function Signup() {
       </View>
       
         <Text>Date of Birth</Text>
-        <DatePicker mode="calendar"/>
+        {/* <DatePicker mode="calendar"/> */}
         <View>
           <Text>Gender</Text>
           <View style={styles.dropdown}>
