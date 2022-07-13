@@ -4,5 +4,15 @@ import styles from './styles';
 
 export default function CreateAlert() {
 
+  return (
+    <ScrollView contentContainerStyle={styles.container}>
+      <TextInput 
+      placeholder='Case Title' 
+      style={styles.input}/>
 
+    <TextInput 
+    placeholder='Description' 
+    style={styles.input}/>
+    </ScrollView>
+  );
 }
