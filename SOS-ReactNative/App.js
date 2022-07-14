@@ -5,10 +5,11 @@ import Signup from './components/Sign up/Signup';
 import Notification from './components/Notification/Notification';
 import Alert from './components/AlertPage/Alert';
 import Profile from './components/Profile/Profile';
+import SignUpExpert from './components/SignUpExpert/SignUpExpert';
 
 export default function App() {
   return (
-    <Profile/>
+    <SignUpExpert/>
   );
 }
 
