@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
       marginTop: 100,
     },
     head: {
-      color: 'red',
+      color: 'gray',
       fontSize: 30,
       fontWeight: '500',
       marginTop: 60,
