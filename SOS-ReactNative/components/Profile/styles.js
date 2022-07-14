@@ -23,6 +23,20 @@ const styles = StyleSheet.create({
         fontWeight: '400',
         marginLeft: 20,
     },
+    title: {
+        color: 'gray',
+        fontSize: 18,
+        marginTop: 20
+    },
+    info: {
+        fontSize: 24,
+        fontWeight: '400',
+        marginBottom: 10,
+    },
+    infoContainer: {
+        borderBottomColor: 'lightgray',
+        borderBottomWidth: 2,
+    }
     
 });
 

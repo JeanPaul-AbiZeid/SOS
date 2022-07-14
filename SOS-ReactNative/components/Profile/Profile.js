@@ -12,37 +12,37 @@ export default function Profile() {
         </View>
 
         <View>
-            <View>
-                <Text>Address</Text>
-                <Text>Lebanon</Text>
+            <View style={styles.infoContainer}>
+                <Text style={styles.title}>Address</Text>
+                <Text style={styles.info}>Lebanon</Text>
+            </View>
+        </View>
+
+        <View>
+            <View style={styles.infoContainer}>
+                <Text style={styles.title}>Blood Type</Text>
+                <Text style={styles.info}>A+</Text>
+            </View>
+        </View>
+
+        <View>
+            <View style={styles.infoContainer}>
+                <Text style={styles.title}>Age</Text>
+                <Text style={styles.info}>24</Text>
+            </View>
+        </View>
+
+        <View>
+            <View style={styles.infoContainer}>
+                <Text style={styles.title}>Phone</Text>
+                <Text style={styles.info}>71125413</Text>
             </View>
         </View>
 
         <View>
             <View>
-                <Text>Blood Type</Text>
-                <Text>A+</Text>
-            </View>
-        </View>
-
-        <View>
-            <View>
-                <Text>Age</Text>
-                <Text>24</Text>
-            </View>
-        </View>
-
-        <View>
-            <View>
-                <Text>Phone</Text>
-                <Text>71125413</Text>
-            </View>
-        </View>
-
-        <View>
-            <View>
-                <Text>Preffered Contact</Text>
-                <Text>Jane Doe</Text>
+                <Text style={styles.title}>Preffered Contact</Text>
+                <Text style={styles.info}>Jane Doe</Text>
             </View>
         </View>
           
