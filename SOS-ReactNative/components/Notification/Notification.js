@@ -22,6 +22,12 @@ export default function Notification() {
             <AlertNotification />
             <AlertNotification />
             <AlertNotification />
+            <AlertNotification />
+            <AlertNotification />
+            <AlertNotification />
+            <AlertNotification />
+            <AlertNotification />
+            <AlertNotification />
         </View>
         
         </ScrollView>
