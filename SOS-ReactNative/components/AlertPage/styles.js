@@ -22,6 +22,25 @@ const styles = StyleSheet.create({
         fontSize: 30,
         fontWeight: '400',
         marginLeft: 20,
+    },
+    title: {
+        fontSize: 22
+    },
+    desc: {
+        borderColor: 'gray',
+        borderWidth: 1,
+        padding: 5,
+        marginVertical: 10,
+    },
+    image: {
+        alignSelf: 'center',
+        borderColor: 'gray',
+        borderWidth: 2
+    },
+    case: {
+        color: 'gray',
+        fontSize: 18,
+        marginTop: 20
     }
 });
 

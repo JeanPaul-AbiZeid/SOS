@@ -14,7 +14,7 @@ export default function Alert() {
         <Text style={styles.case}>Alert Case</Text>
         <Text style={styles.title}>Missing Person</Text>
 
-        <Text style={styles.title}>Description</Text>
+        <Text style={styles.case}>Description</Text>
         <Text style={styles.desc}>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum </Text>
 
         <Image style={styles.image} source={require('../../assets/persona.png')}/>
