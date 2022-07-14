@@ -5,17 +5,15 @@ import styles from './styles';
 export default function SignUp() {
     
   return (
-    <View style={styles.main}>
-        <Text style={styles.title}>SOS</Text>
-        <Text style={styles.head}>Sign Up</Text>
-      
+    <View style={styles.container}>
+        <Text style={styles.title}>SOS</Text>      
     
         <Pressable style={styles.button}>
-            <Text style={styles.btnText}>Sign Up as a User</Text>
+            <Text style={styles.btnText}>Sign Up User</Text>
         </Pressable>
 
         <Pressable style={styles.button}>
-            <Text style={styles.btnText}>Sign Up as an Expert</Text>
+            <Text style={styles.btnText}>Sign Up Expert</Text>
         </Pressable>
     </View>
   );
