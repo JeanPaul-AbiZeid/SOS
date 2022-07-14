@@ -7,7 +7,7 @@ import Alert from './components/AlertPage/Alert';
 
 export default function App() {
   return (
-    <Alert/>
+    <LogIn/>
   );
 }
 
