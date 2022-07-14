@@ -42,7 +42,7 @@ export default function SignUpExpert() {
         </View>
       
         <View>
-            <Text>Blood type</Text>
+            <Text>Role</Text>
             <View style={styles.dropdown}>
             <RNPickerSelect
                     placeholder={{
