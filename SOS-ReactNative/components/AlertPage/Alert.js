@@ -10,7 +10,14 @@ export default function Alert() {
             <Image style={styles.img} source={require('../../assets/persona.png')}/>   
             <Text style={styles.name}>John Doe</Text>
         </View>
-          
+
+        <Text style={styles.case}>Alert Case</Text>
+        <Text style={styles.title}>Missing Person</Text>
+
+        <Text style={styles.title}>Description</Text>
+        <Text style={styles.desc}>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum </Text>
+
+        <Image style={styles.image} source={require('../../assets/persona.png')}/>
           
       </ScrollView>
     );

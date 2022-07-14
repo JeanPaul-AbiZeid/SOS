@@ -6,12 +6,12 @@ const styles = StyleSheet.create({
         marginTop: StatusBar.currentHeight,
         paddingTop: 30,
         backgroundColor: '#e6e6e6',
+        paddingHorizontal: 30,
     },
     main: {
         alignItems: 'center',
         flexDirection: 'row',
         marginTop: 20,
-        marginHorizontal: 30,
     },
     img: {
         width: 100,
