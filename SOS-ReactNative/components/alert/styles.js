@@ -3,7 +3,7 @@ import { StyleSheet, StatusBar } from 'react-native';
 const styles = StyleSheet.create({
     main: {
         flexDirection: 'row',
-        marginTop: 20
+        marginTop: 20,
     },
     text: {
         marginHorizontal:20,
@@ -17,8 +17,8 @@ const styles = StyleSheet.create({
         fontWeight: '300',
     },
     img: {
-        width: 50,
-        height: 50,
+        width: 100,
+        height: 100,
         borderRadius: 60
     }
 });
