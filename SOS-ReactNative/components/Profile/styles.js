@@ -36,6 +36,16 @@ const styles = StyleSheet.create({
     infoContainer: {
         borderBottomColor: 'lightgray',
         borderBottomWidth: 2,
+        marginLeft: 20,
+        flex: 1
+    },
+    box: {
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    margin: {
+        marginLeft: 20,
+        flex: 1
     }
     
 });
