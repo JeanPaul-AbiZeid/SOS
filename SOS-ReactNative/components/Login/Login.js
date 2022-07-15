@@ -1,10 +1,10 @@
-import { Pressable, ScrollView, Text, TextInput, View } from 'react-native';
+import { Pressable, ScrollView, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import React from "react";
 import styles from './styles';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { toggle } from '../../hooks/toggle';
 
-export default function LogIn() {
+export default function LogIn({navigation}) {
     const [email, setEmail] = React.useState("");
     const [password, setPassword] = React.useState("");
     const { passwordVisibility, rightIcon, handlePasswordVisibility } = toggle();
@@ -31,10 +31,17 @@ export default function LogIn() {
         <Pressable onPress={handlePasswordVisibility}><MaterialCommunityIcons name={rightIcon} size={22} color="#232323" /></Pressable></View>
       </View>
       
+      
       <Pressable style={styles.button}>
         <Text style={styles.btnText}>Sign in</Text>
       </Pressable>
-      <Text>New Account? Sign up</Text>
+      <View style={styles.signup}>
+        <Text>New Account? </Text>
+          <TouchableOpacity onPress={() => navigation.push('SignUp')}>
+            <Text style={styles.signUpText}>Sign up</Text>
+          </TouchableOpacity>
+      </View>
+      
     </ScrollView>
   );
 }

@@ -57,6 +57,13 @@ const styles = StyleSheet.create({
       color: 'white',
       fontSize: 30,
       fontWeight: '500',
+    },
+    signup: {
+      flexDirection: 'row'
+    },
+    signUpText: {
+      color: 'red',
+      textDecorationLine: 'underline',
     }
   });
 
