@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pressable, ScrollView, Text, TextInput, View } from 'react-native';
+import { Pressable, ScrollView, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import RNPickerSelect from "react-native-picker-select";
 import styles from './styles';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -59,9 +59,9 @@ export default function SignUpExpert() {
             </View>
         </View>
     
-        <Pressable style={styles.button}>
+        <TouchableOpacity style={styles.button}>
             <Text style={styles.btnText}>Sign Up</Text>
-        </Pressable>
+        </TouchableOpacity>
     </ScrollView>
     </View>
   );

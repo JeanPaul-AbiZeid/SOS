@@ -1,4 +1,4 @@
-import { Pressable, ScrollView, Text, TextInput, View } from 'react-native';
+import { ScrollView, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import React from "react";
 import styles from './styles';
 
@@ -22,9 +22,9 @@ export default function CreateAlert() {
             </Pressable>
         </View>
 
-        <Pressable style={styles.button}>
+        <TouchableOpacity style={styles.button}>
             <Text style={styles.btnText}>Send Alert</Text>
-        </Pressable>
+        </TouchableOpacity>
         
         
     </ScrollView>

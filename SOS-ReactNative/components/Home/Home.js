@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pressable, ScrollView, Text, TextInput, View, Image } from 'react-native';
+import { ScrollView, Text, TextInput, View, Image, TouchableOpacity } from 'react-native';
 import styles from './styles';
 
 
@@ -16,9 +16,9 @@ export default function Home() {
                 <Image style={styles.image} source={require('../../assets/fire-logo.png')}/>
                 <Image style={styles.image} source={require('../../assets/contact-logo.png')}/>
             </View>
-            <Pressable style={styles.button}>
+            <TouchableOpacity style={styles.button}>
                 <Text style={styles.btnText}>Alert</Text>
-            </Pressable>
+            </TouchableOpacity>
         </ScrollView>
     )
     
