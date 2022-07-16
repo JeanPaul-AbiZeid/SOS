@@ -10,6 +10,7 @@ import SignUp from './components/SignUp/SignUp';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Tracking from './components/Tracking/Tracking';
+import ExpertPage from './components/ExpertPage/ExpertPage';
 
 const Stack = createNativeStackNavigator();
 
@@ -27,7 +28,7 @@ export default function App() {
     //   </Stack.Navigator>
     // </NavigationContainer>
 
-    <Tracking/>
+    <ExpertPage/>
     
     
   );
