@@ -3,10 +3,10 @@ import React from "react";
 import styles from './styles';
 import { Entypo } from '@expo/vector-icons'; 
 
-export default function alert() {
+export default function ExpertNotification() {
 
   return (
-    <View>
+    <View style={styles.container}>
         <Text style={styles.name}>John Doe</Text>
         <View style={styles.loc}>
             <Entypo name="location-pin" size={24} color="red" />

@@ -1,6 +1,12 @@
-import { StyleSheet, StatusBar } from 'react-native';
+import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
+    container: {
+        marginBottom: 20,
+        borderColor: 'gray',
+        borderBottomWidth: 2,
+        paddingBottom: 20,
+    },
     name: {
         fontSize: 20,
         fontWeight: '400'

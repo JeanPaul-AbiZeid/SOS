@@ -11,6 +11,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Tracking from './components/Tracking/Tracking';
 import ExpertPage from './components/ExpertPage/ExpertPage';
+import ExpertHistory from './components/ExpertHistory/ExpertHistory';
 
 const Stack = createNativeStackNavigator();
 
@@ -28,7 +29,7 @@ export default function App() {
     //   </Stack.Navigator>
     // </NavigationContainer>
 
-    <ExpertPage/>
+    <ExpertHistory/>
     
     
   );
