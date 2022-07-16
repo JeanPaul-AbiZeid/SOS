@@ -16,7 +16,8 @@ const styles = StyleSheet.create({
         fontWeight: '300',
     },
     loc: {
-        flexDirection: 'row'
+        flexDirection: 'row',
+        alignContent: 'center'
     }
 });
 

@@ -9,7 +9,7 @@ export default function ExpertNotification() {
     <View style={styles.container}>
         <Text style={styles.name}>John Doe</Text>
         <View style={styles.loc}>
-            <Entypo name="location-pin" size={24} color="red" />
+            <Entypo name="location-pin" size={20} color="red" />
             <Text>Location</Text>
         </View>
     </View>
