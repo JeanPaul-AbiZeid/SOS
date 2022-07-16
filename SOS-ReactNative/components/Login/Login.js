@@ -32,9 +32,9 @@ export default function LogIn({navigation}) {
       </View>
       
       
-      <Pressable style={styles.button}>
+      <TouchableOpacity style={styles.button}>
         <Text style={styles.btnText}>Sign in</Text>
-      </Pressable>
+      </TouchableOpacity>
       <View style={styles.signup}>
         <Text>New Account? </Text>
           <TouchableOpacity onPress={() => navigation.push('SignUp')}>

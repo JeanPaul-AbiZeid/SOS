@@ -29,10 +29,26 @@ const styles = StyleSheet.create({
       marginBottom: 10  
     },
     map: {
-        flex: 0.6,
+        flex: 1,
         borderColor: 'gray',
         borderWidth: 2
-    }
+    },
+    button: {
+        backgroundColor: 'red',
+        alignSelf: 'stretch',
+        marginTop: 50,
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingVertical: 2,
+        borderRadius: 4,
+        elevation: 3,
+        marginBottom: 30,
+    },
+    btnText: {
+    color: 'white',
+    fontSize: 30,
+    fontWeight: '500',
+    },
 });
 
 export default styles;

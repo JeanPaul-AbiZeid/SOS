@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text, TouchableOpacity, View } from 'react-native';
 import styles from './styles';
 import { Entypo } from '@expo/vector-icons'; 
 
@@ -19,6 +19,10 @@ export default function ExpertPage() {
         
         <Text style={styles.direction}>Direction</Text>
         <View style={styles.map}></View>
+
+        <TouchableOpacity style={styles.button}>
+            <Text style={styles.btnText}>Done</Text>
+        </TouchableOpacity>
     </View>
   );
 }
