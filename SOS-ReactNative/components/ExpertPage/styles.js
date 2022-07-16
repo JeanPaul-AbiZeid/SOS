@@ -8,15 +8,28 @@ const styles = StyleSheet.create({
       paddingHorizontal: 20,
       paddingBottom: 100,
     },
+    info: {
+        marginVertical: 20
+    },
     title: {
       color: 'black',
       fontSize: 24,
       fontWeight: '400',
       marginTop: 30,
-      marginBottom: 50
+    },
+    loc:{
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginTop: 10,
+        marginBottom: 5
+    },
+    direction: {
+      fontSize: 20,
+      marginTop: 50,
+      marginBottom: 10  
     },
     map: {
-        flex: 0.5,
+        flex: 0.6,
         borderColor: 'gray',
         borderWidth: 2
     }

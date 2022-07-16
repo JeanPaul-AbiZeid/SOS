@@ -1,21 +1,24 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 import styles from './styles';
+import { Entypo } from '@expo/vector-icons'; 
 
 export default function ExpertPage() {
     
   return (
     <View style={styles.container}>
-        <View>
+        <View style={styles.info}>
             <Text style={styles.title}>John Doe</Text>
+            <View style={styles.loc}>
+                <Entypo name="location-pin" size={24} color="red" />
+                <Text>Jounieh</Text>
+            </View>
+            
             <Text>John Doe info goes here...</Text>
         </View>
         
-        <View>
-            <Text>Direction</Text>
-            <View style={styles.map}></View>
-        </View>
-        
+        <Text style={styles.direction}>Direction</Text>
+        <View style={styles.map}></View>
     </View>
   );
 }
