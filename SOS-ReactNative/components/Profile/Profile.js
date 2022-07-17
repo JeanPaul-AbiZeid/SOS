@@ -1,10 +1,7 @@
 import { Text, View, Image, ScrollView } from 'react-native';
 import React from "react";
 import styles from './styles';
-import { Fontisto } from '@expo/vector-icons'; 
-import { MaterialIcons } from '@expo/vector-icons'; 
-import { FontAwesome } from '@expo/vector-icons'; 
-import { Feather } from '@expo/vector-icons';
+import { Fontisto, Feather, MaterialIcons, FontAwesome } from '@expo/vector-icons'; 
 
 export default function Profile() {
 

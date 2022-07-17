@@ -19,17 +19,26 @@ export default function SignUpExpert() {
         <Text style={styles.head}>Sign Up</Text>
         <View>
             <Text>First Name</Text>
-            <TextInput placeholder='First Name' style={styles.input}/>
+            <TextInput 
+            placeholder='First Name' 
+            style={styles.input}
+            onChangeText={setFname}/>
         </View>
       
         <View>
             <Text>Last Name</Text>
-            <TextInput placeholder='Last Name' style={styles.input}/>
+            <TextInput 
+            placeholder='Last Name' 
+            style={styles.input}
+            onChangeText={setLname}/>
         </View>
       
         <View>
             <Text>Email</Text>
-            <TextInput placeholder='Email' style={styles.input}/>
+            <TextInput 
+            placeholder='Email' 
+            style={styles.input}
+            onChangeText={setEmail}/>
         </View>
       
         <View>
@@ -37,7 +46,7 @@ export default function SignUpExpert() {
             <View style={[styles.input, styles.password]}><TextInput 
             placeholder='Password'
             secureTextEntry={passwordVisibility}
-            onChangeText={newText => setPassword(newText)}/>
+            onChangeText={setPassword}/>
             <Pressable onPress={handlePasswordVisibility}><MaterialCommunityIcons name={rightIcon} size={22} color="#232323" /></Pressable></View>
         </View>
       
@@ -49,7 +58,7 @@ export default function SignUpExpert() {
                     label: 'Select your role',
                     value: null,
                     }}
-                    onValueChange={(value) => console.log(value)}
+                    onValueChange={setRole}
                     items={[
                         { label: "Policeman", value: 2 },
                         { label: "Firefighter", value: 3 },
@@ -60,7 +69,23 @@ export default function SignUpExpert() {
         </View>
     
         <TouchableOpacity style={styles.button}>
-            <Text style={styles.btnText}>Sign Up</Text>
+            <Text 
+            style={styles.btnText}
+            onPress={() => {
+                let data = new FormData();
+                data.append('first_name', first_name);
+                data.append('last_name', last_name);
+                data.append('email', email);
+                data.append('password', password);
+                data.append('role', role);
+
+                console.log(first_name)
+                console.log(last_name)
+                console.log(email)
+                console.log(password)
+                console.log(role)
+            }
+            }>Sign Up</Text>
         </TouchableOpacity>
     </ScrollView>
     </View>

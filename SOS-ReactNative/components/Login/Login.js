@@ -3,6 +3,7 @@ import React from "react";
 import styles from './styles';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { toggle } from '../../hooks/toggle';
+import axios from 'axios';
 
 export default function LogIn({navigation}) {
     const [email, setEmail] = React.useState("");
@@ -19,7 +20,7 @@ export default function LogIn({navigation}) {
         <TextInput 
         placeholder='Email' 
         style={styles.input}
-        onChangeText={newText => setEmail(newText)}/>
+        onChangeText={setEmail}/>
       </View>
       
       <View>
@@ -27,12 +28,23 @@ export default function LogIn({navigation}) {
         <View style={[styles.input, styles.password]}><TextInput 
         placeholder='Password'
         secureTextEntry={passwordVisibility}
-        onChangeText={newText => setPassword(newText)}/>
+        onChangeText={setPassword}/>
         <Pressable onPress={handlePasswordVisibility}><MaterialCommunityIcons name={rightIcon} size={22} color="#232323" /></Pressable></View>
       </View>
       
       
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity style={styles.button}
+      onPress={
+        () => { 
+          let data = new FormData();
+  
+          data.append('email', email);
+          data.append('password', password);
+          console.log(email)
+          console.log(password)
+          
+        }}
+              >
         <Text style={styles.btnText}>Sign in</Text>
       </TouchableOpacity>
       <View style={styles.signup}>
