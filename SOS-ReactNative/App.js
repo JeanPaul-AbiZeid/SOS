@@ -15,7 +15,7 @@ import ExpertPage from './components/ExpertPage/ExpertPage';
 import ExpertHistory from './components/ExpertHistory/ExpertHistory';
 import { Entypo, Ionicons, FontAwesome5 } from '@expo/vector-icons';
 
-// const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 const ExpertTab = createBottomTabNavigator();
 const HomeStack = createNativeStackNavigator();
@@ -39,19 +39,54 @@ function NotificationStackScreen() {
   );
 }
 
+function HomeTabs() {
+  return (
+    <Tab.Navigator screenOptions={{headerShown: false, tabBarActiveTintColor: 'red', tabBarShowLabel: false}}>
+      <Tab.Screen name="HomeStack" component={HomeStackScreen}
+      options={{
+        tabBarIcon: ({ color, size }) => (
+          <Entypo name="home" size={30} color={color} />
+        ),
+      }}/>
+      <Tab.Screen name="Tracking" component={Tracking}
+      options={{
+        tabBarIcon: ({ color, size }) => (
+          <FontAwesome5 name="route" size={30} color={color} />
+        ),
+      }} />
+      <Tab.Screen name="NotificationStack" component={NotificationStackScreen}
+      options={{
+        tabBarIcon: ({ color, size }) => (
+          <Ionicons name="notifications" size={30} color={color} />
+        ),
+      }} />
+      <Tab.Screen name="Profile" component={Profile}
+      options={{
+        tabBarIcon: ({ color, size }) => (
+          <Ionicons name="person-circle-outline" size={30} color={color} />
+        ),
+      }} />
+    </Tab.Navigator>
+  )
+}
+
 
 export default function App() {
   return (
     <NavigationContainer>
       {/* token?
       : */}
-      {/* <Stack.Navigator 
+      <Stack.Navigator 
       screenOptions={{headerShown: false}}>
         <Stack.Screen name="LogIn" component={LogIn} />
         <Stack.Screen name="SignUp" component={SignUp} />
         <Stack.Screen name="SignUpUser" component={SignUpUser} />
         <Stack.Screen name="SignUpExpert" component={SignUpExpert} />
-      </Stack.Navigator> */}
+        <Stack.Screen name="HomePage" component={HomeTabs} />
+
+
+        
+      </Stack.Navigator>
 
       {/* <Tab.Navigator screenOptions={{headerShown: false, tabBarActiveTintColor: 'red', tabBarShowLabel: false}}>
         <Tab.Screen name="HomeStack" component={HomeStackScreen}
@@ -80,7 +115,7 @@ export default function App() {
         }} />
       </Tab.Navigator> */}
 
-      <ExpertTab.Navigator 
+      {/* <ExpertTab.Navigator 
       screenOptions={{
         headerShown: false,
          tabBarActiveTintColor: 'red',
@@ -92,7 +127,7 @@ export default function App() {
           tabBarIconStyle: { display: "none" }}}>
         <ExpertTab.Screen name="Current" component={ExpertPage} />
         <ExpertTab.Screen name="History" component={ExpertHistory} />
-      </ExpertTab.Navigator>
+      </ExpertTab.Navigator> */}
 
       
     </NavigationContainer>

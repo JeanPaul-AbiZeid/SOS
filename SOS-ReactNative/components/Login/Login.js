@@ -42,6 +42,7 @@ export default function LogIn({navigation}) {
           data.append('password', password);
           console.log(email)
           console.log(password)
+          navigation.push('HomePage')
           
         }}
               >
