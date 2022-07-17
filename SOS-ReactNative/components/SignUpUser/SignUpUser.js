@@ -1,7 +1,7 @@
 import React from 'react';
 import { Pressable, ScrollView, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import RNPickerSelect from "react-native-picker-select";
-// import DatePicker from 'react-native-modern-datepicker';
+import DateTimePicker from '@react-native-community/datetimepicker';
 import styles from './styles';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { toggle } from '../../hooks/toggle';
@@ -13,9 +13,24 @@ export default function SignUpUser() {
     const [password, setPassword] = React.useState("");
     const [phone, setPhone] = React.useState("");
     const [blood_type, setBtype] = React.useState("");
-    const [date, setDate] = React.useState("");
+    // const [date, setDate] = React.useState("");
     const [gender, setGender] = React.useState("");
     const { passwordVisibility, rightIcon, handlePasswordVisibility } = toggle();
+    const [date, setDate] = React.useState(new Date());
+    const [mode, setMode] = React.useState('date');
+    const [show, setShow] = React.useState(false);
+
+    const onChange = (event, selectedDate) => {
+      const currentDate = selectedDate;
+      setShow(false);
+      setDate(currentDate);
+    };
+  
+    const showMode = () => {
+      setShow(true);
+      setMode('date');
+    };
+
   return (
     <View style={styles.main}>
     <ScrollView contentContainerStyle={styles.container}>
@@ -74,26 +89,40 @@ export default function SignUpUser() {
         
       </View>
       
-        <Text>Date of Birth</Text>
-        {/* <DatePicker mode="calendar"/> */}
-        <View>
-          <Text>Gender</Text>
-          <View style={styles.dropdown}>
-            <RNPickerSelect
-                  
-                  placeholder={{
-                    label: 'Select a gender',
-                    value: null,
-                }}
-                onValueChange={(value) => console.log(value)}
-                items={[
-                    { label: "Male", value: "Male" },
-                    { label: "Female", value: "Female" },
-                    { label: "Other", value: "Other" },
-                ]}
-            />
-          </View>
+      <View style={styles.calendar}>
+        <Text>Date of Birth (month/day/year)</Text>
+        <TouchableOpacity style={styles.buttonCalendar} onPress={showMode}>
+          <Text style={styles.calendarText}>Show Calendar</Text>
+          </TouchableOpacity>
+        <Text>Selected: {date.toLocaleDateString()}</Text>
+        {show && (
+          <DateTimePicker
+            testID="dateTimePicker"
+            value={date}
+            mode={mode}
+            onChange={onChange}
+          />
+        )}
+      </View>
+      
+      <View>
+        <Text>Gender</Text>
+        <View style={styles.dropdown}>
+          <RNPickerSelect
+                
+                placeholder={{
+                  label: 'Select a gender',
+                  value: null,
+              }}
+              onValueChange={(value) => console.log(value)}
+              items={[
+                  { label: "Male", value: "Male" },
+                  { label: "Female", value: "Female" },
+                  { label: "Other", value: "Other" },
+              ]}
+          />
         </View>
+      </View>
         
       <TouchableOpacity style={styles.button}>
         <Text style={styles.btnText}>Sign Up</Text>

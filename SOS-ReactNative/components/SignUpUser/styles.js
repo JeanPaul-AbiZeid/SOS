@@ -59,6 +59,26 @@ const styles = StyleSheet.create({
     },
     dropdown: {
       width: 250,
+    },
+    calendar: {
+      alignSelf: 'stretch',
+      marginHorizontal: 35,
+      marginBottom: 20
+    },
+    buttonCalendar: {
+      backgroundColor: 'red',
+      width: 150,
+      alignItems: 'center',
+      justifyContent: 'center',
+      paddingVertical: 2,
+      borderRadius: 4,
+      elevation: 3,
+      marginVertical: 10
+    },
+    calendarText: {
+      color: 'white',
+      fontSize: 16,
+      fontWeight: '300',
     }
 });
 

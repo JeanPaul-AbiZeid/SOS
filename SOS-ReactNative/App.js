@@ -29,7 +29,7 @@ export default function App() {
         <Stack.Screen name="SignUpExpert" component={SignUpExpert} />
       </Stack.Navigator>
 
-     
+      
     </NavigationContainer>
 
     
