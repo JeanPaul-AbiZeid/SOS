@@ -3,7 +3,7 @@ import { ScrollView, Text, TextInput, View, Image, TouchableOpacity } from 'reac
 import styles from './styles';
 
 
-export default function Home() {
+export default function Home({navigation}) {
 
     return (
         <ScrollView contentContainerStyle={styles.container}>
@@ -16,7 +16,7 @@ export default function Home() {
                 <Image style={styles.image} source={require('../../assets/fire-logo.png')}/>
                 <Image style={styles.image} source={require('../../assets/contact-logo.png')}/>
             </View>
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity style={styles.button} onPress={() => navigation.push('CreateAlert')}>
                 <Text style={styles.btnText}>Alert</Text>
             </TouchableOpacity>
         </ScrollView>

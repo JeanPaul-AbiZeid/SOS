@@ -5,7 +5,7 @@ import { EvilIcons } from '@expo/vector-icons';
 import AlertNotification from '../alert/AlertNotification'
 
 
-export default function Notification() {
+export default function Notification({navigation}) {
 
   return (
     <View style={styles.main}>
@@ -16,18 +16,18 @@ export default function Notification() {
         </View>
 
         <View style={styles.notification}>
-            <AlertNotification />
-            <AlertNotification />
-            <AlertNotification />
-            <AlertNotification />
-            <AlertNotification />
-            <AlertNotification />
-            <AlertNotification />
-            <AlertNotification />
-            <AlertNotification />
-            <AlertNotification />
-            <AlertNotification />
-            <AlertNotification />
+            <AlertNotification navigation={navigation} />
+            <AlertNotification navigation={navigation} />
+            <AlertNotification navigation={navigation} />
+            <AlertNotification navigation={navigation} />
+            <AlertNotification navigation={navigation} />
+            <AlertNotification navigation={navigation} />
+            <AlertNotification navigation={navigation} />
+            <AlertNotification navigation={navigation} />
+            <AlertNotification navigation={navigation} />
+            <AlertNotification navigation={navigation} />
+            <AlertNotification navigation={navigation} />
+            <AlertNotification navigation={navigation} />
         </View>
         
         </ScrollView>
