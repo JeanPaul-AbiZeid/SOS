@@ -70,6 +70,24 @@ function HomeTabs() {
   )
 }
 
+function ExpertTabs () {
+  return (
+    <ExpertTab.Navigator 
+      screenOptions={{
+        headerShown: false,
+        tabBarActiveTintColor: 'red',
+        tabBarLabelPosition: "beside-icon",
+        tabBarLabelStyle: {
+          fontWeight: "500",
+          fontSize: 20
+        },
+        tabBarIconStyle: { display: "none" }}}>
+      <ExpertTab.Screen name="Current" component={ExpertPage} />
+      <ExpertTab.Screen name="History" component={ExpertHistory} />
+    </ExpertTab.Navigator>
+  )
+}
+
 
 export default function App() {
   return (
@@ -83,6 +101,7 @@ export default function App() {
         <Stack.Screen name="SignUpUser" component={SignUpUser} />
         <Stack.Screen name="SignUpExpert" component={SignUpExpert} />
         <Stack.Screen name="HomePage" component={HomeTabs} />
+        <Stack.Screen name="ExperPage" component={ExpertTabs} />
 
 
         
