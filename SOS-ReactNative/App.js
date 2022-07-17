@@ -13,6 +13,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Tracking from './components/Tracking/Tracking';
 import ExpertPage from './components/ExpertPage/ExpertPage';
 import ExpertHistory from './components/ExpertHistory/ExpertHistory';
+import { Entypo, Ionicons, FontAwesome5 } from '@expo/vector-icons';
 
 // const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -51,11 +52,31 @@ export default function App() {
         <Stack.Screen name="SignUpExpert" component={SignUpExpert} />
       </Stack.Navigator> */}
 
-      <Tab.Navigator screenOptions={{headerShown: false}}>
-        <Tab.Screen name="HomeStack" component={HomeStackScreen} />
-        <Tab.Screen name="Tracking" component={Tracking} />
-        <Tab.Screen name="NotificationStack" component={NotificationStackScreen} />
-        <Tab.Screen name="Profile" component={Profile} />
+      <Tab.Navigator screenOptions={{headerShown: false, tabBarActiveTintColor: 'red', tabBarShowLabel: false}}>
+        <Tab.Screen name="HomeStack" component={HomeStackScreen}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Entypo name="home" size={30} color={color} />
+          ),
+        }}/>
+        <Tab.Screen name="Tracking" component={Tracking}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <FontAwesome5 name="route" size={30} color={color} />
+          ),
+        }} />
+        <Tab.Screen name="NotificationStack" component={NotificationStackScreen}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="notifications" size={30} color={color} />
+          ),
+        }} />
+        <Tab.Screen name="Profile" component={Profile}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="person-circle-outline" size={30} color={color} />
+          ),
+        }} />
       </Tab.Navigator>
 
       
