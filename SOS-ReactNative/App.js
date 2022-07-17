@@ -70,7 +70,7 @@ function HomeTabs() {
   )
 }
 
-function ExpertTabs () {
+function ExpertTabs() {
   return (
     <ExpertTab.Navigator 
       screenOptions={{
@@ -101,7 +101,7 @@ export default function App() {
         <Stack.Screen name="SignUpUser" component={SignUpUser} />
         <Stack.Screen name="SignUpExpert" component={SignUpExpert} />
         <Stack.Screen name="HomePage" component={HomeTabs} />
-        <Stack.Screen name="ExperPage" component={ExpertTabs} />
+        <Stack.Screen name="ExpertPage" component={ExpertTabs} />
 
 
         

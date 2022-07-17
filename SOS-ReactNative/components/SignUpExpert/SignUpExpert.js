@@ -5,7 +5,7 @@ import styles from './styles';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { toggle } from '../../hooks/toggle';
 
-export default function SignUpExpert() {
+export default function SignUpExpert({navigation}) {
     const [first_name, setFname] = React.useState("");
     const [last_name, setLname] = React.useState("");
     const [email, setEmail] = React.useState("");
@@ -84,6 +84,7 @@ export default function SignUpExpert() {
                 console.log(email)
                 console.log(password)
                 console.log(role)
+                navigation.push('ExpertPage')
             }
             }>Sign Up</Text>
         </TouchableOpacity>

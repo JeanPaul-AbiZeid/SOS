@@ -6,7 +6,7 @@ import styles from './styles';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { toggle } from '../../hooks/toggle';
 
-export default function SignUpUser() {
+export default function SignUpUser({navigation}) {
     const [first_name, setFname] = React.useState("");
     const [last_name, setLname] = React.useState("");
     const [email, setEmail] = React.useState("");
@@ -146,6 +146,7 @@ export default function SignUpUser() {
           console.log(blood_type)
           console.log(date)
           console.log(gender)
+          navigation.push('HomePage')
       }}>
         <Text style={styles.btnText}>Sign Up</Text>
       </TouchableOpacity>
