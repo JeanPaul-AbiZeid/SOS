@@ -13,7 +13,6 @@ export default function SignUpUser() {
     const [password, setPassword] = React.useState("");
     const [phone, setPhone] = React.useState("");
     const [blood_type, setBtype] = React.useState("");
-    // const [date, setDate] = React.useState("");
     const [gender, setGender] = React.useState("");
     const { passwordVisibility, rightIcon, handlePasswordVisibility } = toggle();
     const [date, setDate] = React.useState(new Date());
@@ -38,17 +37,17 @@ export default function SignUpUser() {
       <Text style={styles.head}>Sign Up</Text>
       <View>
         <Text>First Name</Text>
-        <TextInput placeholder='First Name' style={styles.input}/>
+        <TextInput placeholder='First Name' style={styles.input} onChangeText={setFname}/>
       </View>
       
       <View>
         <Text>Last Name</Text>
-        <TextInput placeholder='Last Name' style={styles.input}/>
+        <TextInput placeholder='Last Name' style={styles.input} onChangeText={setLname}/>
       </View>
       
       <View>
         <Text>Email</Text>
-        <TextInput placeholder='Email' style={styles.input}/>
+        <TextInput placeholder='Email' style={styles.input} onChangeText={setEmail} />
       </View>
       
       <View>
@@ -56,13 +55,13 @@ export default function SignUpUser() {
         <View style={[styles.input, styles.password]}><TextInput 
         placeholder='Password'
         secureTextEntry={passwordVisibility}
-        onChangeText={newText => setPassword(newText)}/>
+        onChangeText={setPassword}/>
         <Pressable onPress={handlePasswordVisibility}><MaterialCommunityIcons name={rightIcon} size={22} color="#232323" /></Pressable></View>
       </View>
       
       <View>
         <Text>Phone Number</Text>
-        <TextInput placeholder='Phone' style={styles.input}/>
+        <TextInput placeholder='Phone' style={styles.input} onChangeText={setPhone}/>
       </View>
       
       <View>
@@ -73,7 +72,7 @@ export default function SignUpUser() {
                   label: 'Select a blood type',
                   value: null,
                 }}
-                onValueChange={(value) => console.log(value)}
+                onValueChange={setBtype}
                 items={[
                     { label: "O+", value: "O+" },
                     { label: "O-", value: "O-" },
@@ -114,7 +113,7 @@ export default function SignUpUser() {
                   label: 'Select a gender',
                   value: null,
               }}
-              onValueChange={(value) => console.log(value)}
+              onValueChange={setGender}
               items={[
                   { label: "Male", value: "Male" },
                   { label: "Female", value: "Female" },
@@ -124,7 +123,30 @@ export default function SignUpUser() {
         </View>
       </View>
         
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity 
+      style={styles.button}
+      onPress={ () => {
+        let data = new FormData();
+
+          data.append('first_name', first_name);
+          data.append('last_name', last_name);
+          data.append('email', email);
+          data.append('password', password);
+          data.append('number', phone);
+          data.append('blood_type', blood_type);
+          data.append('dob', date);
+          data.append('gender', gender);
+          data.append('role', 1);
+
+          console.log(first_name)
+          console.log(last_name)
+          console.log(email)
+          console.log(password)
+          console.log(phone)
+          console.log(blood_type)
+          console.log(date)
+          console.log(gender)
+      }}>
         <Text style={styles.btnText}>Sign Up</Text>
       </TouchableOpacity>
     </ScrollView>
