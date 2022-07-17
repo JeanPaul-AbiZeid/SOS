@@ -17,6 +17,7 @@ import { Entypo, Ionicons, FontAwesome5 } from '@expo/vector-icons';
 
 // const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
+const ExpertTab = createBottomTabNavigator();
 const HomeStack = createNativeStackNavigator();
 const NotificationStack = createNativeStackNavigator();
 
@@ -52,7 +53,7 @@ export default function App() {
         <Stack.Screen name="SignUpExpert" component={SignUpExpert} />
       </Stack.Navigator> */}
 
-      <Tab.Navigator screenOptions={{headerShown: false, tabBarActiveTintColor: 'red', tabBarShowLabel: false}}>
+      {/* <Tab.Navigator screenOptions={{headerShown: false, tabBarActiveTintColor: 'red', tabBarShowLabel: false}}>
         <Tab.Screen name="HomeStack" component={HomeStackScreen}
         options={{
           tabBarIcon: ({ color, size }) => (
@@ -77,7 +78,21 @@ export default function App() {
             <Ionicons name="person-circle-outline" size={30} color={color} />
           ),
         }} />
-      </Tab.Navigator>
+      </Tab.Navigator> */}
+
+      <ExpertTab.Navigator 
+      screenOptions={{
+        headerShown: false,
+         tabBarActiveTintColor: 'red',
+          tabBarLabelPosition: "beside-icon",
+          tabBarLabelStyle: {
+            fontWeight: "500",
+            fontSize: 20
+          },
+          tabBarIconStyle: { display: "none" }}}>
+        <ExpertTab.Screen name="Current" component={ExpertPage} />
+        <ExpertTab.Screen name="History" component={ExpertHistory} />
+      </ExpertTab.Navigator>
 
       
     </NavigationContainer>
