@@ -4,6 +4,7 @@ const styles = StyleSheet.create({
     main: {
         flexDirection: 'row',
         marginTop: 20,
+        alignItems: 'center',
     },
     text: {
         marginHorizontal:20,
@@ -17,8 +18,8 @@ const styles = StyleSheet.create({
         fontWeight: '300',
     },
     img: {
-        width: 100,
-        height: 100,
+        width: 80,
+        height: 80,
         borderRadius: 60
     }
 });

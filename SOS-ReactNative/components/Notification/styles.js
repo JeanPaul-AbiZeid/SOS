@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
         flexGrow: 1,
         marginTop: StatusBar.currentHeight,
         backgroundColor: '#e6e6e6',
-        paddingHorizontal: 20,
+        paddingHorizontal: 10,
         paddingBottom: 100,
     },
     main: {
@@ -26,7 +26,6 @@ const styles = StyleSheet.create({
     },
     notification: {
         marginTop: 30,
-        marginHorizontal: 20,
     },
 });
 
