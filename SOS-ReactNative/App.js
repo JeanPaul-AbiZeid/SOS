@@ -1,7 +1,8 @@
+import React from 'react';
 import CreateAlert from './components/CreateAlert/CreateAlert';
 import Home from './components/Home/Home';
 import LogIn from './components/Login/Login';
-import Notifications from './components/Notifications/Notifications';
+import Notification from './components/Notifications/Notifications';
 import Alert from './components/AlertPage/Alert';
 import Profile from './components/Profile/Profile';
 import SignUpExpert from './components/SignUpExpert/SignUpExpert';
@@ -14,6 +15,8 @@ import Tracking from './components/Tracking/Tracking';
 import ExpertPage from './components/ExpertPage/ExpertPage';
 import ExpertHistory from './components/ExpertHistory/ExpertHistory';
 import { Entypo, Ionicons, FontAwesome5 } from '@expo/vector-icons';
+import * as Notifications from 'expo-notifications';
+import * as Device from 'expo-device';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -33,7 +36,7 @@ function HomeStackScreen() {
 function NotificationStackScreen() {
   return (
     <NotificationStack.Navigator screenOptions={{headerShown: false}}>
-      <NotificationStack.Screen name="Notification" component={Notifications} />
+      <NotificationStack.Screen name="Notification" component={Notification} />
       <NotificationStack.Screen name="Alert" component={Alert} />
     </NotificationStack.Navigator>
   );
@@ -106,54 +109,7 @@ export default function App() {
 
         
       </Stack.Navigator>
-
-      {/* <Tab.Navigator screenOptions={{headerShown: false, tabBarActiveTintColor: 'red', tabBarShowLabel: false}}>
-        <Tab.Screen name="HomeStack" component={HomeStackScreen}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <Entypo name="home" size={30} color={color} />
-          ),
-        }}/>
-        <Tab.Screen name="Tracking" component={Tracking}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <FontAwesome5 name="route" size={30} color={color} />
-          ),
-        }} />
-        <Tab.Screen name="NotificationStack" component={NotificationStackScreen}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="notifications" size={30} color={color} />
-          ),
-        }} />
-        <Tab.Screen name="Profile" component={Profile}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="person-circle-outline" size={30} color={color} />
-          ),
-        }} />
-      </Tab.Navigator> */}
-
-      {/* <ExpertTab.Navigator 
-      screenOptions={{
-        headerShown: false,
-         tabBarActiveTintColor: 'red',
-          tabBarLabelPosition: "beside-icon",
-          tabBarLabelStyle: {
-            fontWeight: "500",
-            fontSize: 20
-          },
-          tabBarIconStyle: { display: "none" }}}>
-        <ExpertTab.Screen name="Current" component={ExpertPage} />
-        <ExpertTab.Screen name="History" component={ExpertHistory} />
-      </ExpertTab.Navigator> */}
-
-      
     </NavigationContainer>
-
-    
-    
-    
   );
 }
 
