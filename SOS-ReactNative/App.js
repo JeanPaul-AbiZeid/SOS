@@ -1,7 +1,7 @@
 import CreateAlert from './components/CreateAlert/CreateAlert';
 import Home from './components/Home/Home';
 import LogIn from './components/Login/Login';
-import Notification from './components/Notification/Notification';
+import Notifications from './components/Notifications/Notifications';
 import Alert from './components/AlertPage/Alert';
 import Profile from './components/Profile/Profile';
 import SignUpExpert from './components/SignUpExpert/SignUpExpert';
@@ -33,7 +33,7 @@ function HomeStackScreen() {
 function NotificationStackScreen() {
   return (
     <NotificationStack.Navigator screenOptions={{headerShown: false}}>
-      <NotificationStack.Screen name="Notification" component={Notification} />
+      <NotificationStack.Screen name="Notification" component={Notifications} />
       <NotificationStack.Screen name="Alert" component={Alert} />
     </NotificationStack.Navigator>
   );
