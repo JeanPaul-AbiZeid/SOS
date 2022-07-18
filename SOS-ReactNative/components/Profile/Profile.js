@@ -2,16 +2,35 @@ import { Text, View, Image, ScrollView, TouchableOpacity } from 'react-native';
 import React from "react";
 import styles from './styles';
 import { Fontisto, Feather, MaterialIcons, FontAwesome, AntDesign } from '@expo/vector-icons'; 
+import * as ImagePicker from 'expo-image-picker';
 
 export default function Profile() {
+    const [image, setImage] = React.useState(null);
+
+    const pickImage = async () => {
+        // No permissions request is necessary for launching the image library
+        let result = await ImagePicker.launchImageLibraryAsync({
+          mediaTypes: ImagePicker.MediaTypeOptions.Images,
+          allowsEditing: true,
+          aspect: [3, 3],
+          quality: 1,
+          base64: true, //converting image to base64
+        });
+    
+        console.log(result);
+    
+        if (!result.cancelled) {
+          setImage(result.base64);
+        }
+      }
 
     return (
       <ScrollView style={styles.container}>
         <View style={styles.main}>
             <View style={styles.imageContainer}>
-                <Image style={styles.img} source={require('../../assets/persona.png')}/>
+                <Image style={styles.img} source={ require('../../assets/persona.png') }/>
                 <View style={styles.uploadBtnContainer}>
-                    <TouchableOpacity style={styles.uploadBtn} >
+                    <TouchableOpacity style={styles.uploadBtn} onPress={pickImage}>
                         <Text>Change Image</Text>
                         <AntDesign name="camera" size={20} color="black" />
                     </TouchableOpacity>

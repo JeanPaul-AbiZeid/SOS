@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
         flex: 1
     },
     imageContainer:{
-        elevation:5,
+        elevation: 5,
         position:'relative',
         borderRadius: 60,
         overflow:'hidden',
