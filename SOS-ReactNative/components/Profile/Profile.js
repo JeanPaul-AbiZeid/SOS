@@ -1,4 +1,4 @@
-import { Text, View, Image, ScrollView } from 'react-native';
+import { Text, View, Image, ScrollView, TouchableOpacity } from 'react-native';
 import React from "react";
 import styles from './styles';
 import { Fontisto, Feather, MaterialIcons, FontAwesome } from '@expo/vector-icons'; 
@@ -8,7 +8,15 @@ export default function Profile() {
     return (
       <ScrollView style={styles.container}>
         <View style={styles.main}>
-            <Image style={styles.img} source={require('../../assets/persona.png')}/>   
+            <View>
+                <Image style={styles.img} source={require('../../assets/persona.png')}/>
+                <View style={styles.uploadBtnContainer}>
+                    <TouchableOpacity style={styles.uploadBtn} >
+                    <Text>Change Image</Text>
+                    </TouchableOpacity>
+                </View>  
+            </View>
+             
             <Text style={styles.name}>John Doe</Text>
         </View>
 
