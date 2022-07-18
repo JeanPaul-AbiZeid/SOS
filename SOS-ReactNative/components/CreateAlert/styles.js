@@ -15,11 +15,12 @@ const styles = StyleSheet.create({
         padding: 5,
         paddingLeft: 10,
         paddingRight: 10,
-        width: 250,
+        alignSelf: 'stretch',
+        marginHorizontal: 50,
         borderColor: 'gray',
       },
       description: {
-        flex: 0.5,
+        flex: 0.8,
         justifyContent: 'flex-start',
         textAlignVertical: 'top'
       },
@@ -38,7 +39,8 @@ const styles = StyleSheet.create({
       },
       button: {
         backgroundColor: 'red',
-        width: 250,
+        alignSelf: 'stretch',
+        marginHorizontal: 50,
         marginTop: 50,
         alignItems: 'center',
         justifyContent: 'center',
