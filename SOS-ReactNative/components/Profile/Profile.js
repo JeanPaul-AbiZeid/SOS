@@ -1,7 +1,7 @@
 import { Text, View, Image, ScrollView, TouchableOpacity } from 'react-native';
 import React from "react";
 import styles from './styles';
-import { Fontisto, Feather, MaterialIcons, FontAwesome } from '@expo/vector-icons'; 
+import { Fontisto, Feather, MaterialIcons, FontAwesome, AntDesign } from '@expo/vector-icons'; 
 
 export default function Profile() {
 
@@ -13,6 +13,7 @@ export default function Profile() {
                 <View style={styles.uploadBtnContainer}>
                     <TouchableOpacity style={styles.uploadBtn} >
                         <Text>Change Image</Text>
+                        <AntDesign name="camera" size={20} color="black" />
                     </TouchableOpacity>
                 </View>  
             </View>
