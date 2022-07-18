@@ -25,6 +25,10 @@ const styles = StyleSheet.create({
     marginTop: 60,
     marginBottom: 20,
   },
+  inputContainer: {
+    alignSelf: 'stretch',
+    marginHorizontal: 30
+  },
   input: {
     backgroundColor: 'white',
     marginTop: 5,
@@ -33,12 +37,12 @@ const styles = StyleSheet.create({
     padding: 5,
     paddingLeft: 10,
     paddingRight: 10,
-    width: 250,
     borderColor: 'gray',
   },
   button: {
     backgroundColor: 'red',
-    width: 250,
+    alignSelf: 'stretch',
+    marginHorizontal: 30,
     marginTop: 50,
     alignItems: 'center',
     justifyContent: 'center',
@@ -58,16 +62,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   dropdown: {
-    width: 250,
+    alignSelf: 'stretch',
+    marginHorizontal: 30
   },
   calendar: {
     alignSelf: 'stretch',
-    marginHorizontal: 35,
+    marginHorizontal: 30,
     marginBottom: 20
   },
   buttonCalendar: {
-    backgroundColor: 'red',
-    width: 150,
+    backgroundColor: 'blue',
+    alignSelf: 'stretch',
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: 2,

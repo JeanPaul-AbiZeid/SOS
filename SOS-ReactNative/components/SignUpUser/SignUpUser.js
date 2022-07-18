@@ -35,22 +35,22 @@ export default function SignUpUser({navigation}) {
     <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.title}>SOS</Text>
       <Text style={styles.head}>Sign Up</Text>
-      <View>
+      <View style={styles.inputContainer}>
         <Text>First Name</Text>
         <TextInput placeholder='First Name' style={styles.input} onChangeText={setFname}/>
       </View>
       
-      <View>
+      <View style={styles.inputContainer}>
         <Text>Last Name</Text>
         <TextInput placeholder='Last Name' style={styles.input} onChangeText={setLname}/>
       </View>
       
-      <View>
+      <View style={styles.inputContainer}>
         <Text>Email</Text>
         <TextInput placeholder='Email' style={styles.input} onChangeText={setEmail} />
       </View>
       
-      <View>
+      <View style={styles.inputContainer}>
         <Text>Password</Text>
         <View style={[styles.input, styles.password]}><TextInput 
         placeholder='Password'
@@ -59,33 +59,30 @@ export default function SignUpUser({navigation}) {
         <Pressable onPress={handlePasswordVisibility}><MaterialCommunityIcons name={rightIcon} size={22} color="#232323" /></Pressable></View>
       </View>
       
-      <View>
+      <View style={styles.inputContainer}>
         <Text>Phone Number</Text>
         <TextInput placeholder='Phone' style={styles.input} onChangeText={setPhone}/>
       </View>
       
-      <View>
+      <View style={styles.dropdown}>
         <Text>Blood type</Text>
-        <View style={styles.dropdown}>
-          <RNPickerSelect
-                placeholder={{
-                  label: 'Select a blood type',
-                  value: null,
-                }}
-                onValueChange={setBtype}
-                items={[
-                    { label: "O+", value: "O+" },
-                    { label: "O-", value: "O-" },
-                    { label: "A+", value: "A+" },
-                    { label: "A-", value: "A-" },
-                    { label: "B+", value: "B+" },
-                    { label: "B-", value: "B-" },
-                    { label: "AB+", value: "AB+" },
-                    { label: "AB-", value: "AB-" },
-                ]}
-            />
-        </View>
-        
+        <RNPickerSelect
+          placeholder={{
+            label: 'Select a blood type',
+            value: null,
+          }}
+          onValueChange={setBtype}
+          items={[
+            { label: "O+", value: "O+" },
+            { label: "O-", value: "O-" },
+            { label: "A+", value: "A+" },
+            { label: "A-", value: "A-" },
+            { label: "B+", value: "B+" },
+            { label: "B-", value: "B-" },
+            { label: "AB+", value: "AB+" },
+            { label: "AB-", value: "AB-" },
+          ]}
+        />
       </View>
       
       <View style={styles.calendar}>
@@ -104,29 +101,26 @@ export default function SignUpUser({navigation}) {
         )}
       </View>
       
-      <View>
+      <View style={styles.dropdown}>
         <Text>Gender</Text>
-        <View style={styles.dropdown}>
-          <RNPickerSelect
-                
-                placeholder={{
-                  label: 'Select a gender',
-                  value: null,
-              }}
-              onValueChange={setGender}
-              items={[
-                  { label: "Male", value: "Male" },
-                  { label: "Female", value: "Female" },
-                  { label: "Other", value: "Other" },
-              ]}
-          />
-        </View>
+        <RNPickerSelect
+          placeholder={{
+            label: 'Select a gender',
+            value: null,
+          }}
+          onValueChange={setGender}
+          items={[
+            { label: "Male", value: "Male" },
+            { label: "Female", value: "Female" },
+            { label: "Other", value: "Other" },
+          ]}
+        />
       </View>
         
       <TouchableOpacity 
-      style={styles.button}
-      onPress={ () => {
-        let data = new FormData();
+        style={styles.button}
+        onPress={ () => {
+          let data = new FormData();
 
           data.append('first_name', first_name);
           data.append('last_name', last_name);
