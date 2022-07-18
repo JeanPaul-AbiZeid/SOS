@@ -15,7 +15,7 @@ export default function LogIn({navigation}) {
       <Text style={styles.title}>SOS</Text>
       <Text style={styles.head}>Sign In</Text>
       
-      <View>
+      <View style={styles.inputContainer}>
         <Text>Email</Text>
         <TextInput 
         placeholder='Email' 
@@ -23,7 +23,7 @@ export default function LogIn({navigation}) {
         onChangeText={setEmail}/>
       </View>
       
-      <View>
+      <View style={styles.inputContainer}>
         <Text>Password</Text>
         <View style={[styles.input, styles.password]}><TextInput 
         placeholder='Password'

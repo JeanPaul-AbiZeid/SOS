@@ -14,11 +14,15 @@ const styles = StyleSheet.create({
       marginTop: 100,
     },
     head: {
-      color: 'red',
+      color: 'gray',
       fontSize: 30,
       fontWeight: '500',
       marginTop: 60,
       marginBottom: 20,
+    },
+    inputContainer: {
+      alignSelf: 'stretch',
+      marginHorizontal: 60
     },
     input: {
       backgroundColor: 'white',
@@ -28,7 +32,6 @@ const styles = StyleSheet.create({
       padding: 5,
       paddingLeft: 10,
       paddingRight: 10,
-      width: 250,
       borderColor: 'gray',
     },
     password: {
@@ -36,15 +39,10 @@ const styles = StyleSheet.create({
       justifyContent: 'space-between',
       alignItems: 'center',
     },
-    pass: {
-      flexDirection: 'row',
-      width: 270,
-      alignItems: 'center',
-      marginTop: 5,
-    },
     button: {
       backgroundColor: 'red',
-      width: 250,
+      alignSelf: 'stretch',
+      marginHorizontal: 60,
       marginTop: 50,
       alignItems: 'center',
       justifyContent: 'center',
