@@ -8,11 +8,11 @@ export default function Profile() {
     return (
       <ScrollView style={styles.container}>
         <View style={styles.main}>
-            <View>
+            <View style={styles.imageContainer}>
                 <Image style={styles.img} source={require('../../assets/persona.png')}/>
                 <View style={styles.uploadBtnContainer}>
                     <TouchableOpacity style={styles.uploadBtn} >
-                    <Text>Change Image</Text>
+                        <Text>Change Image</Text>
                     </TouchableOpacity>
                 </View>  
             </View>
