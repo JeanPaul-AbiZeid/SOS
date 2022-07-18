@@ -22,7 +22,8 @@ container: {
   
 button: {
     backgroundColor: 'red',
-    width: 250,
+    alignSelf: 'stretch',
+    marginHorizontal: 20,
     marginTop: 50,
     alignItems: 'center',
     justifyContent: 'center',
