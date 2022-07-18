@@ -1,4 +1,4 @@
-import { Pressable, ScrollView, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { ScrollView, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import React from "react";
 import styles from './styles';
 
@@ -17,9 +17,9 @@ export default function CreateAlert() {
 
         <View style={styles.choose}>
             <Text>Upload image:</Text>
-            <Pressable style={styles.upload}>
+            <TouchableOpacity style={styles.upload}>
                 <Text>Choose image</Text>
-            </Pressable>
+            </TouchableOpacity>
         </View>
 
         <TouchableOpacity style={styles.button}>
