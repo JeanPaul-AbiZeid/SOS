@@ -15,8 +15,6 @@ import Tracking from './components/Tracking/Tracking';
 import ExpertPage from './components/ExpertPage/ExpertPage';
 import ExpertHistory from './components/ExpertHistory/ExpertHistory';
 import { Entypo, Ionicons, FontAwesome5 } from '@expo/vector-icons';
-import * as Notifications from 'expo-notifications';
-import * as Device from 'expo-device';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();

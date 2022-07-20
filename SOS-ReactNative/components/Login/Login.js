@@ -36,16 +36,27 @@ export default function LogIn({navigation}) {
       <TouchableOpacity style={styles.button}
       onPress={
         () => { 
-          let data = new FormData();
-  
-          data.append('email', email);
-          data.append('password', password);
-          console.log(email)
-          console.log(password)
-          navigation.push('HomePage')
+          let data = {
+            "email": email,
+            "password": password,
+          }
+          // navigation.push('HomePage')
+
+          axios({
+            method: 'post',
+            url: 'http://192.168.1.149:8000/api/login', 
+            data: data,
+            })
+            .then(function (response) {
+              console.log(response)
+            
+            })
+            .catch(function (error){
+              console.log(error)
+              alert("Incorrect email or password");
+          })
           
-        }}
-              >
+        }}>
         <Text style={styles.btnText}>Sign in</Text>
       </TouchableOpacity>
       <View style={styles.signup}>
