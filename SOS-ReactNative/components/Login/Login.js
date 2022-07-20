@@ -14,7 +14,6 @@ const storeData = async (key, value) => {
   }
 }
 
-
 export default function LogIn({navigation}) {
     const [email, setEmail] = React.useState("");
     const [password, setPassword] = React.useState("");
@@ -59,7 +58,7 @@ export default function LogIn({navigation}) {
             })
             .then(function (response) {
               storeData('token', response.data.authorisation.token)
-              storeData('userInfo', response.data.user)
+              storeData('id', JSON.stringify(response.data.user.id))
             
             })
             .catch(function (error){
