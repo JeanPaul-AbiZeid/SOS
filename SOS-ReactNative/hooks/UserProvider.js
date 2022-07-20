@@ -80,9 +80,39 @@ const UserProvider = ({children}) => {
         })
     }
 
+    const SignUpUser = (first_name, last_name, email, password, phone, blood_type, date, gender) => {
+        let data = {
+            "first_name" : first_name,
+            "last_name" : last_name,
+            "email" : email,
+            "password" : password,
+            "number" : phone,
+            "blood_type" : blood_type,
+            "dob" : date.toLocaleDateString(),
+            "gender" : gender,
+            "role_id" : 1,
+        }
+
+        axios({
+          method: 'post',
+          url: 'http://192.168.1.149:8000/api/register', 
+          data: data,
+          })
+          .then(function (response) {
+            alert(response.data.message)
+            console.log(response)
+            navigation.push('LogIn')
+          
+          })
+          .catch(function (error){
+            console.log(error)
+            alert(error)
+        })
+    }
+
     return (
         <userContext.Provider
-            value={{ user, LoggedIn, SignUpExpert }}
+            value={{ user, LoggedIn, SignUpExpert, SignUpUser }}
         >
             {children}
         </userContext.Provider>
@@ -92,9 +122,9 @@ const UserProvider = ({children}) => {
 export default UserProvider;
 
 export const useUserInfo = () => {
-    const {user, LoggedIn, lougout, SignUpExpert} = React.useContext(userContext)
+    const {user, LoggedIn, Lougout, SignUpExpert, SignUpUser} = React.useContext(userContext)
 
     return {
-        user, LoggedIn, lougout, SignUpExpert
+        user, LoggedIn, Lougout, SignUpExpert, SignUpUser
     }
 }
