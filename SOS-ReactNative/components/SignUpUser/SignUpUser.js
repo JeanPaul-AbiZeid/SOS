@@ -5,6 +5,7 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import styles from './styles';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { toggle } from '../../hooks/toggle';
+import axios from 'axios';
 
 export default function SignUpUser({navigation}) {
     const [first_name, setFname] = React.useState("");
@@ -120,27 +121,33 @@ export default function SignUpUser({navigation}) {
       <TouchableOpacity 
         style={styles.button}
         onPress={ () => {
-          let data = new FormData();
-
-          data.append('first_name', first_name);
-          data.append('last_name', last_name);
-          data.append('email', email);
-          data.append('password', password);
-          data.append('number', phone);
-          data.append('blood_type', blood_type);
-          data.append('dob', date);
-          data.append('gender', gender);
-          data.append('role', 1);
-
-          console.log(first_name)
-          console.log(last_name)
-          console.log(email)
-          console.log(password)
-          console.log(phone)
-          console.log(blood_type)
-          console.log(date)
-          console.log(gender)
-          navigation.push('HomePage')
+          let data = {
+            "first_name" : first_name,
+            "last_name" : last_name,
+            "email" : email,
+            "password" : password,
+            "number" : phone,
+            // "blood_type" : blood_type,
+            // "dob" : String(date),
+            "gender" : gender,
+            "role_id" : 1,
+        }
+        
+        axios({
+          method: 'post',
+          url: 'http://192.168.1.149:8000/api/register', 
+          data: data,
+          })
+          .then(function (response) {
+            // alert(response.data.message)
+            console.log(response)
+            // navigation.push('HomePage')
+          
+          })
+          .catch(function (error){
+            console.log(error)
+            // alert(error)
+        })
       }}>
         <Text style={styles.btnText}>Sign Up</Text>
       </TouchableOpacity>

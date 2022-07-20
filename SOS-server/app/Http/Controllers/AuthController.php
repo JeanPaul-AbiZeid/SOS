@@ -59,7 +59,10 @@ class AuthController extends Controller
             'last_name' => $request->last_name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role_id' => $request->role_id
+            'role_id' => $request->role_id,
+            'dob' => $request->dob,
+            'number' => $request->number,
+            'gender' => $request->gender,
         ]);
 
         $token = Auth::login($user);
