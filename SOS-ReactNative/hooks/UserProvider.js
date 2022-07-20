@@ -10,17 +10,6 @@ const storeData = async (key, value) => {
     }
 }
 
-const getData = async (key) => {
-    try {
-      const value = await AsyncStorage.getItem(key)
-      if(value !== null) {
-        console.log(value)
-      }
-    } catch(e) {
-      console.log(e)
-    }
-}
-
 const Clear = async () => {
     await AsyncStorage.clear();
 }
@@ -29,6 +18,7 @@ export const userContext = React.createContext()
 
 const UserProvider = ({children, navigation}) => {
     const [user, setUser] = React.useState({})
+    const [token, setToken] = React.useState("")
     const [isLoggedin, setIsLoggedin] = React.useState(false)
     const [isExpert, setIsExpert] = React.useState(false)
 
@@ -44,21 +34,22 @@ const UserProvider = ({children, navigation}) => {
             data: data,
             })
             .then(function (response) {
-              storeData('token', response.data.authorisation.token)
-              setUser(response.data.user)
-              if (response.data.user.role_id == 1) {
-                navigation.push('HomePage')
-                setIsLoggedin(true)
-              }else{
-                navigation.push('ExpertPage')
-                setIsExpert(true)
-                setIsLoggedin(true)
+                storeData('token', response.data.authorisation.token)
+                setUser(response.data.user)
+                setToken(response.data.authorisation.token)
+                if (response.data.user.role_id == 1) {
+                    navigation.push('HomePage')
+                    setIsLoggedin(true)
+                }else{
+                    navigation.push('ExpertPage')
+                    setIsExpert(true)
+                    setIsLoggedin(true)
               }
             
             })
             .catch(function (error){
-              console.log(error)
-              alert("Incorrect email or password");
+                console.log(error)
+                alert("Incorrect email or password");
           })
     }
 
