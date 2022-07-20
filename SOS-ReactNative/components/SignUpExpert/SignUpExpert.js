@@ -4,6 +4,7 @@ import RNPickerSelect from "react-native-picker-select";
 import styles from './styles';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { toggle } from '../../hooks/toggle';
+import axios from 'axios';
 
 export default function SignUpExpert({navigation}) {
     const [first_name, setFname] = React.useState("");
@@ -74,20 +75,29 @@ export default function SignUpExpert({navigation}) {
             <Text 
                 style={styles.btnText}
                 onPress={() => {
-                    let data = new FormData();
-                    data.append('first_name', first_name);
-                    data.append('last_name', last_name);
-                    data.append('email', email);
-                    data.append('password', password);
-                    data.append('role', role);
-
-                    console.log(first_name)
-                    console.log(last_name)
-                    console.log(email)
-                    console.log(password)
-                    console.log(role)
-                    navigation.push('ExpertPage')
-            }
+                    let data = {
+                        "first_name" : first_name,
+                        "last_name" : last_name,
+                        "email" : email,
+                        "password" : password,
+                        "role_id" : role,
+                    }
+                    axios({
+                        method: 'post',
+                        url: 'http://192.168.1.149:8000/api/register', 
+                        data: data,
+                        })
+                        .then(function (response) {
+                            alert(response.data.message)
+                            console.log(response)
+                            // navigation.push('ExpertPage')
+                        
+                        })
+                        .catch(function (error){
+                            console.log(error)
+                            alert(error)
+                    })
+                }
             }>Sign Up</Text>
         </TouchableOpacity>
     </ScrollView>
