@@ -93,8 +93,6 @@ function ExpertTabs() {
 export default function App() {
   return (
     <NavigationContainer>
-      {/* token?
-      : */}
       <Stack.Navigator 
       screenOptions={{headerShown: false}}>
         <Stack.Screen name="LogIn" component={LogIn} />
@@ -103,9 +101,6 @@ export default function App() {
         <Stack.Screen name="SignUpExpert" component={SignUpExpert} />
         <Stack.Screen name="HomePage" component={HomeTabs} />
         <Stack.Screen name="ExpertPage" component={ExpertTabs} />
-
-
-        
       </Stack.Navigator>
     </NavigationContainer>
   );

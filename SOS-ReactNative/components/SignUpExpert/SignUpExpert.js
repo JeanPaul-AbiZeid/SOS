@@ -89,8 +89,7 @@ export default function SignUpExpert({navigation}) {
                         })
                         .then(function (response) {
                             alert(response.data.message)
-                            console.log(response)
-                            // navigation.push('ExpertPage')
+                            navigation.push('LogIn')
                         
                         })
                         .catch(function (error){

@@ -49,7 +49,6 @@ export default function LogIn({navigation}) {
             "email": email,
             "password": password,
           }
-          // navigation.push('HomePage')
 
           axios({
             method: 'post',
@@ -59,6 +58,11 @@ export default function LogIn({navigation}) {
             .then(function (response) {
               storeData('token', response.data.authorisation.token)
               storeData('id', JSON.stringify(response.data.user.id))
+              if (response.data.user.role_id == 1) {
+                navigation.push('HomePage')
+              }else{
+                navigation.push('ExpertPage')
+              }
             
             })
             .catch(function (error){

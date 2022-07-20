@@ -141,12 +141,12 @@ export default function SignUpUser({navigation}) {
           .then(function (response) {
             alert(response.data.message)
             console.log(response)
-            // navigation.push('HomePage')
+            navigation.push('LogIn')
           
           })
           .catch(function (error){
             console.log(error)
-            // alert(error)
+            alert(error)
         })
       }}>
         <Text style={styles.btnText}>Sign Up</Text>
