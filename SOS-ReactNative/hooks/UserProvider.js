@@ -56,9 +56,33 @@ const UserProvider = ({children}) => {
           })
     }
 
+    const SignUpExpert = (first_name, last_name, email, password, role) => {
+        let data = {
+            "first_name" : first_name,
+            "last_name" : last_name,
+            "email" : email,
+            "password" : password,
+            "role_id" : role,
+        }
+        axios({
+            method: 'post',
+            url: 'http://192.168.1.149:8000/api/register', 
+            data: data,
+            })
+            .then(function (response) {
+                alert(response.data.message)
+                navigation.push('LogIn')
+            
+            })
+            .catch(function (error){
+                console.log(error)
+                alert(error)
+        })
+    }
+
     return (
         <userContext.Provider
-            value={{ user }}
+            value={{ user, LoggedIn, SignUpExpert }}
         >
             {children}
         </userContext.Provider>
@@ -68,9 +92,9 @@ const UserProvider = ({children}) => {
 export default UserProvider;
 
 export const useUserInfo = () => {
-    const {user, loggedIn, lougout, signup} = React.useContext(userContext)
+    const {user, LoggedIn, lougout, SignUpExpert} = React.useContext(userContext)
 
     return {
-        user, loggedIn, lougout, signup
+        user, LoggedIn, lougout, SignUpExpert
     }
 }
