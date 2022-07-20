@@ -61,6 +61,7 @@ class AuthController extends Controller
             'password' => Hash::make($request->password),
             'role_id' => $request->role_id,
             'dob' => $request->dob,
+            'blood_type' => $request->blood_type,
             'number' => $request->number,
             'gender' => $request->gender,
         ]);

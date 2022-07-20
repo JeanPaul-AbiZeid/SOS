@@ -33,7 +33,7 @@ class User extends Authenticatable implements JWTSubject
         'dob',
         'number',
         'preffered_contact',
-        'address',
+        'blood_type',
         'gender'
     ];
 
