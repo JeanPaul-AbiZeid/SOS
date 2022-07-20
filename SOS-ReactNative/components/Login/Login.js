@@ -4,6 +4,16 @@ import styles from './styles';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { toggle } from '../../hooks/toggle';
 import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+const storeData = async (key, value) => {
+  try {
+    await AsyncStorage.setItem(key , value)
+  } catch (e) {
+    console.log(e)
+  }
+}
+
 
 export default function LogIn({navigation}) {
     const [email, setEmail] = React.useState("");
@@ -48,7 +58,8 @@ export default function LogIn({navigation}) {
             data: data,
             })
             .then(function (response) {
-              console.log(response)
+              storeData('token', response.data.authorisation.token)
+              storeData('userInfo', response.data.user)
             
             })
             .catch(function (error){
