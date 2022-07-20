@@ -21,9 +21,13 @@ const getData = async (key) => {
     }
 }
 
+const Clear = async () => {
+    await AsyncStorage.clear();
+}
+
 export const userContext = React.createContext()
 
-const UserProvider = ({children}) => {
+const UserProvider = ({children, navigation}) => {
     const [user, setUser] = React.useState({})
     const [isLoggedin, setIsLoggedin] = React.useState(false)
     const [isExpert, setIsExpert] = React.useState(false)
@@ -44,9 +48,11 @@ const UserProvider = ({children}) => {
               setUser(response.data.user)
               if (response.data.user.role_id == 1) {
                 navigation.push('HomePage')
+                setIsLoggedin(true)
               }else{
                 navigation.push('ExpertPage')
                 setIsExpert(true)
+                setIsLoggedin(true)
               }
             
             })
@@ -110,9 +116,15 @@ const UserProvider = ({children}) => {
         })
     }
 
+    const Lougout = () => {
+        Clear();
+        setIsLoggedin(false)
+        navigation.push('LogIn')
+    }
+
     return (
         <userContext.Provider
-            value={{ user, LoggedIn, SignUpExpert, SignUpUser }}
+            value={{ user, LoggedIn, SignUpExpert, SignUpUser, Lougout, isLoggedin, isExpert }}
         >
             {children}
         </userContext.Provider>
@@ -122,9 +134,9 @@ const UserProvider = ({children}) => {
 export default UserProvider;
 
 export const useUserInfo = () => {
-    const {user, LoggedIn, Lougout, SignUpExpert, SignUpUser} = React.useContext(userContext)
+    const {user, LoggedIn, Lougout, SignUpExpert, SignUpUser, isLoggedin, isExpert} = React.useContext(userContext)
 
     return {
-        user, LoggedIn, Lougout, SignUpExpert, SignUpUser
+        user, LoggedIn, Lougout, SignUpExpert, SignUpUser, isLoggedin, isExpert
     }
 }
