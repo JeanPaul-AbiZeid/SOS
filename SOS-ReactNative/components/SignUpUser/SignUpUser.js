@@ -127,19 +127,19 @@ export default function SignUpUser({navigation}) {
             "email" : email,
             "password" : password,
             "number" : phone,
-            // "blood_type" : blood_type,
-            // "dob" : String(date),
+            "blood_type" : blood_type,
+            "dob" : date.toLocaleDateString(),
             "gender" : gender,
             "role_id" : 1,
         }
-        
+
         axios({
           method: 'post',
           url: 'http://192.168.1.149:8000/api/register', 
           data: data,
           })
           .then(function (response) {
-            // alert(response.data.message)
+            alert(response.data.message)
             console.log(response)
             // navigation.push('HomePage')
           

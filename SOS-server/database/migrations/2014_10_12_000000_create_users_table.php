@@ -21,10 +21,10 @@ return new class extends Migration
             $table->string('password');
             $table->integer('role_id');
             $table->string('picture')->nullable();
-            $table->date('dob')->nullable();
+            $table->string('dob')->nullable();
             $table->string('number')->nullable();
             $table->string('preffered_contact')->nullable();
-            $table->string('address')->nullable();
+            $table->string('blood_type')->nullable();
             $table->string('gender')->nullable();
             $table->timestamps();
         });
