@@ -6,6 +6,7 @@ import styles from './styles';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { toggle } from '../../hooks/toggle';
 import axios from 'axios';
+import { useUserInfo } from '../../hooks/UserProvider';
 
 export default function SignUpUser({navigation}) {
     const [first_name, setFname] = React.useState("");
@@ -30,6 +31,8 @@ export default function SignUpUser({navigation}) {
       setShow(true);
       setMode('date');
     };
+
+    const {SignUpUser} = useUserInfo();
 
   return (
     <View style={styles.main}>
@@ -121,34 +124,8 @@ export default function SignUpUser({navigation}) {
       <TouchableOpacity 
         style={styles.button}
         onPress={ () => {
-          let data = {
-            "first_name" : first_name,
-            "last_name" : last_name,
-            "email" : email,
-            "password" : password,
-            "number" : phone,
-            "blood_type" : blood_type,
-            "dob" : date.toLocaleDateString(),
-            "gender" : gender,
-            "role_id" : 1,
-        }
-
-        axios({
-          method: 'post',
-          url: 'http://192.168.1.149:8000/api/register', 
-          data: data,
-          })
-          .then(function (response) {
-            alert(response.data.message)
-            console.log(response)
-            navigation.push('LogIn')
-          
-          })
-          .catch(function (error){
-            console.log(error)
-            alert(error)
-        })
-      }}>
+          SignUpUser(first_name, last_name, email, password, phone, blood_type, date, gender, {navigation})
+        }}>
         <Text style={styles.btnText}>Sign Up</Text>
       </TouchableOpacity>
     </ScrollView>

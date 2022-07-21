@@ -3,7 +3,6 @@ import React from "react";
 import styles from './styles';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { toggle } from '../../hooks/toggle';
-import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useUserInfo } from '../../hooks/UserProvider';
 

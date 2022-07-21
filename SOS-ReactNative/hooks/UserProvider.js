@@ -77,7 +77,7 @@ const UserProvider = ({children}) => {
         })
     }
 
-    const SignUpUser = (first_name, last_name, email, password, phone, blood_type, date, gender) => {
+    const SignUpUser = (first_name, last_name, email, password, phone, blood_type, date, gender, {navigation}) => {
         let data = {
             "first_name" : first_name,
             "last_name" : last_name,
