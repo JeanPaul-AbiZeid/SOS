@@ -15,6 +15,7 @@ import Tracking from './components/Tracking/Tracking';
 import ExpertPage from './components/ExpertPage/ExpertPage';
 import ExpertHistory from './components/ExpertHistory/ExpertHistory';
 import { Entypo, Ionicons, FontAwesome5 } from '@expo/vector-icons';
+import UserProvider from './hooks/UserProvider';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -92,17 +93,20 @@ function ExpertTabs() {
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator 
-      screenOptions={{headerShown: false}}>
-        <Stack.Screen name="LogIn" component={LogIn} />
-        <Stack.Screen name="SignUp" component={SignUp} />
-        <Stack.Screen name="SignUpUser" component={SignUpUser} />
-        <Stack.Screen name="SignUpExpert" component={SignUpExpert} />
-        <Stack.Screen name="HomePage" component={HomeTabs} />
-        <Stack.Screen name="ExpertPage" component={ExpertTabs} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <UserProvider>
+      <NavigationContainer>
+        <Stack.Navigator 
+        screenOptions={{headerShown: false}}>
+          <Stack.Screen name="LogIn" component={LogIn} />
+          <Stack.Screen name="SignUp" component={SignUp} />
+          <Stack.Screen name="SignUpUser" component={SignUpUser} />
+          <Stack.Screen name="SignUpExpert" component={SignUpExpert} />
+          <Stack.Screen name="HomePage" component={HomeTabs} />
+          <Stack.Screen name="ExpertPage" component={ExpertTabs} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </UserProvider>
+    
   );
 }
 

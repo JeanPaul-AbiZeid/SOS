@@ -16,13 +16,13 @@ const Clear = async () => {
 
 export const userContext = React.createContext()
 
-const UserProvider = ({children, navigation}) => {
+const UserProvider = ({children}) => {
     const [user, setUser] = React.useState({})
     const [token, setToken] = React.useState("")
     const [isLoggedin, setIsLoggedin] = React.useState(false)
     const [isExpert, setIsExpert] = React.useState(false)
 
-    const LoggedIn = (email, password) => {
+    const LoggedIn = (email, password, {navigation}) => {
         let data = {
             "email": email,
             "password": password,
@@ -115,7 +115,7 @@ const UserProvider = ({children, navigation}) => {
 
     return (
         <userContext.Provider
-            value={{ user, LoggedIn, SignUpExpert, SignUpUser, Lougout, isLoggedin, isExpert }}
+            value={{ user, LoggedIn, SignUpExpert, SignUpUser, Lougout, isLoggedin, isExpert, token }}
         >
             {children}
         </userContext.Provider>
@@ -125,9 +125,9 @@ const UserProvider = ({children, navigation}) => {
 export default UserProvider;
 
 export const useUserInfo = () => {
-    const {user, LoggedIn, Lougout, SignUpExpert, SignUpUser, isLoggedin, isExpert} = React.useContext(userContext)
+    const {user, LoggedIn, Lougout, SignUpExpert, SignUpUser, isLoggedin, isExpert, token} = React.useContext(userContext)
 
     return {
-        user, LoggedIn, Lougout, SignUpExpert, SignUpUser, isLoggedin, isExpert
+        user, LoggedIn, Lougout, SignUpExpert, SignUpUser, isLoggedin, isExpert, token
     }
 }

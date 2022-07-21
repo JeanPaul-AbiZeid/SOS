@@ -5,6 +5,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { toggle } from '../../hooks/toggle';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useUserInfo } from '../../hooks/UserProvider';
 
 const storeData = async (key, value) => {
   try {
@@ -18,6 +19,7 @@ export default function LogIn({navigation}) {
     const [email, setEmail] = React.useState("");
     const [password, setPassword] = React.useState("");
     const { passwordVisibility, rightIcon, handlePasswordVisibility } = toggle();
+    const {LoggedIn} = useUserInfo();
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
@@ -43,34 +45,10 @@ export default function LogIn({navigation}) {
       
       
       <TouchableOpacity style={styles.button}
-      onPress={
-        () => { 
-          let data = {
-            "email": email,
-            "password": password,
-          }
-
-          axios({
-            method: 'post',
-            url: 'http://192.168.1.149:8000/api/login', 
-            data: data,
-            })
-            .then(function (response) {
-              storeData('token', response.data.authorisation.token)
-              storeData('id', JSON.stringify(response.data.user.id))
-              if (response.data.user.role_id == 1) {
-                navigation.push('HomePage')
-              }else{
-                navigation.push('ExpertPage')
-              }
-            
-            })
-            .catch(function (error){
-              console.log(error)
-              alert("Incorrect email or password");
-          })
-          
-        }}>
+      onPress={() => {
+        LoggedIn(email, password, {navigation})
+      }}          
+        >
         <Text style={styles.btnText}>Sign in</Text>
       </TouchableOpacity>
       <View style={styles.signup}>
