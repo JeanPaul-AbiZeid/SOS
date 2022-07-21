@@ -4,7 +4,6 @@ import RNPickerSelect from "react-native-picker-select";
 import styles from './styles';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { toggle } from '../../hooks/toggle';
-import axios from 'axios';
 import { useUserInfo } from '../../hooks/UserProvider';
 
 export default function SignUpExpert({navigation}) {
@@ -15,6 +14,7 @@ export default function SignUpExpert({navigation}) {
     const [role, setRole] = React.useState("");
     const { passwordVisibility, rightIcon, handlePasswordVisibility } = toggle();
     const {SignUpExpert} = useUserInfo();
+    
   return (
     <View style={styles.main}>
     <ScrollView contentContainerStyle={styles.container}>

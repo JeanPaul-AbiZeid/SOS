@@ -66,7 +66,24 @@ const styles = StyleSheet.create({
         display:'flex',
         alignItems:"center",
         justifyContent:'center'
-    }
+    },
+    button: {
+        backgroundColor: 'red',
+        alignSelf: 'stretch',
+        marginHorizontal: 10,
+        marginTop: 20,
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingVertical: 2,
+        borderRadius: 4,
+        elevation: 3,
+        marginBottom: 50,
+    },
+    btnText: {
+        color: 'white',
+        fontSize: 30,
+        fontWeight: '500',
+    },
     
 });
 

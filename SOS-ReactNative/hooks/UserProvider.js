@@ -107,10 +107,11 @@ const UserProvider = ({children}) => {
         })
     }
 
-    const Lougout = () => {
+    const Lougout = ({navigation}) => {
         Clear();
         setIsLoggedin(false)
-        navigation.push('LogIn')
+        alert("logged out")
+        navigation.navigate('LogIn')
     }
 
     return (

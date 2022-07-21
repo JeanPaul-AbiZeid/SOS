@@ -5,7 +5,6 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import styles from './styles';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { toggle } from '../../hooks/toggle';
-import axios from 'axios';
 import { useUserInfo } from '../../hooks/UserProvider';
 
 export default function SignUpUser({navigation}) {
