@@ -86,7 +86,7 @@ export default function Profile({navigation}) {
         <View style={styles.box}>
             <MaterialIcons name="contacts" size={24} color="gray" />
             <View style={styles.margin}>
-                <Text style={styles.title}>Preffered Contact</Text>
+                <Text style={styles.title}>Preferred Contact</Text>
                 <Text style={styles.info}>Jane Doe</Text>
             </View>
             <MaterialIcons name="edit" size={24} color="gray" />
