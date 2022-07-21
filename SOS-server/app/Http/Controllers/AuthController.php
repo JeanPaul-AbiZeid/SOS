@@ -64,6 +64,7 @@ class AuthController extends Controller
             'blood_type' => $request->blood_type,
             'number' => $request->number,
             'gender' => $request->gender,
+            'picture' => $request->picture,
         ]);
 
         $token = Auth::login($user);

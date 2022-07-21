@@ -97,7 +97,6 @@ const UserProvider = ({children}) => {
           })
           .then(function (response) {
             alert(response.data.message)
-            console.log(response)
             navigation.push('LogIn')
           
           })
