@@ -5,6 +5,7 @@ import styles from './styles';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { toggle } from '../../hooks/toggle';
 import axios from 'axios';
+import { useUserInfo } from '../../hooks/UserProvider';
 
 export default function SignUpExpert({navigation}) {
     const [first_name, setFname] = React.useState("");
@@ -13,6 +14,7 @@ export default function SignUpExpert({navigation}) {
     const [password, setPassword] = React.useState("");
     const [role, setRole] = React.useState("");
     const { passwordVisibility, rightIcon, handlePasswordVisibility } = toggle();
+    const {SignUpExpert} = useUserInfo();
   return (
     <View style={styles.main}>
     <ScrollView contentContainerStyle={styles.container}>
@@ -75,27 +77,7 @@ export default function SignUpExpert({navigation}) {
             <Text 
                 style={styles.btnText}
                 onPress={() => {
-                    let data = {
-                        "first_name" : first_name,
-                        "last_name" : last_name,
-                        "email" : email,
-                        "password" : password,
-                        "role_id" : role,
-                    }
-                    axios({
-                        method: 'post',
-                        url: 'http://192.168.1.149:8000/api/register', 
-                        data: data,
-                        })
-                        .then(function (response) {
-                            alert(response.data.message)
-                            navigation.push('LogIn')
-                        
-                        })
-                        .catch(function (error){
-                            console.log(error)
-                            alert(error)
-                    })
+                    SignUpExpert(first_name, last_name, email, password, role, {navigation})
                 }
             }>Sign Up</Text>
         </TouchableOpacity>

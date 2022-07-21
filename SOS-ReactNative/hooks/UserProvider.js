@@ -53,7 +53,7 @@ const UserProvider = ({children}) => {
           })
     }
 
-    const SignUpExpert = (first_name, last_name, email, password, role) => {
+    const SignUpExpert = (first_name, last_name, email, password, role, {navigation}) => {
         let data = {
             "first_name" : first_name,
             "last_name" : last_name,

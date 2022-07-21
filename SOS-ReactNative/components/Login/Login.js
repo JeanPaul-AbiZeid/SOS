@@ -6,13 +6,6 @@ import { toggle } from '../../hooks/toggle';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useUserInfo } from '../../hooks/UserProvider';
 
-const storeData = async (key, value) => {
-  try {
-    await AsyncStorage.setItem(key , value)
-  } catch (e) {
-    console.log(e)
-  }
-}
 
 export default function LogIn({navigation}) {
     const [email, setEmail] = React.useState("");
