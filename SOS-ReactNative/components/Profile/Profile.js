@@ -1,7 +1,7 @@
 import { Text, View, Image, ScrollView, TouchableOpacity } from 'react-native';
 import React from "react";
 import styles from './styles';
-import { Fontisto, Feather, MaterialIcons, FontAwesome, AntDesign } from '@expo/vector-icons'; 
+import { Fontisto, Feather, MaterialIcons, FontAwesome, AntDesign, MaterialCommunityIcons } from '@expo/vector-icons'; 
 import * as ImagePicker from 'expo-image-picker';
 import { useUserInfo } from '../../hooks/UserProvider';
 
@@ -22,7 +22,7 @@ export default function Profile({navigation}) {
         }
     }
 
-    const {Lougout} = useUserInfo();
+    const {Lougout, user} = useUserInfo();
 
     return (
       <ScrollView style={styles.container}>
@@ -37,14 +37,14 @@ export default function Profile({navigation}) {
                 </View>  
             </View>
              
-            <Text style={styles.name}>John Doe</Text>
+            <Text style={styles.name}>{user.first_name} {user.last_name}</Text>
         </View>
 
         <View style={styles.box}>
-            <MaterialIcons name="my-location" size={24} color="gray" />
+            <MaterialCommunityIcons name="gender-male-female" size={24} color="gray" />
             <View style={styles.infoContainer}>
-                <Text style={styles.title}>Address</Text>
-                <Text style={styles.info}>Lebanon</Text>
+                <Text style={styles.title}>Gender</Text>
+                <Text style={styles.info}>{user.gender}</Text>
             </View>
             <MaterialIcons name="edit" size={24} color="gray" />
         </View>
@@ -53,7 +53,7 @@ export default function Profile({navigation}) {
             <Fontisto name="blood-drop" size={24} color="gray" />
             <View style={styles.infoContainer}>
                 <Text style={styles.title}>Blood Type</Text>
-                <Text style={styles.info}>A+</Text>
+                <Text style={styles.info}>{user.blood_type}</Text>
             </View>
             <MaterialIcons name="edit" size={24} color="gray" />
         </View>
@@ -61,8 +61,8 @@ export default function Profile({navigation}) {
         <View style={styles.box}>
             <Feather name="calendar" size={24} color="gray" />
             <View style={styles.infoContainer}>
-                <Text style={styles.title}>Age</Text>
-                <Text style={styles.info}>24</Text>
+                <Text style={styles.title}>Date of Birth</Text>
+                <Text style={styles.info}>{user.dob}</Text>
             </View>
             <MaterialIcons name="edit" size={24} color="gray" />
         </View>
@@ -71,7 +71,7 @@ export default function Profile({navigation}) {
             <FontAwesome name="phone" size={24} color="gray" />
             <View style={styles.infoContainer}>
                 <Text style={styles.title}>Phone</Text>
-                <Text style={styles.info}>71125413</Text>
+                <Text style={styles.info}>{user.number}</Text>
             </View>
             <MaterialIcons name="edit" size={24} color="gray" />
         </View>
