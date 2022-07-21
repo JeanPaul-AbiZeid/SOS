@@ -5,6 +5,9 @@ import Home from './Home/Home';
 import CreateAlert from './CreateAlert/CreateAlert';
 import Notification from './Notifications/Notifications';
 import Alert from './AlertPage/Alert';
+import Tracking from './Tracking/Tracking';
+import Profile from './Profile/Profile';
+import { Entypo, Ionicons, FontAwesome5 } from '@expo/vector-icons';
 
 const Tab = createBottomTabNavigator();
 const HomeStack = createNativeStackNavigator();

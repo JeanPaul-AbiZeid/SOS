@@ -20,7 +20,7 @@ const UserProvider = ({children}) => {
     const [user, setUser] = React.useState({})
     const [token, setToken] = React.useState("")
     const [isLoggedin, setIsLoggedin] = React.useState(false)
-    const [isExpert, setIsExpert] = React.useState(false)
+    const [isUser, setIsUser] = React.useState(false)
 
     const LoggedIn = (email, password, {navigation}) => {
         let data = {
@@ -38,13 +38,8 @@ const UserProvider = ({children}) => {
                 setUser(response.data.user)
                 setToken(response.data.authorisation.token)
                 if (response.data.user.role_id == 1) {
-                    navigation.push('HomePage')
-                    setIsLoggedin(true)
-                }else{
-                    navigation.push('ExpertPage')
-                    setIsExpert(true)
-                    setIsLoggedin(true)
-              }
+                    setIsUser(true)
+                }
             
             })
             .catch(function (error){
@@ -111,13 +106,13 @@ const UserProvider = ({children}) => {
         setToken("")
         setUser({})
         setIsLoggedin(false)
+        setIsUser(false)
         alert("logged out")
-        navigation.navigate('LogIn')
     }
 
     return (
         <userContext.Provider
-            value={{ user, LoggedIn, SignUpExpert, SignUpUser, Lougout, isLoggedin, isExpert, token }}
+            value={{ user, LoggedIn, SignUpExpert, SignUpUser, Lougout, isLoggedin, isUser, token }}
         >
             {children}
         </userContext.Provider>
@@ -127,9 +122,9 @@ const UserProvider = ({children}) => {
 export default UserProvider;
 
 export const useUserInfo = () => {
-    const {user, LoggedIn, Lougout, SignUpExpert, SignUpUser, isLoggedin, isExpert, token} = React.useContext(userContext)
+    const {user, LoggedIn, Lougout, SignUpExpert, SignUpUser, isLoggedin, isUser, token} = React.useContext(userContext)
 
     return {
-        user, LoggedIn, Lougout, SignUpExpert, SignUpUser, isLoggedin, isExpert, token
+        user, LoggedIn, Lougout, SignUpExpert, SignUpUser, isLoggedin, isUser, token
     }
 }
