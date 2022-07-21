@@ -7,7 +7,7 @@ import { useUserInfo } from '../../hooks/UserProvider';
 
 export default function Profile({navigation}) {
     const [image, setImage] = React.useState("")
-    const {user} = useUserInfo();
+    const {user, Lougout} = useUserInfo();
     const pickImage = async () => {
         // No permissions request is necessary for launching the image library
         let result = await ImagePicker.launchImageLibraryAsync({

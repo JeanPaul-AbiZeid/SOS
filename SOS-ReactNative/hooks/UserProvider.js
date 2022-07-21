@@ -108,6 +108,8 @@ const UserProvider = ({children}) => {
 
     const Lougout = ({navigation}) => {
         Clear();
+        setToken("")
+        setUser({})
         setIsLoggedin(false)
         alert("logged out")
         navigation.navigate('LogIn')
