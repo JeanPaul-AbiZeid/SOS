@@ -14,6 +14,10 @@ Notifications.setNotificationHandler({
 
 export default function CreateAlert() {
   const [image, setImage] = React.useState(null);
+  const [expoPushToken, setExpoPushToken] = React.useState('');
+  const [notification, setNotification] = React.useState(false);
+  const notificationListener = React.useRef();
+  const responseListener = React.useRef();
 
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
