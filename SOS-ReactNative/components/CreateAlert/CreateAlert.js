@@ -72,7 +72,11 @@ export default function CreateAlert() {
           </TouchableOpacity>
       </View>
 
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity style={styles.button}
+      onPress={async () => {
+        await schedulePushNotification();
+        alert(expoPushToken)
+      }}>
           <Text style={styles.btnText}>Send Alert</Text>
       </TouchableOpacity>
         
@@ -94,7 +98,6 @@ async function schedulePushNotification() {
 
 async function registerForPushNotificationsAsync() {
   let token;
-  
   const { status: existingStatus } = await Notifications.getPermissionsAsync();
   let finalStatus = existingStatus;
   if (existingStatus !== 'granted') {
@@ -107,8 +110,7 @@ async function registerForPushNotificationsAsync() {
   }
   token = (await Notifications.getExpoPushTokenAsync()).data;
   console.log(token);
-  
-
+ 
   if (Platform.OS === 'android') {
     Notifications.setNotificationChannelAsync('default', {
       name: 'default',
