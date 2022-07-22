@@ -2,6 +2,8 @@ import { ScrollView, Text, TextInput, TouchableOpacity, View } from 'react-nativ
 import React from "react";
 import styles from './styles';
 import * as ImagePicker from 'expo-image-picker';
+import * as Notifications from 'expo-notifications';
+
 
 export default function CreateAlert() {
   const [image, setImage] = React.useState(null);
