@@ -3,6 +3,7 @@ import {  Text, View, StyleSheet } from 'react-native';
 import styles from './styles';
 import MapView, { Marker, AnimatedRegion } from 'react-native-maps';
 import * as Location from 'expo-location';
+import MapViewDirections from 'react-native-maps-directions';
 
 export default function Tracking() {
   const [location, setLocation] = React.useState(null);
