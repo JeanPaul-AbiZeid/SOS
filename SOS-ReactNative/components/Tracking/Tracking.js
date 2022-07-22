@@ -102,6 +102,18 @@ export default function Tracking() {
               longitudeDelta: 0.04,
           }}>
             <Marker.Animated ref={markerRef} coordinate={coordinate} />
+            {Object.keys(destinationCords).length > 0 && (<Marker
+              coordinate={destinationCords}
+            />)}
+
+            {Object.keys(destinationCords).length > 0 && (<MapViewDirections
+              origin={curLoc}
+              destination={destinationCords}
+              // apikey={GOOGLE_MAP_KEY}
+              strokeWidth={6}
+              strokeColor="red"
+              optimizeWaypoints={true}
+            />)}
               
           </MapView>
         </View>
