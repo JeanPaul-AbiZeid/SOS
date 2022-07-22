@@ -4,6 +4,13 @@ import styles from './styles';
 import * as ImagePicker from 'expo-image-picker';
 import * as Notifications from 'expo-notifications';
 
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowAlert: true,
+    shouldPlaySound: false,
+    shouldSetBadge: false,
+  }),
+});
 
 export default function CreateAlert() {
   const [image, setImage] = React.useState(null);
