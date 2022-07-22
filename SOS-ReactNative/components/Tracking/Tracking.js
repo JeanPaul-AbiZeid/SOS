@@ -11,14 +11,14 @@ export default function Tracking() {
   const markerRef = React.useRef()
   const [state, setState] = React.useState({
     curLoc: {
-        latitude: 30.7046,
-        longitude: 77.1025,
+        latitude: 33.9680386,
+        longitude: 35.6206043,
     },
-    destinationCords: {},
+    // destinationCords: {},
     isLoading: false,
     coordinate: new AnimatedRegion({
-        latitude: 30.7046,
-        longitude: 77.1025,
+        latitude: 33.9680386,
+        longitude: 35.6206043,
         latitudeDelta: 0.09,
         longitudeDelta: 0.04
     }),
@@ -26,19 +26,52 @@ export default function Tracking() {
     distance: 0,
     heading: 0
   })
+  const { curLoc, time, distance, /*destinationCords,*/ isLoading, coordinate,heading } = state
+  const updateState = (data) => setState((state) => ({ ...state, ...data }));
+
+  const destinationCords = {
+    latitude:34.013184,
+    longitude:35.6417536
+  }
 
   React.useEffect(() => {
-    (async () => {
-      let { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== 'granted') {
-        setErrorMsg('Permission to access location was denied');
-        return;
-      }
-
-      let location = await Location.getCurrentPositionAsync({});
-      setLocation(location);
-    })();
+    getLiveLocation();
   }, []);
+
+  const getLiveLocation = async () => {
+    let { status } = await Location.requestForegroundPermissionsAsync();
+    if (status !== 'granted') {
+      setErrorMsg('Permission to access location was denied');
+      return;
+    }
+
+    let location = await Location.getCurrentPositionAsync({});
+    setLocation(location);
+    let latitude = location.coords.latitude;
+    let longitude = location.coords.longitude;
+    animate(latitude, longitude);
+          updateState({
+              heading: heading,
+              curLoc: { latitude, longitude },
+              coordinate: new AnimatedRegion({
+                  latitude: latitude,
+                  longitude: longitude,
+                  latitudeDelta: 0.09,
+                  longitudeDelta: 0.04
+              })
+          })
+  };
+
+  const animate = (latitude, longitude) => {
+    const newCoordinate = { latitude, longitude };
+    if (Platform.OS == 'android') {
+        if (markerRef.current) {
+            markerRef.current.animateMarkerToCoordinate(newCoordinate, 7000);
+        }
+    } else {
+        coordinate.timing(newCoordinate).start();
+    }
+  }
 
   let text = 'Waiting..';
   if (errorMsg) {
@@ -48,8 +81,11 @@ export default function Tracking() {
   }
 
   React.useEffect(() => {
-    console.log(location)
-  })
+    const interval = setInterval(() => {
+        getLiveLocation()
+    }, 6000);
+    return () => clearInterval(interval)
+  }, [])
 
     
   return (
@@ -58,7 +94,13 @@ export default function Tracking() {
         <View style={styles.map}>
           <MapView
             ref={mapRef}
-            style={StyleSheet.absoluteFill}>
+            style={StyleSheet.absoluteFill}
+            initialRegion={{
+              ...curLoc,
+              latitudeDelta: 0.09,
+              longitudeDelta: 0.04,
+          }}>
+            <Marker.Animated ref={markerRef} coordinate={coordinate} />
               
           </MapView>
         </View>
