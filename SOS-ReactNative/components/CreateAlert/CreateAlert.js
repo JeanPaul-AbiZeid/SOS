@@ -13,11 +13,14 @@ Notifications.setNotificationHandler({
 });
 
 export default function CreateAlert() {
-  const [image, setImage] = React.useState(null);
+  const [image, setImage] = React.useState("");
   const [expoPushToken, setExpoPushToken] = React.useState('');
   const [notification, setNotification] = React.useState(false);
   const notificationListener = React.useRef();
   const responseListener = React.useRef();
+  const [title, setTitle] = React.useState("");
+  const [description, setDescription] = React.useState("");
+  
 
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
@@ -57,12 +60,14 @@ export default function CreateAlert() {
     <ScrollView contentContainerStyle={styles.container}>
       <TextInput 
       placeholder='Case Title' 
-      style={styles.input}/>
+      style={styles.input}
+      onChangeText={setTitle}/>
         
       <TextInput 
       placeholder='Description' 
       multiline = {true}
-      style={[styles.input, styles.description]}/>
+      style={[styles.input, styles.description]}
+      onChangeText={setDescription}/>
         
 
       <View style={styles.choose}>
@@ -90,7 +95,7 @@ async function schedulePushNotification() {
     content: {
       title: "You've got mail! 📬",
       body: 'Here is the notification body',
-      data: { data: 'goes here' },
+      // data: { data: 'goes here' },
     },
     trigger: { seconds: 2 },
   });
