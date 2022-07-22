@@ -3,6 +3,7 @@ import React from "react";
 import styles from './styles';
 import * as ImagePicker from 'expo-image-picker';
 import * as Notifications from 'expo-notifications';
+import {useUserInfo} from '../../hooks/UserProvider'
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
@@ -20,7 +21,7 @@ export default function CreateAlert() {
   const responseListener = React.useRef();
   const [title, setTitle] = React.useState("");
   const [description, setDescription] = React.useState("");
-  
+  const {user} = useUserInfo();
 
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
@@ -79,7 +80,7 @@ export default function CreateAlert() {
 
       <TouchableOpacity style={styles.button}
       onPress={async () => {
-        await schedulePushNotification();
+        await schedulePushNotification(user.first_name + ' ' + user.last_name, title);
         alert(expoPushToken)
       }}>
           <Text style={styles.btnText}>Send Alert</Text>
@@ -90,11 +91,11 @@ export default function CreateAlert() {
   );
 }
 
-async function schedulePushNotification() {
+async function schedulePushNotification(user, caseTitle) {
   await Notifications.scheduleNotificationAsync({
     content: {
-      title: "You've got mail! 📬",
-      body: 'Here is the notification body',
+      title: user,
+      body: caseTitle,
       // data: { data: 'goes here' },
     },
     trigger: { seconds: 2 },
