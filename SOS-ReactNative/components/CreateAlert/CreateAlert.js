@@ -15,7 +15,6 @@ Notifications.setNotificationHandler({
 
 export default function CreateAlert() {
   const [image, setImage] = React.useState("");
-  const [expoPushToken, setExpoPushToken] = React.useState('');
   const [notification, setNotification] = React.useState(false);
   const notificationListener = React.useRef();
   const responseListener = React.useRef();
@@ -41,7 +40,6 @@ export default function CreateAlert() {
   }
   
   React.useEffect(() => {
-    registerForPushNotificationsAsync().then(token => setExpoPushToken(token));
 
     notificationListener.current = Notifications.addNotificationReceivedListener(notification => {
       setNotification(notification);
@@ -80,7 +78,6 @@ export default function CreateAlert() {
 
       <TouchableOpacity style={styles.button}
       onPress={async () => {
-        // await schedulePushNotification(user.first_name + ' ' + user.last_name, title);
         await sendPushNotification(expoPushToken, user.first_name + ' ' + user.last_name, title);
         alert(expoPushToken)
       }}>
@@ -92,16 +89,6 @@ export default function CreateAlert() {
   );
 }
 
-// async function schedulePushNotification(user, caseTitle) {
-//   await Notifications.scheduleNotificationAsync({
-//     content: {
-//       title: user,
-//       body: caseTitle,
-//       // data: { data: 'goes here' },
-//     },
-//     trigger: { seconds: 2 },
-//   });
-// }
 
 async function sendPushNotification(expoPushToken, user, caseTitle) {
   const message = {
@@ -112,40 +99,13 @@ async function sendPushNotification(expoPushToken, user, caseTitle) {
     data: { someData: 'goes here' },
   };
 
-  // await fetch('https://exp.host/--/api/v2/push/send', {
-  //   method: 'POST',
-  //   headers: {
-  //     Accept: 'application/json',
-  //     'Accept-encoding': 'gzip, deflate',
-  //     'Content-Type': 'application/json',
-  //   },
-  //   body: JSON.stringify(message),
-  // });
-}
-
-async function registerForPushNotificationsAsync() {
-  let token;
-  const { status: existingStatus } = await Notifications.getPermissionsAsync();
-  let finalStatus = existingStatus;
-  if (existingStatus !== 'granted') {
-    const { status } = await Notifications.requestPermissionsAsync();
-    finalStatus = status;
-  }
-  if (finalStatus !== 'granted') {
-    alert('Failed to get push token for push notification!');
-    return;
-  }
-  token = (await Notifications.getExpoPushTokenAsync()).data;
-  console.log(token);
- 
-  if (Platform.OS === 'android') {
-    Notifications.setNotificationChannelAsync('default', {
-      name: 'default',
-      importance: Notifications.AndroidImportance.MAX,
-      vibrationPattern: [0, 250, 250, 250],
-      lightColor: '#FF231F7C',
-    });
-  }
-
-  return token;
+  await fetch('https://exp.host/--/api/v2/push/send', {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Accept-encoding': 'gzip, deflate',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(message),
+  });
 }
