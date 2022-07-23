@@ -80,7 +80,8 @@ export default function CreateAlert() {
 
       <TouchableOpacity style={styles.button}
       onPress={async () => {
-        await schedulePushNotification(user.first_name + ' ' + user.last_name, title);
+        // await schedulePushNotification(user.first_name + ' ' + user.last_name, title);
+        await sendPushNotification(expoPushToken, user.first_name + ' ' + user.last_name, title);
         alert(expoPushToken)
       }}>
           <Text style={styles.btnText}>Send Alert</Text>
@@ -91,15 +92,35 @@ export default function CreateAlert() {
   );
 }
 
-async function schedulePushNotification(user, caseTitle) {
-  await Notifications.scheduleNotificationAsync({
-    content: {
-      title: user,
-      body: caseTitle,
-      // data: { data: 'goes here' },
-    },
-    trigger: { seconds: 2 },
-  });
+// async function schedulePushNotification(user, caseTitle) {
+//   await Notifications.scheduleNotificationAsync({
+//     content: {
+//       title: user,
+//       body: caseTitle,
+//       // data: { data: 'goes here' },
+//     },
+//     trigger: { seconds: 2 },
+//   });
+// }
+
+async function sendPushNotification(expoPushToken, user, caseTitle) {
+  const message = {
+    to: expoPushToken,
+    sound: 'default',
+    title: user,
+    body: caseTitle,
+    data: { someData: 'goes here' },
+  };
+
+  // await fetch('https://exp.host/--/api/v2/push/send', {
+  //   method: 'POST',
+  //   headers: {
+  //     Accept: 'application/json',
+  //     'Accept-encoding': 'gzip, deflate',
+  //     'Content-Type': 'application/json',
+  //   },
+  //   body: JSON.stringify(message),
+  // });
 }
 
 async function registerForPushNotificationsAsync() {
