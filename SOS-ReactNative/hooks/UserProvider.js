@@ -20,6 +20,16 @@ const app = initializeApp(firebaseConfig);
 // Initialize Cloud Firestore and get a reference to the service
 const firestore = initializeFirestore(app, {experimentalForceDetectLongPolling : true});
 
+const add = async (id, pushtoken) => {
+    try{
+        await setDoc(doc(firestore, "users", JSON.stringify(id)), {
+            token: pushtoken
+          });
+    } catch (error) {
+        console.log(error)
+    }
+    
+}
 
 const storeData = async (key, value) => {
     try {
