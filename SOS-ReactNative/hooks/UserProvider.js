@@ -3,6 +3,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 import { initializeApp } from "firebase/app";
 import { initializeFirestore, collection, doc, setDoc } from "firebase/firestore";
+import * as Notifications from 'expo-notifications';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -20,7 +21,7 @@ const app = initializeApp(firebaseConfig);
 // Initialize Cloud Firestore and get a reference to the service
 const firestore = initializeFirestore(app, {experimentalForceDetectLongPolling : true});
 
-const add = async (id, pushtoken) => {
+const addToken = async (id, pushtoken) => {
     try{
         await setDoc(doc(firestore, "users", JSON.stringify(id)), {
             token: pushtoken
@@ -28,8 +29,35 @@ const add = async (id, pushtoken) => {
     } catch (error) {
         console.log(error)
     }
-    
 }
+
+
+async function registerForPushNotificationsAsync() {
+    let token;
+    const { status: existingStatus } = await Notifications.getPermissionsAsync();
+    let finalStatus = existingStatus;
+    if (existingStatus !== 'granted') {
+      const { status } = await Notifications.requestPermissionsAsync();
+      finalStatus = status;
+    }
+    if (finalStatus !== 'granted') {
+      alert('Failed to get push token for push notification!');
+      return;
+    }
+    token = (await Notifications.getExpoPushTokenAsync()).data;
+    console.log(token);
+   
+    if (Platform.OS === 'android') {
+      Notifications.setNotificationChannelAsync('default', {
+        name: 'default',
+        importance: Notifications.AndroidImportance.MAX,
+        vibrationPattern: [0, 250, 250, 250],
+        lightColor: '#FF231F7C',
+      });
+    }
+  
+    return token;
+  }
 
 const storeData = async (key, value) => {
     try {
@@ -50,6 +78,11 @@ const UserProvider = ({children}) => {
     const [token, setToken] = React.useState("")
     const [isLoggedin, setIsLoggedin] = React.useState(false)
     const [isUser, setIsUser] = React.useState(false)
+    const [expoPushToken, setExpoPushToken] = React.useState('');
+
+    React.useEffect(() => {
+        registerForPushNotificationsAsync().then(token => setExpoPushToken(token));
+      }, []);
 
     const LoggedIn = (email, password, {navigation}) => {
         let data = {
