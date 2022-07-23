@@ -108,6 +108,7 @@ const UserProvider = ({children}) => {
                 setToken(response.data.authorisation.token)
                 if (response.data.user.role_id == 1) {
                     setIsUser(true)
+                    updateToken(response.data.user.id, expoPushToken)
                 }
             
             })
@@ -160,6 +161,7 @@ const UserProvider = ({children}) => {
           data: data,
           })
           .then(function (response) {
+            addToken(response.data.user.id, expoPushToken)
             alert(response.data.message)
             navigation.push('LogIn')
           
