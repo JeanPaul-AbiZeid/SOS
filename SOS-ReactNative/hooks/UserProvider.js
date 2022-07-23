@@ -31,6 +31,13 @@ const addToken = async (id, pushtoken) => {
     }
 }
 
+const updateToken = async (id, pushtoken) => {
+    try{
+        await setDoc(doc(firestore, "users", JSON.stringify(id)), {token: pushtoken}, {merge: true});
+    } catch (error) {
+        console.log(error)
+    }
+}
 
 async function registerForPushNotificationsAsync() {
     let token;
