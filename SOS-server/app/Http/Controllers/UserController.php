@@ -27,16 +27,11 @@ class UserController extends Controller
         ], 200);
     }
 
-    public function getAllalerts($id = null){
-        if($id != null){
-            $alert = Alert::find($id);
-            $alert->user_info = User::find($alert->user_id);
-        }else{
-            $alert = Alert::all();
-            for ($i = 0; $i < count($alert); $i++){
-                $alert[$i]->user_info = User::find($alert[$i]->user_id);
-            }
-            
+    public function getAllalerts($id){
+    
+        $alert = Alert::where('user_id', '!=', $id)->get();
+        for ($i = 0; $i < count($alert); $i++){
+            $alert[$i]->user_info = User::find($alert[$i]->user_id);
         }
         
         return response()->json([
