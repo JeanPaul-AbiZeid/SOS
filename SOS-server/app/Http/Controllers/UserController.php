@@ -52,4 +52,22 @@ class UserController extends Controller
             "status" => "Success"
         ], 200);
     }
+
+    public function editProfile(Request $request){
+        $update = User::find($request->id);
+        if ($request->first_name){
+            $update->first_name = $request->first_name;
+        }
+        if ($request->last_name){
+            $update->last_name = $request->last_name;
+        }
+        if ($request->picture){
+            $update->picture = $request->picture;
+        }
+        $update->save();
+        
+        return response()->json([
+            "status" => "Success"
+        ], 200);
+    }
 }
