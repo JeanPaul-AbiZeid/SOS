@@ -16,6 +16,21 @@ export default function Profile({navigation}) {
     const [tempf, setTempf] = React.useState(fname);
     const [templ, setTempl] = React.useState(lname);
     
+    const [date, setDate] = React.useState(new Date());
+    const [mode, setMode] = React.useState('date');
+    const [show, setShow] = React.useState(false);
+
+    const onChange = (event, selectedDate) => {
+      const currentDate = selectedDate;
+      setShow(false);
+      setDate(currentDate);
+    };
+  
+    const showMode = () => {
+      setShow(true);
+      setMode('date');
+    };
+    
     const pickImage = async () => {
         // No permissions request is necessary for launching the image library
         let result = await ImagePicker.launchImageLibraryAsync({
@@ -53,7 +68,7 @@ export default function Profile({navigation}) {
             </View>
             <TouchableOpacity style={styles.name} onPress={() => setModalName(true)}>
                 <Text style={styles.name}>{user.first_name} {user.last_name}</Text>
-            </TouchableOpacity> 
+            </TouchableOpacity>
         </View>
 
         <View style={styles.box}>
@@ -71,7 +86,7 @@ export default function Profile({navigation}) {
                 <Text style={styles.title}>Blood Type</Text>
                 <Text style={styles.info}>{user.blood_type}</Text>
             </View>
-            <MaterialIcons name="edit" size={24} color="gray" />
+            <MaterialIcons name="edit" size={24} color="gray" />  
         </View>
 
         <View style={styles.box}>
@@ -80,7 +95,10 @@ export default function Profile({navigation}) {
                 <Text style={styles.title}>Date of Birth</Text>
                 <Text style={styles.info}>{user.dob}</Text>
             </View>
-            <MaterialIcons name="edit" size={24} color="gray" />
+            <TouchableOpacity onPress={showMode}>
+                <MaterialIcons name="edit" size={24} color="gray" />
+            </TouchableOpacity>
+            
         </View>
 
         <View style={styles.box}>
@@ -89,7 +107,7 @@ export default function Profile({navigation}) {
                 <Text style={styles.title}>Phone</Text>
                 <Text style={styles.info}>{user.number}</Text>
             </View>
-            <MaterialIcons name="edit" size={24} color="gray" />
+            <MaterialIcons name="edit" size={24} color="gray" />  
         </View>
 
         <View style={styles.box}>
@@ -144,6 +162,15 @@ export default function Profile({navigation}) {
                 </View>
             </View>
         </Modal>
+
+        {show && (
+          <DateTimePicker
+            testID="dateTimePicker"
+            value={date}
+            mode={mode}
+            onChange={onChange}
+          />
+        )}
 
     </ScrollView>
     );
