@@ -6,6 +6,7 @@ import * as ImagePicker from 'expo-image-picker';
 import { useUserInfo } from '../../hooks/UserProvider';
 import RNPickerSelect from "react-native-picker-select";
 import DateTimePicker from '@react-native-community/datetimepicker';
+import axios from 'axios';
 
 export default function Profile({navigation}) {
     const [image, setImage] = React.useState("")
@@ -56,6 +57,25 @@ export default function Profile({navigation}) {
         if (!result.cancelled) {
           setImage(result.base64);
         }
+    }
+
+    const update = (data) => {
+        // let data = {
+        //     "id" : user.id,
+        //     field : newValue
+        // }
+        axios({
+            method: 'post',
+            url: 'http://192.168.1.149:8000/api/editprofile', 
+            data: data,
+            })
+            .then(function (response) {
+                console.log(response)
+            })
+            .catch(function (error){
+                console.log(error)
+                alert(error)
+        })
     }
 
     React.useEffect(() => {
@@ -177,6 +197,8 @@ export default function Profile({navigation}) {
                             onPress={() => {
                                 setTempf(fname)
                                 setTempl(lname)
+                                update({"id": user.id, "first_name": fname})
+                                update({"id": user.id, "last_name": lname})
                                 setModalName(!modalName)}}
                         >
                             <Text style={styles.textStyle}>Save</Text>
