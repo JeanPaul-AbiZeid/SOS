@@ -64,6 +64,18 @@ class UserController extends Controller
         if ($request->picture){
             $update->picture = $request->picture;
         }
+        if ($request->dob){
+            $update->dob = $request->dob;
+        }
+        if ($request->blood_type){
+            $update->blood_type = $request->blood_type;
+        }
+        if ($request->number){
+            $update->number = $request->number;
+        }
+        if ($request->gender){
+            $update->gender = $request->gender;
+        }
         $update->save();
         
         return response()->json([
