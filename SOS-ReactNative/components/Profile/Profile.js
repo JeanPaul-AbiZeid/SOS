@@ -11,11 +11,13 @@ export default function Profile({navigation}) {
     const [image, setImage] = React.useState("")
     const {user, Lougout} = useUserInfo();
     const [modalName, setModalName] = React.useState(false);
+    const [modalPhone, setModalPhone] = React.useState(false);
     const [fname, setFName] = React.useState(user.first_name)
     const [lname, setLName] = React.useState(user.last_name)
+    const [phone, setPhone] = React.useState(user.number);
     const [tempf, setTempf] = React.useState(fname);
     const [templ, setTempl] = React.useState(lname);
-    
+    const [tempPhone, setTempPhone] = React.useState(user.phone);
     const [date, setDate] = React.useState(new Date());
     const [mode, setMode] = React.useState('date');
     const [show, setShow] = React.useState(false);
@@ -77,7 +79,7 @@ export default function Profile({navigation}) {
                 <Text style={styles.title}>Gender</Text>
                 <Text style={styles.info}>{user.gender}</Text>
             </View>
-            <MaterialIcons name="edit" size={24} color="gray" />
+            <MaterialIcons name="edit" size={24} color="gray" /> 
         </View>
 
         <View style={styles.box}>
@@ -86,7 +88,7 @@ export default function Profile({navigation}) {
                 <Text style={styles.title}>Blood Type</Text>
                 <Text style={styles.info}>{user.blood_type}</Text>
             </View>
-            <MaterialIcons name="edit" size={24} color="gray" />  
+            <MaterialIcons name="edit" size={24} color="gray" />
         </View>
 
         <View style={styles.box}>
@@ -107,7 +109,10 @@ export default function Profile({navigation}) {
                 <Text style={styles.title}>Phone</Text>
                 <Text style={styles.info}>{user.number}</Text>
             </View>
-            <MaterialIcons name="edit" size={24} color="gray" />  
+            <TouchableOpacity onPress={() => setModalPhone(true)}>
+                <MaterialIcons name="edit" size={24} color="gray" />
+            </TouchableOpacity>
+            
         </View>
 
         <View style={styles.box}>
@@ -154,6 +159,39 @@ export default function Profile({navigation}) {
                                 setTempf(fname)
                                 setTempl(lname)
                                 setModalName(!modalName)}}
+                        >
+                        <Text style={styles.textStyle}>Save</Text>
+                        </TouchableOpacity>
+                    </View>
+                    
+                </View>
+            </View>
+        </Modal>
+
+        <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalPhone}
+        onRequestClose={() => {
+          setModalPhone(!modalPhone);
+        }}>
+            <View style={styles.centereddView}>
+                <View style={styles.modalView}>
+                    <TextInput value={phone} placeholder="Phone Number" onChangeText={setPhone}/>
+                    <View>
+                        <TouchableOpacity
+                            style={[styles.button, styles.buttonClose]}
+                            onPress={() => {
+                                setPhone(tempPhone)
+                                setModalPhone(!modalPhone)}}
+                        >
+                        <Text style={styles.textStyle}>Cancel</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                            style={[styles.button, styles.buttonClose]}
+                            onPress={() => {
+                                setTempPhone(phone)
+                                setModalPhone(!modalPhone)}}
                         >
                         <Text style={styles.textStyle}>Save</Text>
                         </TouchableOpacity>
