@@ -11,12 +11,15 @@ export default function Profile({navigation}) {
     const [image, setImage] = React.useState("")
     const {user, Lougout} = useUserInfo();
     const [modalName, setModalName] = React.useState(false);
+    const [modalGender, setModalGender] = React.useState(false);
     const [modalPhone, setModalPhone] = React.useState(false);
     const [fname, setFName] = React.useState(user.first_name)
     const [lname, setLName] = React.useState(user.last_name)
+    const [gender, setGender] = React.useState(user.gender);
     const [phone, setPhone] = React.useState(user.number);
     const [tempf, setTempf] = React.useState(fname);
     const [templ, setTempl] = React.useState(lname);
+    const [tempGender, setTempGender] = React.useState(user.gender);
     const [tempPhone, setTempPhone] = React.useState(user.phone);
     const [date, setDate] = React.useState(new Date());
     const [mode, setMode] = React.useState('date');
@@ -70,7 +73,7 @@ export default function Profile({navigation}) {
             </View>
             <TouchableOpacity style={styles.name} onPress={() => setModalName(true)}>
                 <Text style={styles.name}>{user.first_name} {user.last_name}</Text>
-            </TouchableOpacity>
+            </TouchableOpacity>       
         </View>
 
         <View style={styles.box}>
@@ -79,7 +82,10 @@ export default function Profile({navigation}) {
                 <Text style={styles.title}>Gender</Text>
                 <Text style={styles.info}>{user.gender}</Text>
             </View>
-            <MaterialIcons name="edit" size={24} color="gray" /> 
+            <TouchableOpacity onPress={() => setModalGender(true)}>
+                <MaterialIcons name="edit" size={24} color="gray" />
+            </TouchableOpacity>
+            
         </View>
 
         <View style={styles.box}>
@@ -88,7 +94,7 @@ export default function Profile({navigation}) {
                 <Text style={styles.title}>Blood Type</Text>
                 <Text style={styles.info}>{user.blood_type}</Text>
             </View>
-            <MaterialIcons name="edit" size={24} color="gray" />
+        <MaterialIcons name="edit" size={24} color="gray" />
         </View>
 
         <View style={styles.box}>
@@ -159,6 +165,50 @@ export default function Profile({navigation}) {
                                 setTempf(fname)
                                 setTempl(lname)
                                 setModalName(!modalName)}}
+                        >
+                        <Text style={styles.textStyle}>Save</Text>
+                        </TouchableOpacity>
+                    </View>
+                    
+                </View>
+            </View>
+        </Modal>
+        
+        <Modal
+            animationType="slide"
+            transparent={true}
+            visible={modalGender}
+            onRequestClose={() => {
+            setModalGender(!modalGender);
+        }}>
+            <View style={styles.centereddView}>
+                <View style={styles.modalView}>
+                    
+                    <RNPickerSelect
+                    placeholder={{
+                        label: 'Select a gender',
+                        value: null,
+                    }}
+                    onValueChange={setTempGender}
+                    items={[
+                        { label: "Male", value: "Male" },
+                        { label: "Female", value: "Female" },
+                        { label: "Other", value: "Other" },
+                    ]}
+                    />
+                    <View>
+                        <TouchableOpacity
+                            style={[styles.button, styles.buttonClose]}
+                            onPress={() => {
+                                setModalGender(!modalGender)}}
+                        >
+                        <Text style={styles.textStyle}>Cancel</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                            style={[styles.button, styles.buttonClose]}
+                            onPress={() => {
+                                setGender(tempGender)
+                                setModalGender(!modalGender)}}
                         >
                         <Text style={styles.textStyle}>Save</Text>
                         </TouchableOpacity>
