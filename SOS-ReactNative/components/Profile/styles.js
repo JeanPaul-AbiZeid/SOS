@@ -86,6 +86,28 @@ const styles = StyleSheet.create({
         fontSize: 30,
         fontWeight: '500',
     },
+    centereddView: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: 22
+    },
+    modalView: {
+        marginBottom: 50,
+        alignSelf: 'stretch',
+        backgroundColor: "white",
+        borderRadius: 5,
+        padding: 10,
+        alignItems: "center",
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 5
+    },
     
 });
 

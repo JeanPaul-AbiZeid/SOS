@@ -1,13 +1,21 @@
-import { Text, View, Image, ScrollView, TouchableOpacity } from 'react-native';
+import { Text, View, Image, ScrollView, TouchableOpacity, Modal, TextInput } from 'react-native';
 import React from "react";
 import styles from './styles';
 import { Fontisto, Feather, MaterialIcons, FontAwesome, AntDesign, MaterialCommunityIcons } from '@expo/vector-icons'; 
 import * as ImagePicker from 'expo-image-picker';
 import { useUserInfo } from '../../hooks/UserProvider';
+import RNPickerSelect from "react-native-picker-select";
+import DateTimePicker from '@react-native-community/datetimepicker';
 
 export default function Profile({navigation}) {
     const [image, setImage] = React.useState("")
     const {user, Lougout} = useUserInfo();
+    const [modalName, setModalName] = React.useState(false);
+    const [fname, setFName] = React.useState(user.first_name)
+    const [lname, setLName] = React.useState(user.last_name)
+    const [tempf, setTempf] = React.useState(fname);
+    const [templ, setTempl] = React.useState(lname);
+    
     const pickImage = async () => {
         // No permissions request is necessary for launching the image library
         let result = await ImagePicker.launchImageLibraryAsync({
@@ -32,7 +40,7 @@ export default function Profile({navigation}) {
     }, []);
     
     return (
-      <ScrollView style={styles.container}>
+    <ScrollView style={styles.container}>
         <View style={styles.main}>
             <View style={styles.imageContainer}>
                 <Image style={styles.img} source={{ uri: 'data:image/png;base64,' + image }} />
@@ -43,8 +51,9 @@ export default function Profile({navigation}) {
                     </TouchableOpacity>
                 </View>  
             </View>
-             
-            <Text style={styles.name}>{user.first_name} {user.last_name}</Text>
+            <TouchableOpacity style={styles.name} onPress={() => setModalName(true)}>
+                <Text style={styles.name}>{user.first_name} {user.last_name}</Text>
+            </TouchableOpacity> 
         </View>
 
         <View style={styles.box}>
@@ -97,8 +106,45 @@ export default function Profile({navigation}) {
             Lougout({navigation})
         }}          
             >
-        <Text style={styles.btnText}>Log Out</Text>
-      </TouchableOpacity>
-      </ScrollView>
+            <Text style={styles.btnText}>Log Out</Text>
+        </TouchableOpacity>
+
+        <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalName}
+        onRequestClose={() => {
+          setModalName(!modalName);
+        }}>
+            <View style={styles.centereddView}>
+                <View style={styles.modalView}>
+                    <TextInput value={fname} placeholder="First Name" onChangeText={setFName}/>
+                    <TextInput value={lname} placeholder="Last Name" onChangeText={setLName}/>
+                    <View>
+                        <TouchableOpacity
+                            style={[styles.button, styles.buttonClose]}
+                            onPress={() => {
+                                setFName(tempf)
+                                setLName(templ)
+                                setModalName(!modalName)}}
+                        >
+                        <Text style={styles.textStyle}>Cancel</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                            style={[styles.button, styles.buttonClose]}
+                            onPress={() => {
+                                setTempf(fname)
+                                setTempl(lname)
+                                setModalName(!modalName)}}
+                        >
+                        <Text style={styles.textStyle}>Save</Text>
+                        </TouchableOpacity>
+                    </View>
+                    
+                </View>
+            </View>
+        </Modal>
+
+    </ScrollView>
     );
   }
