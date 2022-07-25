@@ -10,23 +10,24 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 export default function Profile({navigation}) {
     const [image, setImage] = React.useState("")
     const {user, Lougout} = useUserInfo();
+    //model related states
     const [modalName, setModalName] = React.useState(false);
     const [modalGender, setModalGender] = React.useState(false);
     const [modalBlood, setModalBlood] = React.useState(false);
     const [modalPhone, setModalPhone] = React.useState(false);
-    
+    //variable related states
     const [fname, setFName] = React.useState(user.first_name)
     const [lname, setLName] = React.useState(user.last_name)
     const [blood, setBlood] = React.useState(user.blood_type);
     const [gender, setGender] = React.useState(user.gender);
     const [phone, setPhone] = React.useState(user.number);
-
+    //temp variable related states
     const [tempf, setTempf] = React.useState(fname);
     const [templ, setTempl] = React.useState(lname);
     const [tempGender, setTempGender] = React.useState(user.gender);
-    const [tempPhone, setTempPhone] = React.useState(user.phone);
+    const [tempPhone, setTempPhone] = React.useState(user.number);
     const [tempBlood, setTempBlood] = React.useState(user.blood_type);
-    
+    //date relates states
     const [date, setDate] = React.useState(new Date());
     const [mode, setMode] = React.useState('date');
     const [show, setShow] = React.useState(false);
