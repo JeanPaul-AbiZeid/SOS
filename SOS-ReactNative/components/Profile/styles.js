@@ -18,9 +18,12 @@ const styles = StyleSheet.create({
         height: 120,
         borderRadius: 60
     },
-    name: {
+    nameContainer: {
         flex: 1,
+        alignItems: 'center',
         justifyContent: 'center',
+    },
+    name: {
         fontSize: 30,
         fontWeight: '400',
         marginLeft: 20,
@@ -108,6 +111,20 @@ const styles = StyleSheet.create({
         shadowRadius: 4,
         elevation: 5
     },
+    row: {
+        flexDirection: 'row',
+        marginTop: 5
+    },
+    cancel: {
+        backgroundColor: "lightgray",
+        padding: 5,
+        marginRight: 10
+    },
+    save: {
+        backgroundColor: "lightgreen",
+        padding: 5,
+        marginLeft: 10
+    }
     
 });
 

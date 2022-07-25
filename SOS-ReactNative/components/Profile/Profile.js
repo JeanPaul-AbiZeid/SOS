@@ -78,7 +78,7 @@ export default function Profile({navigation}) {
                     </TouchableOpacity>
                 </View>  
             </View>
-            <TouchableOpacity style={styles.name} onPress={() => setModalName(true)}>
+            <TouchableOpacity style={styles.nameContainer} onPress={() => setModalName(true)}>
                 <Text style={styles.name}>{user.first_name} {user.last_name}</Text>
             </TouchableOpacity>
             
@@ -161,24 +161,25 @@ export default function Profile({navigation}) {
                 <View style={styles.modalView}>
                     <TextInput value={fname} placeholder="First Name" onChangeText={setFName}/>
                     <TextInput value={lname} placeholder="Last Name" onChangeText={setLName}/>
-                    <View>
+                    <View style={styles.row}>
                         <TouchableOpacity
-                            style={[styles.button, styles.buttonClose]}
+                            style={styles.cancel}
                             onPress={() => {
                                 setFName(tempf)
                                 setLName(templ)
                                 setModalName(!modalName)}}
                         >
-                        <Text style={styles.textStyle}>Cancel</Text>
+                            <Text style={styles.textStyle}>Cancel</Text>
                         </TouchableOpacity>
+
                         <TouchableOpacity
-                            style={[styles.button, styles.buttonClose]}
+                            style={styles.save}
                             onPress={() => {
                                 setTempf(fname)
                                 setTempl(lname)
                                 setModalName(!modalName)}}
                         >
-                        <Text style={styles.textStyle}>Save</Text>
+                            <Text style={styles.textStyle}>Save</Text>
                         </TouchableOpacity>
                     </View>
                     
@@ -208,21 +209,22 @@ export default function Profile({navigation}) {
                         { label: "Other", value: "Other" },
                     ]}
                     />
-                    <View>
+                    <View style={styles.row}>
                         <TouchableOpacity
-                            style={[styles.button, styles.buttonClose]}
+                            style={styles.cancel}
                             onPress={() => {
                                 setModalGender(!modalGender)}}
                         >
-                        <Text style={styles.textStyle}>Cancel</Text>
+                            <Text style={styles.textStyle}>Cancel</Text>
                         </TouchableOpacity>
+
                         <TouchableOpacity
-                            style={[styles.button, styles.buttonClose]}
+                            style={styles.save}
                             onPress={() => {
                                 setGender(tempGender)
                                 setModalGender(!modalGender)}}
                         >
-                        <Text style={styles.textStyle}>Save</Text>
+                            <Text style={styles.textStyle}>Save</Text>
                         </TouchableOpacity>
                     </View>
                     
@@ -240,22 +242,23 @@ export default function Profile({navigation}) {
             <View style={styles.centereddView}>
                 <View style={styles.modalView}>
                     <TextInput value={phone} placeholder="Phone Number" onChangeText={setPhone}/>
-                    <View>
+                    <View style={styles.row}>
                         <TouchableOpacity
-                            style={[styles.button, styles.buttonClose]}
+                            style={styles.cancel}
                             onPress={() => {
                                 setPhone(tempPhone)
                                 setModalPhone(!modalPhone)}}
                         >
-                        <Text style={styles.textStyle}>Cancel</Text>
+                            <Text style={styles.textStyle}>Cancel</Text>
                         </TouchableOpacity>
+
                         <TouchableOpacity
-                            style={[styles.button, styles.buttonClose]}
+                            style={styles.save}
                             onPress={() => {
                                 setTempPhone(phone)
                                 setModalPhone(!modalPhone)}}
                         >
-                        <Text style={styles.textStyle}>Save</Text>
+                            <Text style={styles.textStyle}>Save</Text>
                         </TouchableOpacity>
                     </View>
                     
@@ -290,21 +293,22 @@ export default function Profile({navigation}) {
                     { label: "AB-", value: "AB-" },
                 ]}
                 />
-                    <View>
+                    <View style={styles.row}>
                         <TouchableOpacity
-                            style={[styles.button, styles.buttonClose]}
+                            style={styles.cancel}
                             onPress={() => {
                                 setModalBlood(!modalBlood)}}
                         >
-                        <Text style={styles.textStyle}>Cancel</Text>
+                            <Text style={styles.textStyle}>Cancel</Text>
                         </TouchableOpacity>
+
                         <TouchableOpacity
-                            style={[styles.button, styles.buttonClose]}
+                            style={styles.save}
                             onPress={() => {
                                 setBlood(tempBlood)
                                 setModalBlood(!modalBlood)}}
                         >
-                        <Text style={styles.textStyle}>Save</Text>
+                            <Text style={styles.textStyle}>Save</Text>
                         </TouchableOpacity>
                     </View>
                     
