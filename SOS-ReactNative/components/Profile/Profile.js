@@ -25,9 +25,7 @@ export default function Profile({navigation}) {
     //temp variable related states
     const [tempf, setTempf] = React.useState(fname);
     const [templ, setTempl] = React.useState(lname);
-    const [tempGender, setTempGender] = React.useState(user.gender);
     const [tempPhone, setTempPhone] = React.useState(user.number);
-    const [tempBlood, setTempBlood] = React.useState(user.blood_type);
     //date relates states
     const [date, setDate] = React.useState(new Date());
     const [mode, setMode] = React.useState('date');
@@ -36,7 +34,8 @@ export default function Profile({navigation}) {
     const onChange = (event, selectedDate) => {
       const currentDate = selectedDate;
       setShow(false);
-      setDate(currentDate);
+      setDate(currentDate)
+      update({"id": user.id, "dob": date.toLocaleDateString()});
     };
   
     const showMode = () => {
@@ -60,10 +59,6 @@ export default function Profile({navigation}) {
     }
 
     const update = (data) => {
-        // let data = {
-        //     "id" : user.id,
-        //     field : newValue
-        // }
         axios({
             method: 'post',
             url: 'http://192.168.1.149:8000/api/editprofile', 
@@ -224,7 +219,7 @@ export default function Profile({navigation}) {
                         label: 'Select a gender',
                         value: null,
                     }}
-                    onValueChange={setTempGender}
+                    onValueChange={setGender}
                     items={[
                         { label: "Male", value: "Male" },
                         { label: "Female", value: "Female" },
@@ -244,6 +239,7 @@ export default function Profile({navigation}) {
                             style={styles.save}
                             onPress={() => {
                                 setGender(tempGender)
+                                update({"id": user.id, "gender": gender})
                                 setModalGender(!modalGender)}}
                         >
                             <Text style={styles.textStyle}>Save</Text>
@@ -278,6 +274,7 @@ export default function Profile({navigation}) {
                             style={styles.save}
                             onPress={() => {
                                 setTempPhone(phone)
+                                update({"id": user.id, "number": phone})
                                 setModalPhone(!modalPhone)}}
                         >
                             <Text style={styles.textStyle}>Save</Text>
@@ -303,7 +300,7 @@ export default function Profile({navigation}) {
                     label: 'Select a blood type',
                     value: null,
                 }}
-                onValueChange={setTempBlood}
+                onValueChange={setBlood}
                 items={[
                     { label: "O+", value: "O+" },
                     { label: "O-", value: "O-" },
@@ -328,6 +325,7 @@ export default function Profile({navigation}) {
                             style={styles.save}
                             onPress={() => {
                                 setBlood(tempBlood)
+                                update({"id": user.id, "blood_type": blood})
                                 setModalBlood(!modalBlood)}}
                         >
                             <Text style={styles.textStyle}>Save</Text>
