@@ -12,15 +12,21 @@ export default function Profile({navigation}) {
     const {user, Lougout} = useUserInfo();
     const [modalName, setModalName] = React.useState(false);
     const [modalGender, setModalGender] = React.useState(false);
+    const [modalBlood, setModalBlood] = React.useState(false);
     const [modalPhone, setModalPhone] = React.useState(false);
+    
     const [fname, setFName] = React.useState(user.first_name)
     const [lname, setLName] = React.useState(user.last_name)
+    const [blood, setBlood] = React.useState(user.blood_type);
     const [gender, setGender] = React.useState(user.gender);
     const [phone, setPhone] = React.useState(user.number);
+
     const [tempf, setTempf] = React.useState(fname);
     const [templ, setTempl] = React.useState(lname);
     const [tempGender, setTempGender] = React.useState(user.gender);
     const [tempPhone, setTempPhone] = React.useState(user.phone);
+    const [tempBlood, setTempBlood] = React.useState(user.blood_type);
+    
     const [date, setDate] = React.useState(new Date());
     const [mode, setMode] = React.useState('date');
     const [show, setShow] = React.useState(false);
@@ -73,7 +79,8 @@ export default function Profile({navigation}) {
             </View>
             <TouchableOpacity style={styles.name} onPress={() => setModalName(true)}>
                 <Text style={styles.name}>{user.first_name} {user.last_name}</Text>
-            </TouchableOpacity>       
+            </TouchableOpacity>
+            
         </View>
 
         <View style={styles.box}>
@@ -94,7 +101,11 @@ export default function Profile({navigation}) {
                 <Text style={styles.title}>Blood Type</Text>
                 <Text style={styles.info}>{user.blood_type}</Text>
             </View>
-        <MaterialIcons name="edit" size={24} color="gray" />
+            <TouchableOpacity onPress={() => setModalBlood(true)}>
+                <MaterialIcons name="edit" size={24} color="gray" />
+            </TouchableOpacity>
+            
+            
         </View>
 
         <View style={styles.box}>
@@ -242,6 +253,55 @@ export default function Profile({navigation}) {
                             onPress={() => {
                                 setTempPhone(phone)
                                 setModalPhone(!modalPhone)}}
+                        >
+                        <Text style={styles.textStyle}>Save</Text>
+                        </TouchableOpacity>
+                    </View>
+                    
+                </View>
+            </View>
+        </Modal>
+
+        <Modal
+            animationType="slide"
+            transparent={true}
+            visible={modalBlood}
+            onRequestClose={() => {
+            setModalBlood(!modalBlood);
+        }}>
+            <View style={styles.centereddView}>
+                <View style={styles.modalView}>
+                    
+                <RNPickerSelect
+                placeholder={{
+                    label: 'Select a blood type',
+                    value: null,
+                }}
+                onValueChange={setTempBlood}
+                items={[
+                    { label: "O+", value: "O+" },
+                    { label: "O-", value: "O-" },
+                    { label: "A+", value: "A+" },
+                    { label: "A-", value: "A-" },
+                    { label: "B+", value: "B+" },
+                    { label: "B-", value: "B-" },
+                    { label: "AB+", value: "AB+" },
+                    { label: "AB-", value: "AB-" },
+                ]}
+                />
+                    <View>
+                        <TouchableOpacity
+                            style={[styles.button, styles.buttonClose]}
+                            onPress={() => {
+                                setModalBlood(!modalBlood)}}
+                        >
+                        <Text style={styles.textStyle}>Cancel</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                            style={[styles.button, styles.buttonClose]}
+                            onPress={() => {
+                                setBlood(tempBlood)
+                                setModalBlood(!modalBlood)}}
                         >
                         <Text style={styles.textStyle}>Save</Text>
                         </TouchableOpacity>
