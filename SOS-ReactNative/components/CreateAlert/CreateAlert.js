@@ -6,6 +6,7 @@ import * as Notifications from 'expo-notifications';
 import {useUserInfo} from '../../hooks/UserProvider';
 import { getFirestore, collection, doc, getDocs } from "firebase/firestore";
 import { initializeApp } from "firebase/app";
+import axios from 'axios';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -38,6 +39,8 @@ export default function CreateAlert() {
   const [title, setTitle] = React.useState("");
   const [description, setDescription] = React.useState("");
   const {user} = useUserInfo();
+  const titleRef = React.useRef();
+  const descRef = React.useRef();
 
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
@@ -48,9 +51,6 @@ export default function CreateAlert() {
       quality: 1,
       base64: true, //converting image to base64
     });
-
-    console.log(result);
-
     if (!result.cancelled) {
       setImage(result.base64);
     }
@@ -75,11 +75,13 @@ export default function CreateAlert() {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <TextInput 
+      ref={titleRef}
       placeholder='Case Title' 
       style={styles.input}
       onChangeText={setTitle}/>
         
-      <TextInput 
+      <TextInput
+      ref={descRef} 
       placeholder='Description' 
       multiline = {true}
       style={[styles.input, styles.description]}
@@ -94,9 +96,33 @@ export default function CreateAlert() {
       </View>
 
       <TouchableOpacity style={styles.button}
-      onPress={async () => {
+      onPress={() => {
+      let data = {
+        "title" : title,
+        "description" : description,
+        // "image" : image,
+        "user_id" : user.id
+      }
+      axios({
+          method: 'post',
+          url: 'http://192.168.1.149:8000/api/createalert', 
+          data: data,
+          })
+          .then(function (response) {
+            titleRef.current.clear();
+            descRef.current.clear();
+            // setImage("")
+            alert("Alert Sent")
+          
+          })
+          .catch(function (error){
+              console.log(error)
+      })
+      async () => {
         await sendPushNotificationToAllUsers(user.id, user.first_name + ' ' + user.last_name, title);
-      }}>
+      }
+      }
+        }>
           <Text style={styles.btnText}>Send Alert</Text>
       </TouchableOpacity>
         
