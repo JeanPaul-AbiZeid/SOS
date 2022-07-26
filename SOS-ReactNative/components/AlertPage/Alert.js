@@ -15,7 +15,7 @@ export default function Alert({route}) {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.main}>
-          <Image style={styles.img} source={{uri:image}}/>   
+          {profilePicture? <Image style={styles.img} source={{uri:profilePicture}}/>:<Image style={styles.img} source={require('../../assets/persona.png')}/>}   
           <Text style={styles.name}>{first_name} {last_name}</Text>
       </View>
 

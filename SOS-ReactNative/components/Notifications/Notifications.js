@@ -22,7 +22,7 @@ export default function Notification({navigation}) {
         profilePicture: item.user_info.picture
       })}>
       <View style={styles.main1}>
-        <Image style={styles.img} source={require('../../assets/persona.png')}/>
+        {item.user_info.picture? <Image style={styles.img} source={{uri:item.user_info.picture}}/>:<Image style={styles.img} source={require('../../assets/persona.png')}/>}
         <View style={styles.text}>
             <Text style={styles.name}>{item.user_info.first_name} {item.user_info.last_name}</Text>
             <Text style={styles.desc}>{item.title}</Text>
