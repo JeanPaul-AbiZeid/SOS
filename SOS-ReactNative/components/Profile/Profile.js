@@ -22,10 +22,12 @@ export default function Profile({navigation}) {
     const [blood, setBlood] = React.useState("");
     const [gender, setGender] = React.useState("");
     const [phone, setPhone] = React.useState("");
+    const [preferredContact, setPreferredContact] = React.useState("")
     //temp variable related states
     const [tempf, setTempf] = React.useState(user.first_name);
     const [templ, setTempl] = React.useState(user.last_name);
     const [tempPhone, setTempPhone] = React.useState(user.number);
+    const [tempPreferredContact, setTempPreferredContact] = React.useState(user.preffered_contact)
     //date relates states
     const [date, setDate] = React.useState(new Date());
     const [mode, setMode] = React.useState('date');
@@ -162,7 +164,7 @@ export default function Profile({navigation}) {
             <MaterialIcons name="contacts" size={24} color="gray" />
             <View style={styles.margin}>
                 <Text style={styles.title}>Preferred Contact</Text>
-                <Text style={styles.info}>Jane Doe</Text>
+                {!preferredContact?<Text style={styles.info1}>No Preferred Contact Yet</Text>:<Text style={styles.info}>{preferredContact}</Text>}
             </View>
             <MaterialIcons name="edit" size={24} color="gray" />
         </View>

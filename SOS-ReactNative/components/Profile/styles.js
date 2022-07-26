@@ -38,6 +38,11 @@ const styles = StyleSheet.create({
         fontWeight: '400',
         marginBottom: 10,
     },
+    info1: {
+        fontSize: 18,
+        fontWeight: '400',
+        marginBottom: 10,
+    },
     infoContainer: {
         borderBottomColor: 'lightgray',
         borderBottomWidth: 2,
