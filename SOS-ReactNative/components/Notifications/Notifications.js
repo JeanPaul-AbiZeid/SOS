@@ -51,9 +51,9 @@ export default function Notification({navigation}) {
   }, []);
 
   return (
-    <View style={styles.main}>
+    <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.title}>Notification</Text>
+        <Text style={styles.title}>Notifications</Text>
       </View>
       <SafeAreaView>
         <FlatList

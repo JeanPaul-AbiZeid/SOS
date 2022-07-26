@@ -21,7 +21,10 @@ const styles = StyleSheet.create({
     name: {
         fontSize: 30,
         fontWeight: '400',
-        marginLeft: 20,
+        marginLeft: 40,
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     title: {
         fontSize: 22

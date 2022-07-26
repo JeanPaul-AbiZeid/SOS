@@ -4,10 +4,7 @@ const styles = StyleSheet.create({
     container: {
         flexGrow: 1,
         backgroundColor: '#e6e6e6',
-        paddingHorizontal: 10,
-    },
-    main: {
-        flexGrow: 1,
+        paddingLeft: 30,
     },
     header: {
         flexDirection: 'row',
@@ -15,7 +12,7 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         justifyContent: 'space-between',
         alignSelf: 'stretch',
-        marginHorizontal: 20,
+        marginHorizontal: 10,
         alignItems: 'center'
     },
     title: {
@@ -25,7 +22,8 @@ const styles = StyleSheet.create({
     },
     notification: {
         marginTop: 30,
-    },main1: {
+    },
+    main1: {
         flexDirection: 'row',
         marginTop: 20,
         alignItems: 'center',  
