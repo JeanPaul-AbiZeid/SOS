@@ -24,7 +24,25 @@ export default function Notification({navigation}) {
     );
   };
 
-    return (
+  const loadUserData = () => {
+    axios({
+      method: 'get',
+      url: 'http://192.168.1.149:8000/api/getalerts/' + `${user.id}`,
+      })
+      .then(function (response) {
+        setRefreshing(false);
+        setUserData(response.data.alerts);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
+  React.useEffect(() => {
+    loadUserData();
+  }, []);
+
+  return (
     <View style={styles.main}>
       <View style={styles.header}>
         <Text style={styles.title}>Notification</Text>
