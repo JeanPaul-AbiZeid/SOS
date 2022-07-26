@@ -2,7 +2,7 @@ import React from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 import { initializeApp } from "firebase/app";
-import { initializeFirestore, collection, doc, setDoc } from "firebase/firestore";
+import { initializeFirestore, collection, doc, setDoc, deleteDoc } from "firebase/firestore";
 import * as Notifications from 'expo-notifications';
 
 // Your web app's Firebase configuration
@@ -25,6 +25,14 @@ const firestore = initializeFirestore(app, {experimentalForceDetectLongPolling :
 const updateToken = async (id, pushtoken) => {
     try{
         await setDoc(doc(firestore, "users", JSON.stringify(id)), {token: pushtoken}, {merge: true});
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+const deleteToken = async (id) => {
+    try{
+        await deleteDoc(doc(firestore, "users", JSON.stringify(id)));
     } catch (error) {
         console.log(error)
     }
@@ -162,12 +170,12 @@ const UserProvider = ({children}) => {
     }
 
     const Lougout = ({navigation}) => {
+        deleteToken(user.id)
         Clear();
         setToken("")
         setUser({})
         setIsLoggedin(false)
         setIsUser(false)
-        alert("logged out")
     }
 
     return (
