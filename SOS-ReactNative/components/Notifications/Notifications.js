@@ -10,8 +10,21 @@ export default function Notification({navigation}) {
   const [userData, setUserData] = React.useState([]);
   const {user} = useUserInfo();
 
+  const alert = ({ item }) => {
+    return (
+      <TouchableOpacity onPress={() => navigation.push('Alert')}>
+      <View style={styles.main1}>
+        <Image style={styles.img} source={require('../../assets/persona.png')}/>
+        <View style={styles.text}>
+            <Text style={styles.name}>{item.user_info.first_name}{item.user_info.last_name}</Text>
+            <Text style={styles.desc}>{item.title}</Text>
+        </View>
+      </View>
+    </TouchableOpacity>
+    );
+  };
 
-  return (
+    return (
     <View style={styles.main}>
       <View style={styles.header}>
         <Text style={styles.title}>Notification</Text>
