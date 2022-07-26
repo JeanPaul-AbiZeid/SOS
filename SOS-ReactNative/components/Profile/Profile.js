@@ -279,6 +279,7 @@ export default function Profile({navigation}) {
                             style={styles.save}
                             onPress={() => {
                                 setTempPreferredContact(preferredContact)
+                                update({"id": user.id, "preffered_contact": preferredContact})
                                 setModalContact(!modalContact)}}
                         >
                             <Text style={styles.textStyle}>Save</Text>

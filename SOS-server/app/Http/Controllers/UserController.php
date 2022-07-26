@@ -76,6 +76,9 @@ class UserController extends Controller
         if ($request->gender){
             $update->gender = $request->gender;
         }
+        if ($request->preffered_contact){
+            $update->preffered_contact = $request->preffered_contact;
+        }
         $update->save();
         
         return response()->json([
