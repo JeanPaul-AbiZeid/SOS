@@ -20,7 +20,11 @@ export default function Home({navigation}) {
             </View>
             <View style={styles.imageContainer}>
                 <Image style={styles.image} source={require('../../assets/fire-logo.png')}/>
-                <Image style={styles.image} source={require('../../assets/contact-logo.png')}/>
+                <TouchableOpacity onPress={() => {
+                    call(args).catch(console.error)
+                }}>
+                    <Image style={styles.image} source={require('../../assets/contact-logo.png')}/>
+                </TouchableOpacity>
                 
             </View>
             <TouchableOpacity style={styles.button} onPress={() => navigation.push('CreateAlert')}>
