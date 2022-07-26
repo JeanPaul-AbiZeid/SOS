@@ -24,9 +24,10 @@ export default function Alert({route}) {
 
       <Text style={styles.case}>Description</Text>
       <Text style={styles.desc}>{description}</Text>
-      <View style={styles.imageContainer}>
+      {image && <View style={styles.imageContainer}>
         <Image style={styles.image} source={{uri:image}}/>
-      </View>
+      </View>}
+      
         
     </ScrollView>
   );
