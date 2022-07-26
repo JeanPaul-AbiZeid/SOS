@@ -21,15 +21,6 @@ const app = initializeApp(firebaseConfig);
 // Initialize Cloud Firestore and get a reference to the service
 const firestore = initializeFirestore(app, {experimentalForceDetectLongPolling : true});
 
-const addToken = async (id, pushtoken) => {
-    try{
-        await setDoc(doc(firestore, "users", JSON.stringify(id)), {
-            token: pushtoken
-          });
-    } catch (error) {
-        console.log(error)
-    }
-}
 
 const updateToken = async (id, pushtoken) => {
     try{
@@ -52,7 +43,6 @@ async function registerForPushNotificationsAsync() {
       return;
     }
     token = (await Notifications.getExpoPushTokenAsync()).data;
-    console.log(token);
    
     if (Platform.OS === 'android') {
       Notifications.setNotificationChannelAsync('default', {
@@ -161,7 +151,6 @@ const UserProvider = ({children}) => {
           data: data,
           })
           .then(function (response) {
-            addToken(response.data.user.id, expoPushToken)
             alert(response.data.message)
             navigation.push('LogIn')
           
