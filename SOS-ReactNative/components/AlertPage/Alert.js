@@ -2,23 +2,31 @@ import { Text, View, Image, ScrollView } from 'react-native';
 import React from "react";
 import styles from './styles';
 
-export default function Alert() {
+export default function Alert({route}) {
 
-    return (
-      <ScrollView style={styles.container}>
-        <View style={styles.main}>
-            <Image style={styles.img} source={require('../../assets/persona.png')}/>   
-            <Text style={styles.name}>John Doe</Text>
-        </View>
+  const { 
+    first_name, 
+    last_name,
+    title,
+    description,
+    image,
+    profilePicture } = route.params;
 
-        <Text style={styles.case}>Alert Case</Text>
-        <Text style={styles.title}>Missing Person</Text>
+  return (
+    <ScrollView style={styles.container}>
+      <View style={styles.main}>
+          <Image style={styles.img} source={require('../../assets/persona.png')}/>   
+          <Text style={styles.name}>{first_name} {last_name}</Text>
+      </View>
 
-        <Text style={styles.case}>Description</Text>
-        <Text style={styles.desc}>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum </Text>
+      <Text style={styles.case}>Alert Case</Text>
+      <Text style={styles.title}>{title}</Text>
 
-        <Image style={styles.image} source={require('../../assets/persona.png')}/>
-          
-      </ScrollView>
-    );
+      <Text style={styles.case}>Description</Text>
+      <Text style={styles.desc}>{description}</Text>
+
+      <Image style={styles.image} source={require('../../assets/persona.png')}/>
+        
+    </ScrollView>
+  );
   }
