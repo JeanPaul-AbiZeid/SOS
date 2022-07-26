@@ -12,11 +12,19 @@ export default function Notification({navigation}) {
 
   const alert = ({ item }) => {
     return (
-      <TouchableOpacity onPress={() => navigation.push('Alert')}>
+      <TouchableOpacity onPress={() => navigation.push('Alert',
+      {
+        first_name: item.user_info.first_name,
+        last_name: item.user_info.last_name,
+        title: item.title,
+        description: item.description,
+        image: item.image,
+        profilePicture: item.user_info.picture
+      })}>
       <View style={styles.main1}>
         <Image style={styles.img} source={require('../../assets/persona.png')}/>
         <View style={styles.text}>
-            <Text style={styles.name}>{item.user_info.first_name}{item.user_info.last_name}</Text>
+            <Text style={styles.name}>{item.user_info.first_name} {item.user_info.last_name}</Text>
             <Text style={styles.desc}>{item.title}</Text>
         </View>
       </View>
