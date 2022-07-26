@@ -15,7 +15,7 @@ export default function Alert({route}) {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.main}>
-          <Image style={styles.img} source={require('../../assets/persona.png')}/>   
+          <Image style={styles.img} source={{uri:image}}/>   
           <Text style={styles.name}>{first_name} {last_name}</Text>
       </View>
 
@@ -24,8 +24,9 @@ export default function Alert({route}) {
 
       <Text style={styles.case}>Description</Text>
       <Text style={styles.desc}>{description}</Text>
-
-      <Image style={styles.image} source={require('../../assets/persona.png')}/>
+      <View style={styles.imageContainer}>
+        <Image style={styles.image} source={{uri:image}}/>
+      </View>
         
     </ScrollView>
   );

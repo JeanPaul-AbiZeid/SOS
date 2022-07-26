@@ -35,10 +35,15 @@ const styles = StyleSheet.create({
         padding: 5,
         marginVertical: 10,
     },
-    image: {
-        alignSelf: 'center',
+    imageContainer: {
+        flex: 1,
         borderColor: 'gray',
-        borderWidth: 2
+        borderWidth: 1,
+        width: "auto",
+        height: 300
+    },
+    image: {
+        flex: 1
     },
     case: {
         color: 'gray',

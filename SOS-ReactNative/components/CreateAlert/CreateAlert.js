@@ -49,10 +49,10 @@ export default function CreateAlert() {
       allowsEditing: true,
       aspect: [3, 3],
       quality: 1,
-      base64: true, //converting image to base64
+      // base64: true, //converting image to base64
     });
     if (!result.cancelled) {
-      setImage(result.base64);
+      setImage(result);
     }
   }
   
@@ -100,7 +100,7 @@ export default function CreateAlert() {
       let data = {
         "title" : title,
         "description" : description,
-        // "image" : image,
+        "image" : image.uri,
         "user_id" : user.id
       }
       axios({
@@ -111,7 +111,7 @@ export default function CreateAlert() {
           .then(function (response) {
             titleRef.current.clear();
             descRef.current.clear();
-            // setImage("")
+            setImage("")
             alert("Alert Sent")
           
           })
