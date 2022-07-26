@@ -1,12 +1,40 @@
 import React from 'react';
 import { ScrollView, Text, TextInput, View, Image, TouchableOpacity } from 'react-native';
 import styles from './styles';
-import call from 'react-native-phone-call'
+import call from 'react-native-phone-call';
+import { useUserInfo } from '../../hooks/UserProvider';
+import axios from 'axios';
 
 
 export default function Home({navigation}) {
+    const [preferredContact, setPreferredContact] = React.useState("")
+    const {user} = useUserInfo();
+
+    const getInfo = () => {
+        let data = {
+            "id" : user.id
+        }
+        axios({
+            method: 'post',
+            url: 'http://192.168.1.149:8000/api/userinfo',
+            data: data
+            })
+            .then(function (response) {
+                setPreferredContact(response.data.user.preffered_contact)
+            })
+            .catch(function (error){
+                console.log(error)
+                alert(error)
+        }) 
+    }
+
+    React.useEffect(() => {
+        getInfo()
+    }, []);
+
+
     const args = {
-        number: '71977857', // String value with the number to call
+        number: preferredContact, // String value with the number to call
         prompt: false, // Optional boolean property. Determines if the user should be prompted prior to the call 
         skipCanOpen: true // Skip the canOpenURL check
     }

@@ -95,8 +95,7 @@ export default function Profile({navigation}) {
             .catch(function (error){
                 console.log(error)
                 alert(error)
-        })
-        
+        }) 
     }
 
     React.useEffect(() => {
