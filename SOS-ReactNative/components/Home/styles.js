@@ -42,6 +42,7 @@ button: {
     borderWidth: 1,
     width: 120,
     height: 120,
+    borderRadius: 20
   },
   imageContainer: {
     marginHorizontal: 20,
