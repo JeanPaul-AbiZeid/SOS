@@ -13,8 +13,6 @@ export default function Profile({navigation}) {
     const {user, Lougout} = useUserInfo();
     //model related states
     const [modalName, setModalName] = React.useState(false);
-    const [modalGender, setModalGender] = React.useState(false);
-    const [modalBlood, setModalBlood] = React.useState(false);
     const [modalPhone, setModalPhone] = React.useState(false);
     const [modalContact, setModalContact] = React.useState(false);
     //variable related states
@@ -29,21 +27,7 @@ export default function Profile({navigation}) {
     const [templ, setTempl] = React.useState(user.last_name);
     const [tempPhone, setTempPhone] = React.useState(user.number);
     const [tempPreferredContact, setTempPreferredContact] = React.useState(user.preffered_contact)
-    //date relates states
-    const [date, setDate] = React.useState(new Date());
-    const [mode, setMode] = React.useState('date');
-    const [show, setShow] = React.useState(false);
-
-    const onChange = (event, selectedDate) => {
-      const currentDate = selectedDate;
-      setShow(false);
-      setDate(currentDate)
-    };
-  
-    const showMode = () => {
-      setShow(true);
-      setMode('date');
-    };
+    
     
     const pickImage = async () => {
         // No permissions request is necessary for launching the image library
