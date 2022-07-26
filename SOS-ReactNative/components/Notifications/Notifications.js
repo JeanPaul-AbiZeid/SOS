@@ -47,7 +47,17 @@ export default function Notification({navigation}) {
       <View style={styles.header}>
         <Text style={styles.title}>Notification</Text>
       </View>
-      
+      <SafeAreaView>
+        <FlatList
+          data={userData.reverse()}
+          keyExtractor={(item, index) => index.toString()}
+          enableEmptySections={true}
+          renderItem={alert}
+          refreshControl={
+            <RefreshControl refreshing={refreshing} onRefresh={loadUserData} />
+          }
+        />
+      </SafeAreaView>
     </View>
     
     
