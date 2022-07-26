@@ -1,6 +1,7 @@
 import React from 'react';
 import { ScrollView, Text, TextInput, View, Image, TouchableOpacity } from 'react-native';
 import styles from './styles';
+import call from 'react-native-phone-call'
 
 
 export default function Home({navigation}) {

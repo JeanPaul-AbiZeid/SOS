@@ -90,6 +90,7 @@ export default function Profile({navigation}) {
                 setBlood(response.data.user.blood_type)
                 setGender(response.data.user.gender)
                 setPhone(response.data.user.number)
+                setPreferredContact(response.data.user.preffered_contact)
             })
             .catch(function (error){
                 console.log(error)
@@ -280,7 +281,8 @@ export default function Profile({navigation}) {
                             onPress={() => {
                                 setTempPreferredContact(preferredContact)
                                 update({"id": user.id, "preffered_contact": preferredContact})
-                                setModalContact(!modalContact)}}
+                                setModalContact(!modalContact)
+                            }}
                         >
                             <Text style={styles.textStyle}>Save</Text>
                         </TouchableOpacity>
