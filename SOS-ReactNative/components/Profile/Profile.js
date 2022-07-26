@@ -16,6 +16,7 @@ export default function Profile({navigation}) {
     const [modalGender, setModalGender] = React.useState(false);
     const [modalBlood, setModalBlood] = React.useState(false);
     const [modalPhone, setModalPhone] = React.useState(false);
+    const [modalContact, setModalContact] = React.useState(false);
     //variable related states
     const [fname, setFName] = React.useState("")
     const [lname, setLName] = React.useState("")
@@ -166,7 +167,10 @@ export default function Profile({navigation}) {
                 <Text style={styles.title}>Preferred Contact</Text>
                 {!preferredContact?<Text style={styles.info1}>No Preferred Contact Yet</Text>:<Text style={styles.info}>{preferredContact}</Text>}
             </View>
-            <MaterialIcons name="edit" size={24} color="gray" />
+            <TouchableOpacity onPress={() => setModalContact(true)}>
+                <MaterialIcons name="edit" size={24} color="gray" />
+            </TouchableOpacity>
+            
         </View>
         
         <TouchableOpacity style={styles.button}
@@ -242,6 +246,40 @@ export default function Profile({navigation}) {
                                 setTempPhone(phone)
                                 update({"id": user.id, "number": phone})
                                 setModalPhone(!modalPhone)}}
+                        >
+                            <Text style={styles.textStyle}>Save</Text>
+                        </TouchableOpacity>
+                    </View>
+                    
+                </View>
+            </View>
+        </Modal>
+
+        <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalContact}
+        onRequestClose={() => {
+          setModalContact(!modalContact);
+        }}>
+            <View style={styles.centereddView}>
+                <View style={styles.modalView}>
+                    <TextInput value={preferredContact} placeholder="Prefered Contact Number" onChangeText={setPreferredContact}/>
+                    <View style={styles.row}>
+                        <TouchableOpacity
+                            style={styles.cancel}
+                            onPress={() => {
+                                setPreferredContact(tempPreferredContact)
+                                setModalContact(!modalContact)}}
+                        >
+                            <Text style={styles.textStyle}>Cancel</Text>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity
+                            style={styles.save}
+                            onPress={() => {
+                                setTempPreferredContact(preferredContact)
+                                setModalContact(!modalContact)}}
                         >
                             <Text style={styles.textStyle}>Save</Text>
                         </TouchableOpacity>
