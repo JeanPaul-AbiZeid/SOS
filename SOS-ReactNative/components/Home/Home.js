@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, Text, TextInput, View, Image, TouchableOpacity } from 'react-native';
+import { ScrollView, Text, View, Image, TouchableOpacity } from 'react-native';
 import styles from './styles';
 import call from 'react-native-phone-call';
 import { useUserInfo } from '../../hooks/UserProvider';

@@ -4,8 +4,6 @@ import styles from './styles';
 import { Fontisto, Feather, MaterialIcons, FontAwesome, AntDesign, MaterialCommunityIcons } from '@expo/vector-icons'; 
 import * as ImagePicker from 'expo-image-picker';
 import { useUserInfo } from '../../hooks/UserProvider';
-import RNPickerSelect from "react-native-picker-select";
-import DateTimePicker from '@react-native-community/datetimepicker';
 import axios from 'axios';
 
 export default function Profile({navigation}) {
