@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     color: 'red',
     fontSize: 60,
     fontWeight: '700',
-    marginTop: 100,
+    marginVertical: 100,
   },
   head: {
     color: 'gray',
@@ -46,14 +46,14 @@ const styles = StyleSheet.create({
     marginTop: 50,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: 2,
+    paddingVertical: 8,
     borderRadius: 4,
     elevation: 3,
     marginBottom: 30,
   },
   btnText: {
     color: 'white',
-    fontSize: 30,
+    fontSize: 20,
     fontWeight: '500',
   },
   signup: {

@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     color: 'red',
     fontSize: 60,
     fontWeight: '700',
-    marginTop: 100,
+    marginVertical: 50,
   },
   head: {
     color: 'gray',
@@ -43,17 +43,17 @@ const styles = StyleSheet.create({
     backgroundColor: 'red',
     alignSelf: 'stretch',
     marginHorizontal: 30,
-    marginTop: 50,
+    marginTop: 30,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: 2,
+    paddingVertical: 8,
     borderRadius: 4,
     elevation: 3,
     marginBottom: 30,
   },
   btnText: {
     color: 'white',
-    fontSize: 30,
+    fontSize: 20,
     fontWeight: '500',
   },
   password: {
@@ -71,17 +71,19 @@ const styles = StyleSheet.create({
     marginBottom: 20
   },
   buttonCalendar: {
-    backgroundColor: 'blue',
+    backgroundColor: '#e6e6e6',
     alignSelf: 'stretch',
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: 2,
     borderRadius: 4,
+    borderColor: 'red',
+    borderWidth: 2,
     elevation: 3,
     marginVertical: 10
   },
   calendarText: {
-    color: 'white',
+    color: 'red',
     fontSize: 16,
     fontWeight: '300',
   }

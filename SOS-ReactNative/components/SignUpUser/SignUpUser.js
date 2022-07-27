@@ -37,7 +37,6 @@ export default function SignUpUser({navigation}) {
     <View style={styles.main}>
     <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.title}>SOS</Text>
-      <Text style={styles.head}>Sign Up</Text>
       <View style={styles.inputContainer}>
         <Text>First Name</Text>
         <TextInput placeholder='First Name' style={styles.input} onChangeText={setFname}/>

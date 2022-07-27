@@ -15,7 +15,6 @@ export default function LogIn({navigation}) {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.title}>SOS</Text>
-      <Text style={styles.head}>Sign In</Text>
       
       <View style={styles.inputContainer}>
         <Text>Email</Text>

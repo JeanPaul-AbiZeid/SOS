@@ -19,7 +19,6 @@ export default function SignUpExpert({navigation}) {
     <View style={styles.main}>
     <ScrollView contentContainerStyle={styles.container}>
         <Text style={styles.title}>SOS</Text>
-        <Text style={styles.head}>Sign Up</Text>
         <View style={styles.inputContainer}>
             <Text>First Name</Text>
             <TextInput 

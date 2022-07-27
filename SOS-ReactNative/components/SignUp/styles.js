@@ -24,12 +24,12 @@ const styles = StyleSheet.create({
     paddingVertical: 2,
     borderRadius: 4,
     elevation: 3,
-    paddingVertical: 10,
+    paddingVertical: 8,
     alignSelf: 'stretch'
   },
   btnText: {
     color: 'white',
-    fontSize: 30,
+    fontSize: 20,
     fontWeight: '500',
   },
 });
