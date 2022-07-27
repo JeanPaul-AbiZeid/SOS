@@ -1,8 +1,9 @@
 import React from 'react';
-import {  Text, View, StyleSheet } from 'react-native';
+import {  Text, View, StyleSheet, Image } from 'react-native';
 import styles from './styles';
 import MapView, { Marker, AnimatedRegion } from 'react-native-maps';
 import * as Location from 'expo-location';
+import { FontAwesome5 } from '@expo/vector-icons'; 
 import MapViewDirections from 'react-native-maps-directions';
 
 export default function Tracking() {
@@ -12,16 +13,16 @@ export default function Tracking() {
   const markerRef = React.useRef()
   const [state, setState] = React.useState({
     curLoc: {
-        latitude: 33.9680386,
-        longitude: 35.6206043,
+      latitude: 33.9680386,
+      longitude: 35.6206043,
     },
     // destinationCords: {},
     isLoading: false,
     coordinate: new AnimatedRegion({
-        latitude: 33.9680386,
-        longitude: 35.6206043,
-        latitudeDelta: 0.09,
-        longitudeDelta: 0.04
+      latitude: 33.9680386,
+      longitude: 35.6206043,
+      latitudeDelta: 0.09,
+      longitudeDelta: 0.04
     }),
     time: 0,
     distance: 0,
@@ -31,7 +32,7 @@ export default function Tracking() {
   const updateState = (data) => setState((state) => ({ ...state, ...data }));
 
   const destinationCords = {
-    latitude:34.013184,
+    latitude:33.013184,
     longitude:35.6417536
   }
 
@@ -51,16 +52,16 @@ export default function Tracking() {
     let latitude = location.coords.latitude;
     let longitude = location.coords.longitude;
     animate(latitude, longitude);
-          updateState({
-              heading: heading,
-              curLoc: { latitude, longitude },
-              coordinate: new AnimatedRegion({
-                  latitude: latitude,
-                  longitude: longitude,
-                  latitudeDelta: 0.09,
-                  longitudeDelta: 0.04
-              })
-          })
+    updateState({
+      heading: heading,
+      curLoc: { latitude, longitude },
+      coordinate: new AnimatedRegion({
+        latitude: latitude,
+        longitude: longitude,
+        latitudeDelta: 0.09,
+        longitudeDelta: 0.04
+      })
+    })
   };
 
   const animate = (latitude, longitude) => {
@@ -101,19 +102,21 @@ export default function Tracking() {
               latitudeDelta: 0.09,
               longitudeDelta: 0.04,
           }}>
+
             <Marker.Animated ref={markerRef} coordinate={coordinate} />
+
             {Object.keys(destinationCords).length > 0 && (<Marker
               coordinate={destinationCords}
-            />)}
+            ><FontAwesome5 name="car-side" size={24} color="red" /></Marker>)}
 
-            {Object.keys(destinationCords).length > 0 && (<MapViewDirections
+            {/* {Object.keys(destinationCords).length > 0 && (<MapViewDirections
               origin={curLoc}
               destination={destinationCords}
               // apikey={GOOGLE_MAP_KEY}
               strokeWidth={6}
               strokeColor="red"
               optimizeWaypoints={true}
-            />)}
+            />)} */}
               
           </MapView>
         </View>
