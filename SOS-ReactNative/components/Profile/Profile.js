@@ -54,10 +54,6 @@ export default function Profile({navigation}) {
                 alert(error)
         })
     }
-
-    // React.useEffect(() => {
-    //     update({"id": user.id, "picture": image})
-    // }, [image]);
     
     return (
     <ScrollView style={styles.container}>
