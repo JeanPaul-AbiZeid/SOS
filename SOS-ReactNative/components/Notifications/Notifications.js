@@ -32,6 +32,14 @@ export default function Notification({navigation}) {
     );
   };
 
+  const ItemDivider = () => {
+    return (
+      <View
+        style={styles.divider}
+      />
+    );
+  }
+
   const loadUserData = () => {
     axios({
       method: 'get',
@@ -60,6 +68,7 @@ export default function Notification({navigation}) {
           data={userData.reverse()}
           keyExtractor={(item, index) => index.toString()}
           enableEmptySections={true}
+          ItemSeparatorComponent={ItemDivider}
           renderItem={alert}
           refreshControl={
             <RefreshControl refreshing={refreshing} onRefresh={loadUserData} />

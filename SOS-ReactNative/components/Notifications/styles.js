@@ -43,6 +43,11 @@ const styles = StyleSheet.create({
         width: 80,
         height: 80,
         borderRadius: 60
+    },
+    divider:{
+        height: 2,
+        backgroundColor: 'gray',
+        marginTop: 15
     }
 });
 
