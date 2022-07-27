@@ -6,11 +6,14 @@ const styles = StyleSheet.create({
       marginTop: StatusBar.currentHeight,
       paddingTop: 50,
       backgroundColor: '#e6e6e6',
-      alignItems: 'center',
+      // alignItems: 'center',
+  },label:{
+    alignSelf: 'stretch',
+    marginHorizontal: 50,
+    marginVertical: 10,
   },
   input: {
     backgroundColor: 'white',
-    marginTop: 50,
     borderWidth: 1,
     padding: 5,
     paddingLeft: 10,

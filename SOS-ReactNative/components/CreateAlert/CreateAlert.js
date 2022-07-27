@@ -74,12 +74,15 @@ export default function CreateAlert() {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
+      
+      <Text style={styles.label}>Title</Text>
       <TextInput 
       ref={titleRef}
       placeholder='Case Title' 
       style={styles.input}
       onChangeText={setTitle}/>
-        
+      
+      <Text style={styles.label}>Description</Text>
       <TextInput
       ref={descRef} 
       placeholder='Description' 
