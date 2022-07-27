@@ -18,6 +18,15 @@ class UserController extends Controller
         ], 200);
     }
 
+    public function getAvailable($role_id){
+        $experts = User::where('role_id', '=', $role_id)->where('is_available', '=', 2)->get(['id']);
+    
+        return response()->json([
+            "status" => "Success",
+            "experts" => $experts
+        ], 200);
+    }
+
     public function getAllroles(){
         $role = Role::all();
         

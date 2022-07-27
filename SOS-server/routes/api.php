@@ -21,4 +21,5 @@ Route::controller(UserController::class)->group(function () {
     Route::post('/createalert', 'createAlert');
     Route::post('/userinfo', 'getUserInfo');
     Route::post('/editprofile', 'editProfile');
+    Route::get('/getexperts/{id}', 'getAvailable');
 });
