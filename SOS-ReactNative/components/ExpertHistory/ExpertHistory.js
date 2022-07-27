@@ -9,7 +9,6 @@ export default function ExpertHistory() {
   return (
     <View style={styles.main}>
         <ScrollView contentContainerStyle={styles.container}>
-            <Text style={styles.title}>History</Text>
 
             <View style={styles.notification}>
                 <ExpertNotification/>

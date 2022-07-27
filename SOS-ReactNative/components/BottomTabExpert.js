@@ -10,7 +10,7 @@ export default function BottomTabExpert() {
     return (
         <ExpertTab.Navigator 
         screenOptions={{
-            headerShown: false,
+            headerShown: true,
             tabBarActiveTintColor: 'red',
             tabBarLabelPosition: "beside-icon",
             tabBarLabelStyle: {
@@ -18,8 +18,31 @@ export default function BottomTabExpert() {
             fontSize: 20
             },
             tabBarIconStyle: { display: "none" }}}>
-            <ExpertTab.Screen name="Current" component={ExpertPage} />
-            <ExpertTab.Screen name="History" component={ExpertHistory} />
+            <ExpertTab.Screen 
+            name="Current" component={ExpertPage}
+            options={{
+                title: 'Current',
+                headerStyle: {
+                  backgroundColor: 'red'
+                },
+                headerTintColor: '#fff',
+                headerTitleStyle: {
+                  fontWeight: 'bold',
+                  fontSize: 26,
+                }}} />
+            <ExpertTab.Screen 
+            name="History" 
+            component={ExpertHistory}
+            options={{
+                title: 'History',
+                headerStyle: {
+                  backgroundColor: 'red'
+                },
+                headerTintColor: '#fff',
+                headerTitleStyle: {
+                  fontWeight: 'bold',
+                  fontSize: 26,
+                }}}  />
         </ExpertTab.Navigator>
     )
 }

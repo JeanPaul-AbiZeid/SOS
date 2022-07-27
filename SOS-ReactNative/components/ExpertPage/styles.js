@@ -3,7 +3,6 @@ import { StyleSheet, StatusBar } from 'react-native';
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    marginTop: StatusBar.currentHeight,
     backgroundColor: '#e6e6e6',
     paddingHorizontal: 20,
     paddingBottom: 100,
@@ -39,14 +38,14 @@ const styles = StyleSheet.create({
     marginTop: 50,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: 2,
+    paddingVertical: 8,
     borderRadius: 4,
     elevation: 3,
     marginBottom: 30,
   },
   btnText: {
     color: 'white',
-    fontSize: 30,
+    fontSize: 20,
     fontWeight: '500',
   },
 });
