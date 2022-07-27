@@ -7,19 +7,17 @@ import { useUserInfo } from '../../hooks/UserProvider';
 import axios from 'axios';
 
 export default function Profile({navigation}) {
-    const [image, setImage] = React.useState("")
     const {user, Lougout} = useUserInfo();
+    const [image, setImage] = React.useState(user.picture)
     //model related states
     const [modalName, setModalName] = React.useState(false);
     const [modalPhone, setModalPhone] = React.useState(false);
     const [modalContact, setModalContact] = React.useState(false);
     //variable related states
-    const [fname, setFName] = React.useState("")
-    const [lname, setLName] = React.useState("")
-    const [blood, setBlood] = React.useState("");
-    const [gender, setGender] = React.useState("");
-    const [phone, setPhone] = React.useState("");
-    const [preferredContact, setPreferredContact] = React.useState("")
+    const [fname, setFName] = React.useState(user.first_name)
+    const [lname, setLName] = React.useState(user.last_name)
+    const [phone, setPhone] = React.useState(user.number);
+    const [preferredContact, setPreferredContact] = React.useState(user.preffered_contact)
     //temp variable related states
     const [tempf, setTempf] = React.useState(user.first_name);
     const [templ, setTempl] = React.useState(user.last_name);
@@ -32,13 +30,13 @@ export default function Profile({navigation}) {
         let result = await ImagePicker.launchImageLibraryAsync({
           mediaTypes: ImagePicker.MediaTypeOptions.Images,
           allowsEditing: true,
-          aspect: [3, 3],
+          aspect: [4, 3],
           quality: 1,
-        //   base64: true, //converting image to base64
+          base64: true, //converting image to base64
         });
     
         if (!result.cancelled) {
-          setImage(result.uri);
+          setImage(result.base64);
         }
     }
 
@@ -57,47 +55,20 @@ export default function Profile({navigation}) {
         })
     }
 
-    const getInfo = () => {
-        let data = {
-            "id" : user.id
-        }
-        axios({
-            method: 'post',
-            url: 'http://192.168.1.149:8000/api/userinfo',
-            data: data
-            })
-            .then(function (response) {
-                setFName(response.data.user.first_name)
-                setLName(response.data.user.last_name)
-                setBlood(response.data.user.blood_type)
-                setGender(response.data.user.gender)
-                setPhone(response.data.user.number)
-                setPreferredContact(response.data.user.preffered_contact)
-                if(response.data.user.picture){
-                    setImage(response.data.user.picture)
-                }
-            })
-            .catch(function (error){
-                console.log(error)
-                alert(error)
-        }) 
-    }
-
-    React.useEffect(() => {
-        getInfo()
-    }, []);
-
-    React.useEffect(() => {
-        update({"id": user.id, "picture": image})
-    }, [image]);
+    // React.useEffect(() => {
+    //     update({"id": user.id, "picture": image})
+    // }, [image]);
     
     return (
     <ScrollView style={styles.container}>
         <View style={styles.main}>
             <View style={styles.imageContainer}>
-                {image?<Image style={styles.img} source={{ uri: image }} />:<Image style={styles.img} source={require('../../assets/persona.png')} />}
+                {image?<Image style={styles.img} source={{ uri: "data:image/png;base64," + image }} />:<Image style={styles.img} source={require('../../assets/persona.png')} />}
                 <View style={styles.uploadBtnContainer}>
-                    <TouchableOpacity style={styles.uploadBtn} onPress={pickImage}>
+                    <TouchableOpacity style={styles.uploadBtn} onPress={() => {
+                        console.log(image)
+                        pickImage()
+                        setTimeout(() => {update({"id": user.id, "picture": image})},1000)}}>
                         <Text>Change Image</Text>
                         <AntDesign name="camera" size={20} color="black" />
                     </TouchableOpacity>
@@ -113,7 +84,7 @@ export default function Profile({navigation}) {
             <MaterialCommunityIcons name="gender-male-female" size={24} color="gray" />
             <View style={styles.infoContainer}>
                 <Text style={styles.title}>Gender</Text>
-                <Text style={styles.info}>{gender}</Text>
+                <Text style={styles.info}>{user.gender}</Text>
             </View>     
         </View>
 
@@ -121,7 +92,7 @@ export default function Profile({navigation}) {
             <Fontisto name="blood-drop" size={24} color="gray" />
             <View style={styles.infoContainer}>
                 <Text style={styles.title}>Blood Type</Text>
-                <Text style={styles.info}>{blood}</Text>
+                <Text style={styles.info}>{user.blood_type}</Text>
             </View> 
         </View>
 

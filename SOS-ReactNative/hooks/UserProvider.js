@@ -123,6 +123,7 @@ const UserProvider = ({children}) => {
             "email" : email,
             "password" : password,
             "role_id" : role,
+            "is_available" : 0,
         }
         axios({
             method: 'post',
@@ -151,6 +152,7 @@ const UserProvider = ({children}) => {
             "dob" : date.toLocaleDateString(),
             "gender" : gender,
             "role_id" : 1,
+            "is_available" : 0,
         }
 
         axios({

@@ -20,7 +20,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->integer('role_id');
-            $table->string('picture')->nullable();
+            $table->integer('is_available');
+            $table->longtext('picture')->nullable();
             $table->string('dob')->nullable();
             $table->string('number')->nullable();
             $table->string('preffered_contact')->nullable();
