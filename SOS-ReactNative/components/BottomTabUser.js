@@ -15,18 +15,69 @@ const NotificationStack = createNativeStackNavigator();
 
 function HomeStackScreen() {
     return (
-      <HomeStack.Navigator screenOptions={{headerShown: false}}>
-        <HomeStack.Screen name="Home" component={Home} />
-        <HomeStack.Screen name="CreateAlert" component={CreateAlert} />
+      <HomeStack.Navigator screenOptions={{headerShown: true}}>
+        <HomeStack.Screen 
+        name="Home"
+        component={Home}
+        options={{
+          title: 'SOS',
+          headerStyle: {
+            backgroundColor: 'red'
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+            fontSize: 26,
+          },
+        }} />
+        <HomeStack.Screen 
+        name="CreateAlert" 
+        component={CreateAlert}
+        options={{
+          title: 'Create Alert',
+          headerStyle: {
+            backgroundColor: 'red'
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+            fontSize: 26,
+          },
+        }} />
       </HomeStack.Navigator>
     );
 }
 
 function NotificationStackScreen() {
   return (
-    <NotificationStack.Navigator screenOptions={{headerShown: false}}>
-      <NotificationStack.Screen name="Notification" component={Notification} />
-      <NotificationStack.Screen name="Alert" component={Alert} />
+    <NotificationStack.Navigator screenOptions={{headerShown: true}}>
+      <NotificationStack.Screen 
+      name="Notification" 
+      component={Notification}
+      options={{
+        title: 'Notifications',
+        headerStyle: {
+          backgroundColor: 'red'
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+          fontWeight: 'bold',
+          fontSize: 26,
+        },
+      }} />
+      <NotificationStack.Screen 
+      name="Alert" component={Alert}
+      options={{
+        title: 'Alert',
+        headerStyle: {
+          backgroundColor: 'red'
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+          fontWeight: 'bold',
+          fontSize: 26,
+        },
+      }} />
     </NotificationStack.Navigator>
   );
 }
@@ -42,9 +93,19 @@ export default function BottomTabUser() {
             }}/>
             <Tab.Screen name="Tracking" component={Tracking}
             options={{
-                tabBarIcon: ({ color, size }) => (
-                <FontAwesome5 name="route" size={30} color={color} />
-                ),
+              title: 'Tracking',
+              headerStyle: {
+                backgroundColor: 'red'
+              },
+              headerTintColor: '#fff',
+              headerTitleStyle: {
+                fontWeight: 'bold',
+                fontSize: 26,
+              },
+              headerShown: true,
+              tabBarIcon: ({ color, size }) => (
+              <FontAwesome5 name="route" size={30} color={color} />
+              ),
             }} />
             <Tab.Screen name="NotificationStack" component={NotificationStackScreen}
             options={{
@@ -54,9 +115,20 @@ export default function BottomTabUser() {
             }} />
             <Tab.Screen name="Profile" component={Profile}
             options={{
-                tabBarIcon: ({ color, size }) => (
-                <Ionicons name="person-circle-outline" size={30} color={color} />
-                ),
+              title: 'Profile',
+              headerStyle: {
+                backgroundColor: 'red'
+              },
+              headerTintColor: '#fff',
+              headerTitleStyle: {
+                fontWeight: 'bold',
+                fontSize: 26,
+              },
+              
+              headerShown: true,
+              tabBarIcon: ({ color, size }) => (
+              <Ionicons name="person-circle-outline" size={30} color={color} />
+              ),
             }} />
         </Tab.Navigator>
     )

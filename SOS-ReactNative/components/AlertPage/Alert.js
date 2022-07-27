@@ -23,7 +23,10 @@ export default function Alert({route}) {
       <Text style={styles.title}>{title}</Text>
 
       <Text style={styles.case}>Description</Text>
-      <Text style={styles.desc}>{description}</Text>
+      <View style={styles.descContainer}>
+        <Text style={styles.desc}>{description}</Text>
+      </View>
+      
       {image && <View style={styles.imageContainer}>
         <Image style={styles.image} source={{uri:"data:image/png;base64," + image}}/>
       </View>}

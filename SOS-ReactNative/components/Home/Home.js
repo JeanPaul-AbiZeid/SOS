@@ -41,7 +41,6 @@ export default function Home({navigation}) {
 
     return (
         <ScrollView contentContainerStyle={styles.container}>
-            <Text style={styles.title}>SOS</Text>
             <View style={styles.imageContainer}>
                 <Image style={styles.image} source={require('../../assets/police-logo.png')}/>
                 <Image style={styles.image} source={require('../../assets/ambulance-logo.png')}/>

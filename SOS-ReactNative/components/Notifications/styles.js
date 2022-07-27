@@ -6,23 +6,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#e6e6e6',
         paddingLeft: 30,
     },
-    header: {
-        flexDirection: 'row',
-        marginTop: 50,
-        marginBottom: 20,
-        justifyContent: 'space-between',
-        alignSelf: 'stretch',
-        marginHorizontal: 10,
-        alignItems: 'center'
-    },
-    title: {
-        color: 'red',
-        fontSize: 24,
-        fontWeight: '400',
-    },
-    notification: {
-        marginTop: 30,
-    },
     main1: {
         flexDirection: 'row',
         marginTop: 20,

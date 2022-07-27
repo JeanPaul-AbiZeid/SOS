@@ -88,7 +88,6 @@ export default function Tracking() {
     
   return (
     <View style={styles.container}>
-        <Text style={styles.title}>Tracking</Text>
         <View style={styles.map}>
           <MapView
             ref={mapRef}

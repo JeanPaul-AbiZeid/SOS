@@ -3,7 +3,6 @@ import { StyleSheet, StatusBar } from 'react-native';
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        marginTop: StatusBar.currentHeight,
         paddingTop: 30,
         backgroundColor: '#e6e6e6',
         paddingHorizontal: 30,
@@ -29,11 +28,12 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 22
     },
-    desc: {
+    descContainer: {
+        padding: 5,
         borderColor: 'gray',
         borderWidth: 1,
-        padding: 5,
-        marginVertical: 10,
+        height: 200,
+        marginBottom: 10
     },
     imageContainer: {
         flex: 1,
