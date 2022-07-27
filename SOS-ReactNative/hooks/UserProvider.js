@@ -4,6 +4,7 @@ import axios from 'axios';
 import { initializeApp } from "firebase/app";
 import { initializeFirestore, collection, doc, setDoc, deleteDoc } from "firebase/firestore";
 import * as Notifications from 'expo-notifications';
+import * as Location from 'expo-location';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -21,7 +22,6 @@ const app = initializeApp(firebaseConfig);
 // Initialize Cloud Firestore and get a reference to the service
 const firestore = initializeFirestore(app, {experimentalForceDetectLongPolling : true});
 
-
 const updateToken = async (id, pushtoken) => {
     try{
         await setDoc(doc(firestore, "users", JSON.stringify(id)), {token: pushtoken}, {merge: true});
@@ -33,6 +33,14 @@ const updateToken = async (id, pushtoken) => {
 const deleteToken = async (id) => {
     try{
         await deleteDoc(doc(firestore, "users", JSON.stringify(id)));
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+const updateLocation = async (id, userLocation) => {
+    try{
+        await setDoc(doc(firestore, "users", JSON.stringify(id)), {location: userLocation}, {merge: true});
     } catch (error) {
         console.log(error)
     }
@@ -84,10 +92,12 @@ const UserProvider = ({children}) => {
     const [isLoggedin, setIsLoggedin] = React.useState(false)
     const [isUser, setIsUser] = React.useState(false)
     const [expoPushToken, setExpoPushToken] = React.useState('');
+    const [location, setLocation] = React.useState(null);
 
     React.useEffect(() => {
         registerForPushNotificationsAsync().then(token => setExpoPushToken(token));
-      }, []);
+        getLiveLocation()
+    }, []);
 
     const LoggedIn = (email, password, {navigation}) => {
         let data = {
@@ -104,6 +114,7 @@ const UserProvider = ({children}) => {
                 storeData('token', response.data.authorisation.token)
                 setUser(response.data.user)
                 setToken(response.data.authorisation.token)
+                updateLocation(response.data.user.id, location)
                 if (response.data.user.role_id == 1) {
                     setIsUser(true)
                     updateToken(response.data.user.id, expoPushToken)
@@ -179,6 +190,17 @@ const UserProvider = ({children}) => {
         setIsLoggedin(false)
         setIsUser(false)
     }
+
+    const getLiveLocation = async () => {
+        let { status } = await Location.requestForegroundPermissionsAsync();
+        if (status !== 'granted') {
+          setErrorMsg('Permission to access location was denied');
+          return;
+        }
+    
+        let loc = await Location.getCurrentPositionAsync({});
+        setLocation(loc);      
+    };
 
     return (
         <userContext.Provider
