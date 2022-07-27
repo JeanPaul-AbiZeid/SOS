@@ -5,15 +5,14 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     marginTop: StatusBar.currentHeight,
     backgroundColor: '#e6e6e6',
-    paddingHorizontal: 20,
-    paddingBottom: 100,
+    paddingHorizontal: 5,
+    paddingBottom: 20,
   },
   title: {
     color: 'black',
     fontSize: 24,
     fontWeight: '400',
     marginTop: 30,
-    marginBottom: 50
   },
   map: {
       flex: 1,
