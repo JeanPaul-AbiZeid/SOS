@@ -24,15 +24,12 @@ export default function Tracking() {
       latitudeDelta: 0.09,
       longitudeDelta: 0.04
     }),
-    time: 0,
-    distance: 0,
-    heading: 0
   })
-  const { curLoc, time, distance, /*destinationCords,*/ isLoading, coordinate,heading } = state
+  const { curLoc, /*destinationCords,*/ isLoading, coordinate } = state
   const updateState = (data) => setState((state) => ({ ...state, ...data }));
 
   const destinationCords = {
-    latitude:33.013184,
+    latitude:34.013184,
     longitude:35.6417536
   }
 
@@ -47,13 +44,12 @@ export default function Tracking() {
       return;
     }
 
-    let location = await Location.getCurrentPositionAsync({});
-    setLocation(location);
-    let latitude = location.coords.latitude;
-    let longitude = location.coords.longitude;
+    let loc = await Location.getCurrentPositionAsync({});
+    setLocation(loc);
+    let latitude = loc.coords.latitude;
+    let longitude = loc.coords.longitude;
     animate(latitude, longitude);
     updateState({
-      heading: heading,
       curLoc: { latitude, longitude },
       coordinate: new AnimatedRegion({
         latitude: latitude,

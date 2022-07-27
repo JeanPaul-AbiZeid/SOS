@@ -47,12 +47,12 @@ export default function CreateAlert() {
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: true,
-      aspect: [3, 3],
+      aspect: [4, 3],
       quality: 1,
-      // base64: true, //converting image to base64
+      base64: true, //converting image to base64
     });
     if (!result.cancelled) {
-      setImage(result);
+      setImage(result.base64);
     }
   }
   
@@ -100,7 +100,7 @@ export default function CreateAlert() {
       let data = {
         "title" : title,
         "description" : description,
-        "image" : image.uri,
+        "image" : image,
         "user_id" : user.id
       }
       axios({
