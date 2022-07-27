@@ -15,7 +15,7 @@ export default function Alert({route}) {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.main}>
-          {profilePicture? <Image style={styles.img} source={{uri:profilePicture}}/>:<Image style={styles.img} source={require('../../assets/persona.png')}/>}   
+          {profilePicture? <Image style={styles.img} source={{uri:"data:image/png;base64," + profilePicture}}/>:<Image style={styles.img} source={require('../../assets/persona.png')}/>}   
           <Text style={styles.name}>{first_name} {last_name}</Text>
       </View>
 
@@ -25,7 +25,7 @@ export default function Alert({route}) {
       <Text style={styles.case}>Description</Text>
       <Text style={styles.desc}>{description}</Text>
       {image && <View style={styles.imageContainer}>
-        <Image style={styles.image} source={{uri:image}}/>
+        <Image style={styles.image} source={{uri:"data:image/png;base64," + image}}/>
       </View>}
       
         
