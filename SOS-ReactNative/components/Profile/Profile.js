@@ -77,7 +77,10 @@ export default function Profile({navigation}) {
         </View>
 
         <View style={styles.box}>
-            <MaterialCommunityIcons name="gender-male-female" size={24} color="gray" />
+            <View style={styles.iconContainer}>
+                <MaterialCommunityIcons name="gender-male-female" size={24} color="gray" />
+            </View>
+            
             <View style={styles.infoContainer}>
                 <Text style={styles.title}>Gender</Text>
                 <Text style={styles.info}>{user.gender}</Text>
@@ -85,7 +88,10 @@ export default function Profile({navigation}) {
         </View>
 
         <View style={styles.box}>
-            <Fontisto name="blood-drop" size={24} color="gray" />
+            <View style={styles.iconContainer}>
+                <Fontisto name="blood-drop" size={24} color="gray" />
+            </View>
+            
             <View style={styles.infoContainer}>
                 <Text style={styles.title}>Blood Type</Text>
                 <Text style={styles.info}>{user.blood_type}</Text>
@@ -93,7 +99,10 @@ export default function Profile({navigation}) {
         </View>
 
         <View style={styles.box}>
-            <Feather name="calendar" size={24} color="gray" />
+            <View style={styles.iconContainer}>
+                <Feather name="calendar" size={24} color="gray" />
+            </View>
+            
             <View style={styles.infoContainer}>
                 <Text style={styles.title}>Date of Birth</Text>
                 <Text style={styles.info}>{user.dob}</Text>
@@ -101,19 +110,27 @@ export default function Profile({navigation}) {
         </View>
 
         <View style={styles.box}>
-            <FontAwesome name="phone" size={24} color="gray" />
-            <View style={styles.infoContainer}>
-                <Text style={styles.title}>Phone</Text>
-                <Text style={styles.info}>{phone}</Text>
+            <View style={styles.iconContainer}>
+                <FontAwesome name="phone" size={24} color="gray" />
             </View>
-            <TouchableOpacity onPress={() => setModalPhone(true)}>
-                <MaterialIcons name="edit" size={24} color="gray" />
-            </TouchableOpacity>
+            <View style={[styles.infoContainer, styles.box1]}>
+                <View>
+                    <Text style={styles.title}>Phone</Text>
+                    <Text style={styles.info}>{phone}</Text>
+                </View>
+                <TouchableOpacity onPress={() => setModalPhone(true)}>
+                    <MaterialIcons name="edit" size={24} color="gray" />
+                </TouchableOpacity>
+            </View>
+            
             
         </View>
 
         <View style={styles.box}>
-            <MaterialIcons name="contacts" size={24} color="gray" />
+            <View style={styles.iconContainer}>
+                <MaterialIcons name="contacts" size={24} color="gray" />
+            </View>
+            
             <View style={styles.margin}>
                 <Text style={styles.title}>Preferred Contact</Text>
                 {!preferredContact?<Text style={styles.info1}>No Preferred Contact Yet</Text>:<Text style={styles.info}>{preferredContact}</Text>}

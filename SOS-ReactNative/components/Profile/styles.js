@@ -10,8 +10,9 @@ const styles = StyleSheet.create({
     },
     main: {
         alignItems: 'center',
-        flexDirection: 'row',
         marginTop: 20,
+        borderBottomColor: 'lightgray',
+        borderBottomWidth: 2,
     },
     img: {
         width: 120,
@@ -22,11 +23,13 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
+        marginTop:10
     },
     name: {
-        fontSize: 30,
-        fontWeight: '400',
+        fontSize: 24,
+        fontWeight: '600',
         marginLeft: 20,
+        marginBottom: 20
     },
     title: {
         color: 'gray',
@@ -34,7 +37,7 @@ const styles = StyleSheet.create({
         marginTop: 20
     },
     info: {
-        fontSize: 24,
+        fontSize: 18,
         fontWeight: '400',
         marginBottom: 10,
     },
@@ -53,6 +56,11 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
     },
+    box1:{
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center'
+    },
     margin: {
         marginLeft: 20,
         flex: 1
@@ -69,8 +77,9 @@ const styles = StyleSheet.create({
         right:0,
         bottom:0,
         backgroundColor:'lightgrey',
-        width:'100%',
+        width:'40%',
         height:'30%',
+        paddingBottom:10
     },
     uploadBtn:{
         display:'flex',
@@ -84,14 +93,14 @@ const styles = StyleSheet.create({
         marginTop: 20,
         alignItems: 'center',
         justifyContent: 'center',
-        paddingVertical: 2,
+        paddingVertical: 8,
         borderRadius: 4,
         elevation: 3,
         marginBottom: 50,
     },
     btnText: {
         color: 'white',
-        fontSize: 30,
+        fontSize: 20,
         fontWeight: '500',
     },
     centereddView: {
@@ -129,6 +138,12 @@ const styles = StyleSheet.create({
         backgroundColor: "lightgreen",
         padding: 5,
         marginLeft: 10
+    },
+    iconContainer: {
+        width: 30,
+        height: 30,
+        alignItems: 'center',
+        justifyContent: 'center'
     }
     
 });
