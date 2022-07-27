@@ -84,6 +84,21 @@ const Clear = async () => {
     await AsyncStorage.clear();
 }
 
+const update = (data) => {
+    axios({
+        method: 'post',
+        url: 'http://192.168.1.149:8000/api/editprofile', 
+        data: data,
+        })
+        .then(function (response) {
+            console.log(response)
+        })
+        .catch(function (error){
+            console.log(error)
+            alert(error)
+    })
+}
+
 export const userContext = React.createContext()
 
 const UserProvider = ({children}) => {
@@ -118,6 +133,7 @@ const UserProvider = ({children}) => {
                 if (response.data.user.role_id == 1) {
                     setIsUser(true)
                     updateToken(response.data.user.id, expoPushToken)
+                    update({"id": response.data.user.id, "is_available": 2})
                 }
             
             })
@@ -134,7 +150,7 @@ const UserProvider = ({children}) => {
             "email" : email,
             "password" : password,
             "role_id" : role,
-            "is_available" : 0,
+            "is_available" : 1,
         }
         axios({
             method: 'post',
@@ -163,7 +179,7 @@ const UserProvider = ({children}) => {
             "dob" : date.toLocaleDateString(),
             "gender" : gender,
             "role_id" : 1,
-            "is_available" : 0,
+            "is_available" : 1,
         }
 
         axios({
@@ -183,12 +199,14 @@ const UserProvider = ({children}) => {
     }
 
     const Lougout = ({navigation}) => {
+        update({"id": user.id, "is_available": 1})
         deleteToken(user.id)
         Clear();
         setToken("")
         setUser({})
         setIsLoggedin(false)
         setIsUser(false)
+        
     }
 
     const getLiveLocation = async () => {

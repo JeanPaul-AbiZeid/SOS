@@ -79,6 +79,9 @@ class UserController extends Controller
         if ($request->preffered_contact){
             $update->preffered_contact = $request->preffered_contact;
         }
+        if ($request->is_available){
+            $update->is_available = $request->is_available;
+        }
         $update->save();
         
         return response()->json([
