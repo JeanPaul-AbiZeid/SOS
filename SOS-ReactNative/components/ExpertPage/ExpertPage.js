@@ -58,7 +58,66 @@ export default function ExpertPage() {
       });
   };
 
-  
+  const { curLoc, isLoading, coordinate } = state
+  const updateState = (data) => setState((state) => ({ ...state, ...data }));
+
+  const destinationCords = {
+    latitude: userLat,
+    longitude: userLong
+  }
+
+  React.useEffect(() => {
+    getLiveLocation();
+    getCase()
+  }, []);
+
+  const getLiveLocation = async () => {
+    let { status } = await Location.requestForegroundPermissionsAsync();
+    if (status !== 'granted') {
+      setErrorMsg('Permission to access location was denied');
+      return;
+    }
+
+    let loc = await Location.getCurrentPositionAsync({});
+    setLocation(loc);
+    let latitude = loc.coords.latitude;
+    let longitude = loc.coords.longitude;
+    animate(latitude, longitude);
+    updateState({
+      curLoc: { latitude, longitude },
+      coordinate: new AnimatedRegion({
+        latitude: latitude,
+        longitude: longitude,
+        latitudeDelta: 0.09,
+        longitudeDelta: 0.04
+      })
+    })
+  };
+
+  const animate = (latitude, longitude) => {
+    const newCoordinate = { latitude, longitude };
+    if (Platform.OS == 'android') {
+        if (markerRef.current) {
+            markerRef.current.animateMarkerToCoordinate(newCoordinate, 7000);
+        }
+    } else {
+        coordinate.timing(newCoordinate).start();
+    }
+  }
+
+  let text = 'Waiting..';
+  if (errorMsg) {
+    text = errorMsg;
+  } else if (location) {
+    text = JSON.stringify(location);
+  }
+
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+        getLiveLocation()
+    }, 6000);
+    return () => clearInterval(interval)
+  }, [])
 
   return (
     <View style={styles.container}>
