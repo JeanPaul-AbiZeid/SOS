@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, TouchableOpacity, View, StyleSheet } from 'react-native';
+import { Text, TouchableOpacity, View, StyleSheet, SafeAreaView, ScrollView, RefreshControl } from 'react-native';
 import styles from './styles';
 import { useUserInfo } from '../../hooks/UserProvider';
 import axios from 'axios';
@@ -35,6 +35,7 @@ const updateLocation = async (id, loc) => {
 
 export default function ExpertPage() {
   const {user} = useUserInfo();
+  const [refreshing, setRefreshing] = React.useState(true);
   const [userFName, setUserFName] = React.useState("")
   const [userLName, setUserLName] = React.useState("")
   const [userBlood, setUserBlood] = React.useState("")
@@ -68,14 +69,16 @@ export default function ExpertPage() {
       url: 'http://192.168.1.149:8000/api/getcase/' + `${user.id}`,
       })
       .then(function (response) {
-        setUserFName(response.data.case[0].user_info.first_name)
-        setUserLName(response.data.case[0].user_info.last_name)
-        setUserBlood(response.data.case[0].user_info.blood_type)
-        setUserDob(response.data.case[0].user_info.dob)
-        setUserGender(response.data.case[0].user_info.gender)
-        setUserLat(response.data.case[0].user_lat)
-        setUserLong(response.data.case[0].user_long)
-        setIsReady(true)
+        if(response.data.case.length > 0){
+          setUserFName(response.data.case[0].user_info.first_name)
+          setUserLName(response.data.case[0].user_info.last_name)
+          setUserBlood(response.data.case[0].user_info.blood_type)
+          setUserDob(response.data.case[0].user_info.dob)
+          setUserGender(response.data.case[0].user_info.gender)
+          setUserLat(response.data.case[0].user_lat)
+          setUserLong(response.data.case[0].user_long)
+          setIsReady(true)
+        }
 
       })
       .catch((error) => {
@@ -147,6 +150,8 @@ export default function ExpertPage() {
 
   return (
     <View style={styles.container}>
+      {isReady?
+      <View>
         <View style={styles.info}>
             <Text style={styles.title}>{userFName} {userLName}</Text>            
             <Text>Gender: {userGender}</Text>
@@ -187,6 +192,19 @@ export default function ExpertPage() {
         <TouchableOpacity style={styles.button}>
             <Text style={styles.btnText}>Done</Text>
         </TouchableOpacity>
+      </View> :
+        <SafeAreaView>
+        <ScrollView
+          refreshControl={
+            <RefreshControl
+              refreshing={refreshing}
+              onRefresh={getCase}
+            />
+          }
+        >
+          <Text>No New task Yet</Text>
+        </ScrollView>
+      </SafeAreaView>}
     </View>
   );
 }
