@@ -105,6 +105,25 @@ export default function Home({navigation}) {
         }) 
     
 
+    const getNearest = (userLocation, expertLocation) => {
+        let nearest_expert_id = expertLocation[0].id
+        let minimum_distance = getDistance(
+            {latitude : userLocation.lat, longitude: userLocation.long},
+            {latitude : expertLocation[0].lat, longitude: expertLocation[0].long}
+        )
+        expertLocation.forEach((expert) => {
+            let distance = getDistance(
+                {latitude : userLocation.lat, longitude: userLocation.long},
+                {latitude : expert.lat, longitude: expert.long}
+            )
+            if (distance < minimum_distance) {
+                minimum_distance = distance
+                nearest_expert_id = expert.id
+            }
+        })
+        return(nearest_expert_id)
+    }
+
     React.useEffect(() => {
         getInfo()
     }, []);
