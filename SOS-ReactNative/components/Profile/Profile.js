@@ -7,7 +7,7 @@ import { useUserInfo } from '../../hooks/UserProvider';
 import axios from 'axios';
 
 export default function Profile({navigation}) {
-    const {user, Lougout} = useUserInfo();
+    const {user, Lougout, setUser} = useUserInfo();
     const [image, setImage] = React.useState(user.picture)
     //model related states
     const [modalName, setModalName] = React.useState(false);
@@ -54,6 +54,13 @@ export default function Profile({navigation}) {
                 alert(error)
         })
     }
+
+    React.useEffect (() => {
+        if(image) {
+            update({"id": user.id, "picture": image})
+        }
+        
+    }, [image])
     
     return (
     <ScrollView style={styles.container}>
@@ -62,9 +69,7 @@ export default function Profile({navigation}) {
                 {image?<Image style={styles.img} source={{ uri: "data:image/png;base64," + image }} />:<Image style={styles.img} source={require('../../assets/persona.png')} />}
                 <View style={styles.uploadBtnContainer}>
                     <TouchableOpacity style={styles.uploadBtn} onPress={() => {
-                        console.log(image)
-                        pickImage()
-                        setTimeout(() => {update({"id": user.id, "picture": image})},1000)}}>
+                        pickImage()}}>
                         <Text>Change Image</Text>
                         <AntDesign name="camera" size={20} color="black" />
                     </TouchableOpacity>
@@ -249,6 +254,7 @@ export default function Profile({navigation}) {
                                 setTempPreferredContact(preferredContact)
                                 update({"id": user.id, "preffered_contact": preferredContact})
                                 setModalContact(!modalContact)
+                                setUser({...user, preffered_contact: preferredContact})
                             }}
                         >
                             <Text style={styles.textStyle}>Save</Text>

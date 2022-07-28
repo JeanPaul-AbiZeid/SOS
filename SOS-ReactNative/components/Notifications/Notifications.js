@@ -1,4 +1,4 @@
-import { Text, View, RefreshControl, FlatList, SafeAreaView, TouchableOpacity, Image } from 'react-native';
+import { Text, View, RefreshControl, FlatList, SafeAreaView, TouchableOpacity, Image, ScrollView } from 'react-native';
 import React from "react";
 import styles from './styles';
 import { useUserInfo } from '../../hooks/UserProvider';
@@ -60,6 +60,7 @@ export default function Notification({navigation}) {
 
   return (
     <View style={styles.container}>
+      {userData?.length > 0?
       <SafeAreaView>
         <FlatList
           data={userData.reverse()}
@@ -71,7 +72,19 @@ export default function Notification({navigation}) {
             <RefreshControl refreshing={refreshing} onRefresh={loadUserData} />
           }
         />
-      </SafeAreaView>
+      </SafeAreaView>:<SafeAreaView>
+      <ScrollView
+        contentContainerStyle={styles.scrollView}
+        refreshControl={
+          <RefreshControl
+            refreshing={refreshing}
+            onRefresh={loadUserData}
+          />
+        }
+      >
+        <Text>No Notications Yet</Text>
+      </ScrollView>
+    </SafeAreaView>}
     </View>
     
     

@@ -34,14 +34,14 @@ export default function Home({navigation}) {
 
 
     const args = {
-        number: preferredContact, // String value with the number to call
+        number: user.preffered_contact, // String value with the number to call
         prompt: false, // Optional boolean property. Determines if the user should be prompted prior to the call 
         skipCanOpen: true // Skip the canOpenURL check
     }
     return (
         <ScrollView contentContainerStyle={styles.container}>
             <View style={styles.imageContainer}>
-                <TouchableOpacity onPress={() => {
+                <TouchableOpacity onPress={() => {   
                 }}>
                     <Image style={styles.image} source={require('../../assets/police-logo.png')}/>
                 </TouchableOpacity>
@@ -54,7 +54,6 @@ export default function Home({navigation}) {
             </View>
             <View style={styles.imageContainer}>
                 <TouchableOpacity onPress={() => {
-                    
                 }}>
                     <Image style={styles.image} source={require('../../assets/fire-logo.png')}/>
                 </TouchableOpacity>

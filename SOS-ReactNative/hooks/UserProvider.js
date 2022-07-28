@@ -222,7 +222,7 @@ const UserProvider = ({children}) => {
 
     return (
         <userContext.Provider
-            value={{ user, LoggedIn, SignUpExpert, SignUpUser, Lougout, isLoggedin, isUser, token }}
+            value={{ user, LoggedIn, SignUpExpert, SignUpUser, Lougout, isLoggedin, isUser, token, setUser }}
         >
             {children}
         </userContext.Provider>
@@ -232,9 +232,9 @@ const UserProvider = ({children}) => {
 export default UserProvider;
 
 export const useUserInfo = () => {
-    const {user, LoggedIn, Lougout, SignUpExpert, SignUpUser, isLoggedin, isUser, token} = React.useContext(userContext)
+    const {user, LoggedIn, Lougout, SignUpExpert, SignUpUser, isLoggedin, isUser, token, setUser} = React.useContext(userContext)
 
     return {
-        user, LoggedIn, Lougout, SignUpExpert, SignUpUser, isLoggedin, isUser, token
+        user, LoggedIn, Lougout, SignUpExpert, SignUpUser, isLoggedin, isUser, token, setUser
     }
 }
