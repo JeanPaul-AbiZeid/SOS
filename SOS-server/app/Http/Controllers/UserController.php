@@ -122,7 +122,19 @@ class UserController extends Controller
         
         return response()->json([
             "status" => "Success",
-            "alerts" => $cases
+            "cases" => $cases
+        ], 200);
+    }
+
+    public function getCurrentCase($id){
+    
+        $case = Cases::where('expert_id', '=', $id)->where('is_done', '=' , 1)->get();
+        
+        $case[0]->user_info = User::find($case[0]->user_id);
+        
+        return response()->json([
+            "status" => "Success",
+            "case" => $case
         ], 200);
     }
 }

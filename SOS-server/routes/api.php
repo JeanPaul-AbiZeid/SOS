@@ -24,4 +24,5 @@ Route::controller(UserController::class)->group(function () {
     Route::get('/getexperts/{id}', 'getAvailable');
     Route::post('/createcase', 'createCase');
     Route::get('/getcases/{id}', 'getCases');
+    Route::get('/getcase/{id}', 'getCurrentCase');
 });
