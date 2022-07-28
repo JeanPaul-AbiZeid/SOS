@@ -2,11 +2,14 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import ExpertHistory from './ExpertHistory/ExpertHistory';
 import ExpertPage from './ExpertPage/ExpertPage';
+import { Button } from 'react-native';
+import { useUserInfo } from '../hooks/UserProvider';
 
 const ExpertTab = createBottomTabNavigator();
 
 
-export default function BottomTabExpert() {
+export default function BottomTabExpert({navigation}) {
+  const {Lougout} = useUserInfo();
     return (
         <ExpertTab.Navigator 
         screenOptions={{
@@ -25,6 +28,13 @@ export default function BottomTabExpert() {
                 headerStyle: {
                   backgroundColor: 'red'
                 },
+                headerRight: () => (
+                  <Button
+                    onPress={() => Lougout({navigation})}
+                    title="Logout"
+                    color="red"
+                  />
+                ),
                 headerTintColor: '#fff',
                 headerTitleStyle: {
                   fontWeight: 'bold',
@@ -38,6 +48,13 @@ export default function BottomTabExpert() {
                 headerStyle: {
                   backgroundColor: 'red'
                 },
+                headerRight: () => (
+                  <Button
+                    onPress={() => Lougout({navigation})}
+                    title="Logout"
+                    color="red"
+                  />
+                ),
                 headerTintColor: '#fff',
                 headerTitleStyle: {
                   fontWeight: 'bold',

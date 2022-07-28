@@ -140,11 +140,11 @@ export default function ExpertPage() {
                 longitudeDelta: 0.04,
             }}>
 
-            <Marker.Animated ref={markerRef} coordinate={coordinate} />
+            <Marker.Animated ref={markerRef} coordinate={coordinate} ><FontAwesome5 name="car-side" size={24} color="red" /></Marker.Animated>
 
             {Object.keys(destinationCords).length > 0 && (<Marker
               coordinate={destinationCords}
-            ><FontAwesome5 name="car-side" size={24} color="red" /></Marker>)}
+            />)}
 
             {Object.keys(destinationCords).length > 0 && (<MapViewDirections
               origin={curLoc}
