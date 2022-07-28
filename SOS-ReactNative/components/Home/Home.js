@@ -142,6 +142,27 @@ export default function Home({navigation}) {
         skipCanOpen: true // Skip the canOpenURL check
     }
 
+    const createCase = (user_id, expert_id, user_lat, user_long, token) => {
+        let data = {
+            "user_id" : user_id,
+            "expert_id" : expert_id,
+            "user_lat" : user_lat,
+            "user_long" : user_long
+          }
+          axios({
+            method: 'post',
+            url: 'http://192.168.1.149:8000/api/createcase', 
+            data: data,
+            })
+            .then(function (response) {
+                console.log(response)
+                sendPushNotification(token)
+            })
+            .catch(function (error){
+              console.log(error)
+          })
+    }
+
     const result = async (role_id) => {
         const expertId = await getExperts(role_id);
         console.log(expertId)
@@ -152,6 +173,7 @@ export default function Home({navigation}) {
             console.log(nearest_expert_id)
             const token = await getToken(nearest_expert_id)
             console.log(token)
+            createCase(user.id,nearest_expert_id, locations.userLocation.lat, locations.userLocation.long, token)
         }else{
             alert("No expert is available")
         }   
