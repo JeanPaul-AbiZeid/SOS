@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, TouchableOpacity, View, StyleSheet, SafeAreaView, ScrollView } from 'react-native';
+import { Text, TouchableOpacity, View, StyleSheet } from 'react-native';
 import styles from './styles';
 import { useUserInfo } from '../../hooks/UserProvider';
 import axios from 'axios';
@@ -35,7 +35,6 @@ const updateLocation = async (id, loc) => {
 
 export default function ExpertPage() {
   const {user} = useUserInfo();
-  const [refreshing, setRefreshing] = React.useState(true);
   const [userFName, setUserFName] = React.useState("")
   const [userLName, setUserLName] = React.useState("")
   const [userBlood, setUserBlood] = React.useState("")
@@ -44,7 +43,6 @@ export default function ExpertPage() {
   const [userLat, setUserLat] = React.useState(null)
   const [userLong, setUserLong] = React.useState(null)
   const [isReady, setIsReady] = React.useState(false)
-  const [caseId, setCaseId] = React.useState(null)
 
   const [location, setLocation] = React.useState(null);
   const [errorMsg, setErrorMsg] = React.useState(null);
@@ -70,7 +68,6 @@ export default function ExpertPage() {
       url: 'http://192.168.1.149:8000/api/getcase/' + `${user.id}`,
       })
       .then(function (response) {
-        setCaseId(response.data.case[0].id)
         setUserFName(response.data.case[0].user_info.first_name)
         setUserLName(response.data.case[0].user_info.last_name)
         setUserBlood(response.data.case[0].user_info.blood_type)
@@ -150,77 +147,46 @@ export default function ExpertPage() {
 
   return (
     <View style={styles.container}>
-      {isReady?
-      <View>
-          <View style={styles.info}>
-              <Text style={styles.title}>{userFName} {userLName}</Text>            
-              <Text>Gender: {userGender}</Text>
-              <Text>Date of Birth: {userDob}</Text>
-              <Text>Blood Type: {userBlood}</Text>
-          </View>
-          
-          <Text style={styles.direction}>Direction</Text>
-          <View style={styles.map}>
-            {isReady? 
-            <MapView
-                ref={mapRef}
-                style={StyleSheet.absoluteFill}
-                initialRegion={{
-                  ...curLoc,
-                  latitudeDelta: 0.09,
-                  longitudeDelta: 0.04,
-              }}>
-
-              <Marker.Animated ref={markerRef} coordinate={coordinate} ><FontAwesome5 name="car-side" size={24} color="red" /></Marker.Animated>
-
-              {Object.keys(destinationCords).length > 0 && (<Marker
-                coordinate={destinationCords}
-              />)}
-
-              {Object.keys(destinationCords).length > 0 && (<MapViewDirections
-                origin={curLoc}
-                destination={destinationCords}
-                apikey={GOOGLE_MAP_KEY}
-                strokeWidth={6}
-                strokeColor="blue"
-                optimizeWaypoints={true}
-              />)}
-                
-            </MapView>:null}
-          </View>
-
-          <TouchableOpacity style={styles.button} onPress={() => {
-            let data = {
-              "id" : caseId
-            }
-            axios({
-              method: 'post',
-              url: 'http://192.168.1.149:8000/api/updatecase',
-              })
-              .then(function (response) {
-                console.log(response)
-              })
-              .catch((error) => {
-                console.error(error);
-              });
-          }}>
-              <Text style={styles.btnText}>Done</Text>
-          </TouchableOpacity>
+        <View style={styles.info}>
+            <Text style={styles.title}>{userFName} {userLName}</Text>            
+            <Text>Gender: {userGender}</Text>
+            <Text>Date of Birth: {userDob}</Text>
+            <Text>Blood Type: {userBlood}</Text>
         </View>
-        :
-        <SafeAreaView>
-          <ScrollView
-            contentContainerStyle={styles.scrollView}
-            refreshControl={
-              <RefreshControl
-                refreshing={refreshing}
-                onRefresh={getCase}
-              />
-            }
-          >
-            <Text>No Notications Yet</Text>
-          </ScrollView>
-        </SafeAreaView>}
+        
+        <Text style={styles.direction}>Direction</Text>
+        <View style={styles.map}>
+          {isReady? 
+          <MapView
+              ref={mapRef}
+              style={StyleSheet.absoluteFill}
+              initialRegion={{
+                ...curLoc,
+                latitudeDelta: 0.09,
+                longitudeDelta: 0.04,
+            }}>
+
+            <Marker.Animated ref={markerRef} coordinate={coordinate} ><FontAwesome5 name="car-side" size={24} color="red" /></Marker.Animated>
+
+            {Object.keys(destinationCords).length > 0 && (<Marker
+              coordinate={destinationCords}
+            />)}
+
+            {Object.keys(destinationCords).length > 0 && (<MapViewDirections
+              origin={curLoc}
+              destination={destinationCords}
+              apikey={GOOGLE_MAP_KEY}
+              strokeWidth={6}
+              strokeColor="blue"
+              optimizeWaypoints={true}
+            />)}
+              
+          </MapView>:null}
+        </View>
+
+        <TouchableOpacity style={styles.button}>
+            <Text style={styles.btnText}>Done</Text>
+        </TouchableOpacity>
     </View>
   );
 }
