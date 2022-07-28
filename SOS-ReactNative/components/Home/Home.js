@@ -7,6 +7,7 @@ import axios from 'axios';
 import { getFirestore, collection, doc, getDocs, getDoc } from "firebase/firestore";
 import { initializeApp } from "firebase/app";
 import { getDistance } from 'geolib';
+import * as Notifications from 'expo-notifications';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -22,6 +23,14 @@ const firebaseConfig = {
   const app = initializeApp(firebaseConfig);
   // Initialize Cloud Firestore and get a reference to the service
   const firestore = getFirestore(app, {experimentalForceDetectLongPolling : true});
+
+  Notifications.setNotificationHandler({
+    handleNotification: async () => ({
+      shouldShowAlert: true,
+      shouldPlaySound: false,
+      shouldSetBadge: false,
+    }),
+  });
 
 export default function Home({navigation}) {
     const {user} = useUserInfo();
@@ -93,9 +102,9 @@ export default function Home({navigation}) {
         console.log(expertId)
         if(expertId.length > 0) {
             const locations = await getLocations(expertId);
-        console.log(locations)
-        const nearest_expert_id = getNearest(locations.userLocation, locations.expertLocations);
-        console.log(nearest_expert_id)
+            console.log(locations)
+            const nearest_expert_id = getNearest(locations.userLocation, locations.expertLocations);
+            console.log(nearest_expert_id)
         }else{
             alert("No expert is available")
         }   
