@@ -38,15 +38,27 @@ export default function Home({navigation}) {
         prompt: false, // Optional boolean property. Determines if the user should be prompted prior to the call 
         skipCanOpen: true // Skip the canOpenURL check
     }
-
     return (
         <ScrollView contentContainerStyle={styles.container}>
             <View style={styles.imageContainer}>
-                <Image style={styles.image} source={require('../../assets/police-logo.png')}/>
-                <Image style={styles.image} source={require('../../assets/ambulance-logo.png')}/>
+                <TouchableOpacity onPress={() => {
+                }}>
+                    <Image style={styles.image} source={require('../../assets/police-logo.png')}/>
+                </TouchableOpacity>
+                
+                <TouchableOpacity onPress={() => {
+                }}>
+                    <Image style={styles.image} source={require('../../assets/ambulance-logo.png')}/>
+                </TouchableOpacity>
+                
             </View>
             <View style={styles.imageContainer}>
-                <Image style={styles.image} source={require('../../assets/fire-logo.png')}/>
+                <TouchableOpacity onPress={() => {
+                    
+                }}>
+                    <Image style={styles.image} source={require('../../assets/fire-logo.png')}/>
+                </TouchableOpacity>
+                
                 <TouchableOpacity onPress={() => {
                     call(args).catch(console.error)
                 }}>
