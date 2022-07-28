@@ -23,4 +23,5 @@ Route::controller(UserController::class)->group(function () {
     Route::post('/editprofile', 'editProfile');
     Route::get('/getexperts/{id}', 'getAvailable');
     Route::post('/createcase', 'createCase');
+    Route::get('/getcases/{id}', 'getCases');
 });

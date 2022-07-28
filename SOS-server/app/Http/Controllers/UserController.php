@@ -112,4 +112,17 @@ class UserController extends Controller
             "status" => "Success"
         ], 200);
     }
+
+    public function getCases($id){
+    
+        $cases = Cases::where('expert_id', '=', $id)->get();
+        for ($i = 0; $i < count($cases); $i++){
+            $cases[$i]->user_info = User::find($cases[$i]->user_id);
+        }
+        
+        return response()->json([
+            "status" => "Success",
+            "alerts" => $cases
+        ], 200);
+    }
 }
