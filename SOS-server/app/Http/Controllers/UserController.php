@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Role;
 use App\Models\User;
 use App\Models\Alert;
+use App\Models\Cases;
 
 class UserController extends Controller
 {
@@ -93,6 +94,20 @@ class UserController extends Controller
         }
         $update->save();
         
+        return response()->json([
+            "status" => "Success"
+        ], 200);
+    }
+
+    public function createCase(Request $request){
+        $case = Cases::create([
+            'user_id' => $request->user_id,
+            'expert_id' => $request->expert_id,
+            'user_lat' => $request->user_lat,
+            'user_long' => $request->user_long,
+            'is_done' => 1
+        ]);
+
         return response()->json([
             "status" => "Success"
         ], 200);

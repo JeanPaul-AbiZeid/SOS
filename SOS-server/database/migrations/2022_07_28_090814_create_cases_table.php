@@ -18,8 +18,8 @@ return new class extends Migration
             $table->integer('user_id');
             $table->integer('expert_id');
             $table->integer('is_done');
-            $table->integer('user_lat');
-            $table->integer('user_long');
+            $table->float('user_lat', 9, 7);
+            $table->float('user_long', 9, 7);
             $table->timestamps();
         });
     }

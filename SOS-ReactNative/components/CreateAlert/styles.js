@@ -21,9 +21,9 @@ const styles = StyleSheet.create({
     borderColor: 'gray',
   },
   description: {
-    flex: 0.8,
     justifyContent: 'flex-start',
-    textAlignVertical: 'top'
+    textAlignVertical: 'top',
+    height: 300
   },
   choose:{
     marginTop: 20,

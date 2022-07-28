@@ -46,7 +46,7 @@ export default function Home({navigation}) {
             }
             return(coord)
         })
-        return(obj) 
+        return(obj)  
     }
 
     const getExperts = (role_id) => 
@@ -82,7 +82,6 @@ export default function Home({navigation}) {
         return(nearest_expert_id)
     }
 
-
     const args = {
         number: user.preffered_contact, // String value with the number to call
         prompt: false, // Optional boolean property. Determines if the user should be prompted prior to the call 
@@ -91,9 +90,15 @@ export default function Home({navigation}) {
 
     const result = async (role_id) => {
         const expertId = await getExperts(role_id);
-        const locations = await getLocations(expertId);
+        console.log(expertId)
+        if(expertId.length > 0) {
+            const locations = await getLocations(expertId);
+        console.log(locations)
         const nearest_expert_id = getNearest(locations.userLocation, locations.expertLocations);
         console.log(nearest_expert_id)
+        }else{
+            alert("No expert is available")
+        }   
     }
 
     return (
@@ -106,6 +111,7 @@ export default function Home({navigation}) {
                 </TouchableOpacity>
                 
                 <TouchableOpacity onPress={() => {
+                    result(4)
                 }}>
                     <Image style={styles.image} source={require('../../assets/ambulance-logo.png')}/>
                 </TouchableOpacity>
@@ -113,6 +119,7 @@ export default function Home({navigation}) {
             </View>
             <View style={styles.imageContainer}>
                 <TouchableOpacity onPress={() => {
+                    result(3)
                 }}>
                     <Image style={styles.image} source={require('../../assets/fire-logo.png')}/>
                 </TouchableOpacity>
