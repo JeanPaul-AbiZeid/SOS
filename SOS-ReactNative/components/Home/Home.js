@@ -90,6 +90,20 @@ export default function Home({navigation}) {
                 alert(error)
         }) 
     }
+    const getExperts = (role_id) => 
+        axios({
+            method: 'get',
+            url: 'http://192.168.1.149:8000/api/getexperts/' +`${role_id}`,
+            })
+            .then(function (response) {
+                // setExpertId(response.data.experts)
+                return (response.data.experts)
+            })
+            .catch(function (error){
+                console.log(error)
+                alert(error)
+        }) 
+    
 
     React.useEffect(() => {
         getInfo()
