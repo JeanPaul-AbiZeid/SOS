@@ -24,11 +24,7 @@ const firebaseConfig = {
   const firestore = getFirestore(app, {experimentalForceDetectLongPolling : true});
 
 export default function Home({navigation}) {
-    const [preferredContact, setPreferredContact] = React.useState("")
     const {user} = useUserInfo();
-    const [expertId, setExpertId] = React.useState([])
-    const [expertLocation, setExpertLocation] = React.useState([])
-    const [userLocation, setUserLocation] = React.useState([])
 
 
     const getLocations = async (expertId) => {
@@ -39,9 +35,6 @@ export default function Home({navigation}) {
             long: userLoc.data().location.coords.longitude
         }
         obj.userLocation = user_coord
-        // setUserLocation(prevArray => [...prevArray, user_coord])
-
-        // console.log(userLocation)
 
         const expertLocationsTemp = await Promise.all(expertId.map((expert) => getDoc(doc(firestore, "users", JSON.stringify(expert.id)))))
 
@@ -53,50 +46,15 @@ export default function Home({navigation}) {
             }
             return(coord)
         })
-        
-        // expertId.forEach(async (expert) => {
-        
-        // const location = await getDoc(doc(firestore, "users", JSON.stringify(expert.id)))
-        // let coord = {
-        //     id: expert.id,
-        //     lat: location.data().location.coords.latitude,
-        //     long: location.data().location.coords.longitude,
-        // }
-        // obj.expertLocations.push(coord)
-        // obj.expertLocations
-        // setExpertLocation(prevArray => [...prevArray, coord])
-        // })
         return(obj) 
-        
-
-        
     }
-    
 
-    const getInfo = () => {
-        let data = {
-            "id" : user.id
-        }
-        axios({
-            method: 'post',
-            url: 'http://192.168.1.149:8000/api/userinfo',
-            data: data
-            })
-            .then(function (response) {
-                setPreferredContact(response.data.user.preffered_contact)
-            })
-            .catch(function (error){
-                console.log(error)
-                alert(error)
-        }) 
-    }
     const getExperts = (role_id) => 
         axios({
             method: 'get',
             url: 'http://192.168.1.149:8000/api/getexperts/' +`${role_id}`,
             })
             .then(function (response) {
-                // setExpertId(response.data.experts)
                 return (response.data.experts)
             })
             .catch(function (error){
@@ -124,10 +82,6 @@ export default function Home({navigation}) {
         return(nearest_expert_id)
     }
 
-    React.useEffect(() => {
-        getInfo()
-    }, []);
-
 
     const args = {
         number: user.preffered_contact, // String value with the number to call
@@ -139,12 +93,14 @@ export default function Home({navigation}) {
         const expertId = await getExperts(role_id);
         const locations = await getLocations(expertId);
         const nearest_expert_id = getNearest(locations.userLocation, locations.expertLocations);
+        console.log(nearest_expert_id)
     }
 
     return (
         <ScrollView contentContainerStyle={styles.container}>
             <View style={styles.imageContainer}>
-                <TouchableOpacity onPress={() => {   
+                <TouchableOpacity onPress={() => {
+                    result(2)
                 }}>
                     <Image style={styles.image} source={require('../../assets/police-logo.png')}/>
                 </TouchableOpacity>
