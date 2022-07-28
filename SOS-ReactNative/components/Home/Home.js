@@ -56,12 +56,12 @@ export default function Home({navigation}) {
         };
     }, []);
 
-    async function sendPushNotification(expoPushToken, user, caseTitle) {
+    async function sendPushNotification(expoPushToken) {
     const message = {
         to: expoPushToken,
         sound: 'default',
-        title: user,
-        body: caseTitle,
+        title: "New Case",
+        body: "You have an urgent case",
         data: { someData: 'goes here' },
     };
     
@@ -76,7 +76,10 @@ export default function Home({navigation}) {
     });
     }
       
-
+    const getToken = async(expertID) => {
+        const token = await getDoc(doc(firestore, "users", JSON.stringify(expertID)))
+        return (token.data().token)
+    }
 
     const getLocations = async (expertId) => {
         const obj = {expertLocations : []}
@@ -147,6 +150,8 @@ export default function Home({navigation}) {
             console.log(locations)
             const nearest_expert_id = getNearest(locations.userLocation, locations.expertLocations);
             console.log(nearest_expert_id)
+            const token = await getToken(nearest_expert_id)
+            console.log(token)
         }else{
             alert("No expert is available")
         }   
