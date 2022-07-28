@@ -11,6 +11,7 @@ export default function Tracking() {
   const [errorMsg, setErrorMsg] = React.useState(null);
   const mapRef = React.useRef()
   const markerRef = React.useRef()
+  const GOOGLE_MAP_KEY = "AIzaSyBMZso0L_GfC6he0j_1o0Hqwx7pOtyaWcs"
   const [state, setState] = React.useState({
     curLoc: {
       latitude: 33.9680386,
@@ -104,14 +105,14 @@ export default function Tracking() {
               coordinate={destinationCords}
             ><FontAwesome5 name="car-side" size={24} color="red" /></Marker>)}
 
-            {/* {Object.keys(destinationCords).length > 0 && (<MapViewDirections
+            {Object.keys(destinationCords).length > 0 && (<MapViewDirections
               origin={curLoc}
               destination={destinationCords}
-              // apikey={GOOGLE_MAP_KEY}
+              apikey={GOOGLE_MAP_KEY}
               strokeWidth={6}
-              strokeColor="red"
+              strokeColor="blue"
               optimizeWaypoints={true}
-            />)} */}
+            />)}
               
           </MapView>
         </View>
