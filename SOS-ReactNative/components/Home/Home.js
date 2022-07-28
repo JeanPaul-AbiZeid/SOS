@@ -26,6 +26,52 @@ const firebaseConfig = {
 export default function Home({navigation}) {
     const [preferredContact, setPreferredContact] = React.useState("")
     const {user} = useUserInfo();
+    const [expertId, setExpertId] = React.useState([])
+    const [expertLocation, setExpertLocation] = React.useState([])
+    const [userLocation, setUserLocation] = React.useState([])
+
+
+    const getLocations = async (expertId) => {
+        const obj = {expertLocations : []}
+        const userLoc = await getDoc(doc(firestore, "users", JSON.stringify(user.id)))
+        let user_coord = {
+            lat: userLoc.data().location.coords.latitude,
+            long: userLoc.data().location.coords.longitude
+        }
+        obj.userLocation = user_coord
+        // setUserLocation(prevArray => [...prevArray, user_coord])
+
+        // console.log(userLocation)
+
+        const expertLocationsTemp = await Promise.all(expertId.map((expert) => getDoc(doc(firestore, "users", JSON.stringify(expert.id)))))
+
+        obj.expertLocations = expertLocationsTemp.map((location, index) => {
+            let coord = {
+                id: expertId[index].id,
+                lat: location.data().location.coords.latitude,
+                long: location.data().location.coords.longitude,
+            }
+            return(coord)
+        })
+        
+        // expertId.forEach(async (expert) => {
+        
+        // const location = await getDoc(doc(firestore, "users", JSON.stringify(expert.id)))
+        // let coord = {
+        //     id: expert.id,
+        //     lat: location.data().location.coords.latitude,
+        //     long: location.data().location.coords.longitude,
+        // }
+        // obj.expertLocations.push(coord)
+        // obj.expertLocations
+        // setExpertLocation(prevArray => [...prevArray, coord])
+        // })
+        return(obj) 
+        
+
+        
+    }
+    
 
     const getInfo = () => {
         let data = {
