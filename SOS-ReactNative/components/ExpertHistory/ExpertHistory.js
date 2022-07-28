@@ -1,30 +1,35 @@
-import {  ScrollView, Text, View } from 'react-native';
+import {  ScrollView, Text, View, SafeAreaView, RefreshControl, FlatList} from 'react-native';
 import React from "react";
 import styles from './styles';
-import ExpertNotification from '../ExpertNotification/ExpertNotification';
-
+import { useUserInfo } from '../../hooks/UserProvider';
+import { Entypo } from '@expo/vector-icons'; 
+import axios from 'axios';
 
 export default function ExpertHistory() {
+  const [refreshing, setRefreshing] = React.useState(true);
+  const [expertData, setExpertData] = React.useState([]);
+  const {user} = useUserInfo();
+
+  const Case = ({ item }) => {
+    return (
+      
+      <View style={styles.main1}>
+        
+        <Text style={styles.name}>{item.user_info.first_name} {item.user_info.last_name}</Text>
+        <View style={styles.loc}>
+            <Entypo name="location-pin" size={20} color="red" />
+            <Text>{item.user_long}</Text>
+        </View>
+        
+      </View>
+    );
+  };
+
 
   return (
-    <View style={styles.main}>
-        <ScrollView contentContainerStyle={styles.container}>
-
-            <View style={styles.notification}>
-                <ExpertNotification/>
-                <ExpertNotification/>
-                <ExpertNotification/>
-                <ExpertNotification/>
-                <ExpertNotification/>
-                <ExpertNotification/>
-                <ExpertNotification/>
-                <ExpertNotification/>
-                <ExpertNotification/>
-            </View>
-        
-        </ScrollView>
+    <View style={styles.container}>
+      
     </View>
-    
     
   );
 }

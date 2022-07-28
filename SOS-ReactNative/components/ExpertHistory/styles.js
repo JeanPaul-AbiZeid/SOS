@@ -13,6 +13,27 @@ const styles = StyleSheet.create({
     notification: {
         marginTop: 30,
     },
+    name: {
+        fontSize: 20,
+        fontWeight: '400'
+    },
+    desc: {
+        fontSize: 18,
+        fontWeight: '300',
+    },
+    loc: {
+        flexDirection: 'row',
+        alignContent: 'center'
+    },
+    main1: {
+        marginVertical: 10,
+        borderColor: 'gray',
+    },
+    divider:{
+        height: 2,
+        backgroundColor: 'gray',
+        marginTop: 15
+    }
 });
 
 export default styles;
