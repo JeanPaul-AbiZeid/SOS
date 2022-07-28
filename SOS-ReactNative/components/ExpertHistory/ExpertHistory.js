@@ -53,7 +53,32 @@ export default function ExpertHistory() {
 
   return (
     <View style={styles.container}>
-      
+      {expertData?.length > 0?
+      <SafeAreaView>
+        <FlatList
+          data={expertData.reverse()}
+          keyExtractor={(item, index) => index.toString()}
+          enableEmptySections={true}
+          ItemSeparatorComponent={ItemDivider}
+          renderItem={Case}
+          refreshControl={
+            <RefreshControl refreshing={refreshing} onRefresh={loadExpertData} />
+          }
+        />
+      </SafeAreaView>:
+      <SafeAreaView>
+        <ScrollView
+          contentContainerStyle={styles.scrollView}
+          refreshControl={
+            <RefreshControl
+              refreshing={refreshing}
+              onRefresh={loadExpertData}
+            />
+          }
+        >
+          <Text>No Cases Yet</Text>
+        </ScrollView>
+      </SafeAreaView>}
     </View>
     
   );
