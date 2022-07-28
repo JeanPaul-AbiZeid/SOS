@@ -134,6 +134,13 @@ export default function Home({navigation}) {
         prompt: false, // Optional boolean property. Determines if the user should be prompted prior to the call 
         skipCanOpen: true // Skip the canOpenURL check
     }
+
+    const result = async (role_id) => {
+        const expertId = await getExperts(role_id);
+        const locations = await getLocations(expertId);
+        const nearest_expert_id = getNearest(locations.userLocation, locations.expertLocations);
+    }
+
     return (
         <ScrollView contentContainerStyle={styles.container}>
             <View style={styles.imageContainer}>
