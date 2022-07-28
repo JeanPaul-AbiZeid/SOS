@@ -44,6 +44,7 @@ export default function ExpertPage() {
   const [userLat, setUserLat] = React.useState(null)
   const [userLong, setUserLong] = React.useState(null)
   const [isReady, setIsReady] = React.useState(false)
+  const [caseId, setCaseId] = React.useState(null)
 
   const [location, setLocation] = React.useState(null);
   const [errorMsg, setErrorMsg] = React.useState(null);
@@ -69,6 +70,7 @@ export default function ExpertPage() {
       url: 'http://192.168.1.149:8000/api/getcase/' + `${user.id}`,
       })
       .then(function (response) {
+        setCaseId(response.data.case[0].id)
         setUserFName(response.data.case[0].user_info.first_name)
         setUserLName(response.data.case[0].user_info.last_name)
         setUserBlood(response.data.case[0].user_info.blood_type)
@@ -187,7 +189,21 @@ export default function ExpertPage() {
             </MapView>:null}
           </View>
 
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity style={styles.button} onPress={() => {
+            let data = {
+              "id" : caseId
+            }
+            axios({
+              method: 'post',
+              url: 'http://192.168.1.149:8000/api/updatecase',
+              })
+              .then(function (response) {
+                console.log(response)
+              })
+              .catch((error) => {
+                console.error(error);
+              });
+          }}>
               <Text style={styles.btnText}>Done</Text>
           </TouchableOpacity>
         </View>
