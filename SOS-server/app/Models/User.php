@@ -18,6 +18,11 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasMany(Alert::class);
     }
 
+    public function cases()
+    {
+        return $this->hasMany(Cases::class);
+    }
+
     /**
      * The attributes that are mass assignable.
      *
