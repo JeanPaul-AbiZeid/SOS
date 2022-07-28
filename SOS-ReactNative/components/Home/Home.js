@@ -32,8 +32,29 @@ const firebaseConfig = {
     }),
   });
 
+
+
 export default function Home({navigation}) {
     const {user} = useUserInfo();
+    const [notification, setNotification] = React.useState(false);
+    const notificationListener = React.useRef();
+    const responseListener = React.useRef();
+
+    React.useEffect(() => {
+
+        notificationListener.current = Notifications.addNotificationReceivedListener(notification => {
+          setNotification(notification);
+        });
+    
+        responseListener.current = Notifications.addNotificationResponseReceivedListener(response => {
+          console.log(response);
+        });
+    
+        return () => {
+          Notifications.removeNotificationSubscription(notificationListener.current);
+          Notifications.removeNotificationSubscription(responseListener.current);
+        };
+      }, []);
 
 
     const getLocations = async (expertId) => {
