@@ -142,6 +142,21 @@ export default function Home({navigation}) {
         skipCanOpen: true // Skip the canOpenURL check
     }
 
+    const update = (data) => {
+        axios({
+            method: 'post',
+            url: 'http://192.168.1.149:8000/api/editprofile', 
+            data: data,
+            })
+            .then(function (response) {
+                console.log(response)
+            })
+            .catch(function (error){
+                console.log(error)
+                alert(error)
+        })
+    }
+
     const createCase = (user_id, expert_id, user_lat, user_long, token) => {
         let data = {
             "user_id" : user_id,
@@ -157,6 +172,7 @@ export default function Home({navigation}) {
             .then(function (response) {
                 console.log(response)
                 sendPushNotification(token)
+                update({"id": expert_id, "is_available": 1})
             })
             .catch(function (error){
               console.log(error)
