@@ -25,6 +25,31 @@ export default function ExpertHistory() {
     );
   };
 
+  const ItemDivider = () => {
+    return (
+      <View
+        style={styles.divider}
+      />
+    );
+  }
+
+  const loadExpertData = () => {
+    axios({
+      method: 'get',
+      url: 'http://192.168.1.149:8000/api/getcases/' + `${user.id}`,
+      })
+      .then(function (response) {
+        setRefreshing(false);
+        setExpertData(response.data.cases);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
+  React.useEffect(() => {
+    loadExpertData();
+  }, []);
 
   return (
     <View style={styles.container}>
