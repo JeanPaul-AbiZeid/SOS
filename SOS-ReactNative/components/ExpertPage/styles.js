@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     backgroundColor: '#e6e6e6',
     paddingHorizontal: 20,
-    paddingBottom: 100,
+    paddingBottom: 20,
   },
   title: {
     color: 'black',
@@ -21,18 +21,18 @@ const styles = StyleSheet.create({
   },
   direction: {
     fontSize: 20,
-    marginTop: 50,
-    marginBottom: 10  
+    marginTop: 20,
+    marginBottom: 10,
   },
   map: {
-    flex: 1,
+    flex: 2,
     borderColor: 'gray',
     borderWidth: 2
   },
   button: {
     backgroundColor: 'red',
     alignSelf: 'stretch',
-    marginTop: 50,
+    marginTop: 20,
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: 8,

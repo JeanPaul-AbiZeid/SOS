@@ -1,5 +1,5 @@
 import React from 'react';
-import {  Text, View, StyleSheet, Image } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import styles from './styles';
 import MapView, { Marker, AnimatedRegion } from 'react-native-maps';
 import * as Location from 'expo-location';
