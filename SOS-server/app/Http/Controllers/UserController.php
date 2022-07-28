@@ -63,6 +63,16 @@ class UserController extends Controller
         ], 200);
     }
 
+    public function updateCase(Request $request) {
+        $update = Cases::find($request->id);
+        $update->is_done = 2;
+        $update->save();
+        
+        return response()->json([
+            "status" => "Success"
+        ], 200);
+    }
+
     public function editProfile(Request $request){
         $update = User::find($request->id);
         if ($request->first_name){

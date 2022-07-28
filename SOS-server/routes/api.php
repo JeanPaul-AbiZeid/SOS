@@ -25,4 +25,5 @@ Route::controller(UserController::class)->group(function () {
     Route::post('/createcase', 'createCase');
     Route::get('/getcases/{id}', 'getCases');
     Route::get('/getcase/{id}', 'getCurrentCase');
+    Route::post('/updatecase', 'updateCase');
 });
