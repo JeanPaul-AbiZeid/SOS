@@ -130,7 +130,32 @@ export default function ExpertPage() {
         
         <Text style={styles.direction}>Direction</Text>
         <View style={styles.map}>
-          
+          {isReady? 
+          <MapView
+              ref={mapRef}
+              style={StyleSheet.absoluteFill}
+              initialRegion={{
+                ...curLoc,
+                latitudeDelta: 0.09,
+                longitudeDelta: 0.04,
+            }}>
+
+            <Marker.Animated ref={markerRef} coordinate={coordinate} />
+
+            {Object.keys(destinationCords).length > 0 && (<Marker
+              coordinate={destinationCords}
+            ><FontAwesome5 name="car-side" size={24} color="red" /></Marker>)}
+
+            {Object.keys(destinationCords).length > 0 && (<MapViewDirections
+              origin={curLoc}
+              destination={destinationCords}
+              apikey={GOOGLE_MAP_KEY}
+              strokeWidth={6}
+              strokeColor="blue"
+              optimizeWaypoints={true}
+            />)}
+              
+          </MapView>:null}
         </View>
 
         <TouchableOpacity style={styles.button}>
