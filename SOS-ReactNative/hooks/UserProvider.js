@@ -131,9 +131,10 @@ const UserProvider = ({children}) => {
                 setToken(response.data.authorisation.token)
                 updateLocation(response.data.user.id, location)
                 updateToken(response.data.user.id, expoPushToken)
-                setIsUser(true)
                 if (response.data.user.role_id != 1) {
                     update({"id": response.data.user.id, "is_available": 2})
+                }else{
+                    setIsUser(true)
                 }
             
             })

@@ -168,12 +168,12 @@ export default function Home({navigation}) {
         console.log(expertId)
         if(expertId.length > 0) {
             const locations = await getLocations(expertId);
-            console.log(locations)
+            // console.log(locations)
             const nearest_expert_id = getNearest(locations.userLocation, locations.expertLocations);
-            console.log(nearest_expert_id)
+            // console.log(nearest_expert_id)
             const token = await getToken(nearest_expert_id)
-            console.log(token)
-            createCase(user.id,nearest_expert_id, locations.userLocation.lat, locations.userLocation.long, token)
+            // console.log(token)
+            createCase(user.id, nearest_expert_id, locations.userLocation.lat, locations.userLocation.long, token)
         }else{
             alert("No expert is available")
         }   

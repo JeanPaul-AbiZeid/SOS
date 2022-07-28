@@ -7,9 +7,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingBottom: 100,
   },
-  info: {
-    marginVertical: 20
-  },
   title: {
     color: 'black',
     fontSize: 24,
