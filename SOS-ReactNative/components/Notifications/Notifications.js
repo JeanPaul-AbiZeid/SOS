@@ -74,7 +74,6 @@ export default function Notification({navigation}) {
         />
       </SafeAreaView>:<SafeAreaView>
       <ScrollView
-        contentContainerStyle={styles.scrollView}
         refreshControl={
           <RefreshControl
             refreshing={refreshing}
