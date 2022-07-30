@@ -25,9 +25,10 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   map: {
-    flex: 2,
+
     borderColor: 'gray',
-    borderWidth: 2
+    borderWidth: 2,
+    height: 300
   },
   button: {
     backgroundColor: 'red',

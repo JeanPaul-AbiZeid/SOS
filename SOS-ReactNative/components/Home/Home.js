@@ -173,6 +173,7 @@ export default function Home({navigation}) {
                 console.log(response)
                 sendPushNotification(token)
                 update({"id": expert_id, "is_available": 1})
+                alert("Request Sent")
             })
             .catch(function (error){
               console.log(error)

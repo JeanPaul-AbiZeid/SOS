@@ -5,19 +5,18 @@ import MapView, { Marker, AnimatedRegion } from 'react-native-maps';
 import * as Location from 'expo-location';
 import { FontAwesome5 } from '@expo/vector-icons'; 
 import MapViewDirections from 'react-native-maps-directions';
+import {API_KEY} from '@env'
 
 export default function Tracking() {
   const [location, setLocation] = React.useState(null);
   const [errorMsg, setErrorMsg] = React.useState(null);
   const mapRef = React.useRef()
   const markerRef = React.useRef()
-  const GOOGLE_MAP_KEY = "AIzaSyBMZso0L_GfC6he0j_1o0Hqwx7pOtyaWcs"
   const [state, setState] = React.useState({
     curLoc: {
       latitude: 33.9680386,
       longitude: 35.6206043,
     },
-    // destinationCords: {},
     isLoading: false,
     coordinate: new AnimatedRegion({
       latitude: 33.9680386,
@@ -26,7 +25,7 @@ export default function Tracking() {
       longitudeDelta: 0.04
     }),
   })
-  const { curLoc, /*destinationCords,*/ isLoading, coordinate } = state
+  const { curLoc, isLoading, coordinate } = state
   const updateState = (data) => setState((state) => ({ ...state, ...data }));
 
   const destinationCords = {
@@ -108,7 +107,7 @@ export default function Tracking() {
             {Object.keys(destinationCords).length > 0 && (<MapViewDirections
               origin={curLoc}
               destination={destinationCords}
-              apikey={GOOGLE_MAP_KEY}
+              apikey={API_KEY}
               strokeWidth={6}
               strokeColor="blue"
               optimizeWaypoints={true}

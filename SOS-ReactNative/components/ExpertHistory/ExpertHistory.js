@@ -76,7 +76,7 @@ export default function ExpertHistory() {
             />
           }
         >
-          <Text>No Cases Yet</Text>
+          <Text>No Finished Cases Yet</Text>
         </ScrollView>
       </SafeAreaView>}
     </View>

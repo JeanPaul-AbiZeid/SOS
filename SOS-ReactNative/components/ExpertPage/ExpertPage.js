@@ -49,7 +49,6 @@ export default function ExpertPage() {
   const [errorMsg, setErrorMsg] = React.useState(null);
   const mapRef = React.useRef()
   const markerRef = React.useRef()
-  const GOOGLE_MAP_KEY = "AIzaSyBMZso0L_GfC6he0j_1o0Hqwx7pOtyaWcs"
   const [state, setState] = React.useState({
     curLoc: {
       latitude: 33.9680386,
@@ -90,8 +89,8 @@ export default function ExpertPage() {
   const updateState = (data) => setState((state) => ({ ...state, ...data }));
 
   const destinationCords = {
-    latitude: userLat,
-    longitude: userLong
+    latitude:34.013184,
+    longitude:35.6417536
   }
 
   React.useEffect(() => {
@@ -114,8 +113,8 @@ export default function ExpertPage() {
     updateState({
       curLoc: { latitude, longitude },
       coordinate: new AnimatedRegion({
-        latitude: latitude,
-        longitude: longitude,
+        latitude: 33.9680386,
+        longitude: 35.6206043,
         latitudeDelta: 0.09,
         longitudeDelta: 0.04
       })
@@ -143,14 +142,12 @@ export default function ExpertPage() {
   React.useEffect(() => {
     const interval = setInterval(() => {
         getLiveLocation()
-        updateLocation(user.id, location)
     }, 6000);
     return () => clearInterval(interval)
   }, [])
 
   return (
     <View style={styles.container}>
-      {isReady?
       <View>
         <View style={styles.info}>
             <Text style={styles.title}>{userFName} {userLName}</Text>            
@@ -161,50 +158,30 @@ export default function ExpertPage() {
         
         <Text style={styles.direction}>Direction</Text>
         <View style={styles.map}>
-          {isReady? 
           <MapView
-              ref={mapRef}
-              style={StyleSheet.absoluteFill}
-              initialRegion={{
-                ...curLoc,
-                latitudeDelta: 0.09,
-                longitudeDelta: 0.04,
-            }}>
+            ref={mapRef}
+            style={StyleSheet.absoluteFill}
+            initialRegion={{
+              latitude: 33.9680386,
+              longitude: 35.6206043,
+              latitudeDelta: 0.09,
+              longitudeDelta: 0.04,
+          }}
+          >
 
-            <Marker.Animated ref={markerRef} coordinate={coordinate} ><FontAwesome5 name="car-side" size={24} color="red" /></Marker.Animated>
+            <Marker.Animated ref={markerRef} coordinate={coordinate} />
 
             {Object.keys(destinationCords).length > 0 && (<Marker
               coordinate={destinationCords}
-            />)}
-
-            {Object.keys(destinationCords).length > 0 && (<MapViewDirections
-              origin={curLoc}
-              destination={destinationCords}
-              apikey={GOOGLE_MAP_KEY}
-              strokeWidth={6}
-              strokeColor="blue"
-              optimizeWaypoints={true}
-            />)}
+            ><FontAwesome5 name="car-side" size={24} color="red" /></Marker>)}
               
-          </MapView>:null}
+          </MapView>
         </View>
 
         <TouchableOpacity style={styles.button}>
             <Text style={styles.btnText}>Done</Text>
         </TouchableOpacity>
-      </View> :
-        <SafeAreaView>
-        <ScrollView
-          refreshControl={
-            <RefreshControl
-              refreshing={refreshing}
-              onRefresh={getCase}
-            />
-          }
-        >
-          <Text>No New task Yet</Text>
-        </ScrollView>
-      </SafeAreaView>}
+      </View> 
     </View>
   );
 }

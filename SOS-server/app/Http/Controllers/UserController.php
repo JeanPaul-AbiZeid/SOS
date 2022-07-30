@@ -125,7 +125,7 @@ class UserController extends Controller
 
     public function getCases($id){
     
-        $cases = Cases::where('expert_id', '=', $id)->get();
+        $cases = Cases::where('expert_id', '=', $id)->where('is_done', '=', 2)->get();
         for ($i = 0; $i < count($cases); $i++){
             $cases[$i]->user_info = User::find($cases[$i]->user_id);
         }
