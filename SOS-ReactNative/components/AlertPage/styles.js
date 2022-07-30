@@ -18,15 +18,15 @@ const styles = StyleSheet.create({
         borderRadius: 60
     },
     name: {
-        fontSize: 30,
-        fontWeight: '400',
+        fontSize: 24,
+        fontWeight: '500',
         marginLeft: 40,
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
     },
     title: {
-        fontSize: 22
+        fontSize: 20
     },
     descContainer: {
         padding: 5,

@@ -24,7 +24,7 @@ export default function Alert({route}) {
 
       <Text style={styles.case}>Description</Text>
       <View style={styles.descContainer}>
-        <Text style={styles.desc}>{description}</Text>
+        <Text>{description}</Text>
       </View>
       
       {image && <View style={styles.imageContainer}>
