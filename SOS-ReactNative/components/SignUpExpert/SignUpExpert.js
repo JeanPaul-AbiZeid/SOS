@@ -2,7 +2,7 @@ import React from 'react';
 import { Pressable, ScrollView, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import RNPickerSelect from "react-native-picker-select";
 import styles from './styles';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { MaterialCommunityIcons, Octicons } from '@expo/vector-icons';
 import { toggle } from '../../hooks/toggle';
 import { useUserInfo } from '../../hooks/UserProvider';
 
@@ -58,11 +58,17 @@ export default function SignUpExpert({navigation}) {
       
         <View style={styles.dropdown}>
             <Text>Role</Text>
-            <RNPickerSelect
+            <View style={styles.input}>
+                <RNPickerSelect
                 placeholder={{
                 label: 'Select your role',
                 value: null,
                 }}
+                Icon={() => {
+                    return <Octicons name="triangle-down" size={24} color="black" />
+                  }}
+                useNativeAndroidPickerStyle={false}
+                fixAndroidTouchableBug={true}
                 onValueChange={setRole}
                 items={[
                     { label: "Policeman", value: 2 },
@@ -70,6 +76,8 @@ export default function SignUpExpert({navigation}) {
                     { label: "Rescuer", value: 4 },
                 ]}
             />
+            </View>
+            
         </View>
     
         <TouchableOpacity style={styles.button}>

@@ -1,9 +1,9 @@
 import React from 'react';
-import { Pressable, ScrollView, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Pressable, ScrollView, Text, TextInput, TouchableOpacity, View, StyleSheet } from 'react-native';
 import RNPickerSelect from "react-native-picker-select";
 import DateTimePicker from '@react-native-community/datetimepicker';
 import styles from './styles';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { MaterialCommunityIcons, Octicons } from '@expo/vector-icons';
 import { toggle } from '../../hooks/toggle';
 import { useUserInfo } from '../../hooks/UserProvider';
 
@@ -68,11 +68,17 @@ export default function SignUpUser({navigation}) {
       
       <View style={styles.dropdown}>
         <Text>Blood type</Text>
-        <RNPickerSelect
+        <View style={styles.input}>
+          <RNPickerSelect
           placeholder={{
             label: 'Select a blood type',
             value: null,
           }}
+          fixAndroidTouchableBug={true}
+          Icon={() => {
+            return <Octicons name="triangle-down" size={24} color="black" />
+          }}
+          useNativeAndroidPickerStyle={false}
           onValueChange={setBtype}
           items={[
             { label: "O+", value: "O+" },
@@ -85,6 +91,8 @@ export default function SignUpUser({navigation}) {
             { label: "AB-", value: "AB-" },
           ]}
         />
+        </View>
+        
       </View>
       
       <View style={styles.calendar}>
@@ -105,18 +113,25 @@ export default function SignUpUser({navigation}) {
       
       <View style={styles.dropdown}>
         <Text>Gender</Text>
-        <RNPickerSelect
+        <View style={styles.input}>
+          <RNPickerSelect
           placeholder={{
             label: 'Select a gender',
             value: null,
           }}
+          useNativeAndroidPickerStyle={false}
+          fixAndroidTouchableBug={true}
           onValueChange={setGender}
+          Icon={() => {
+            return <Octicons name="triangle-down" size={24} color="black" />
+          }}
           items={[
             { label: "Male", value: "Male" },
             { label: "Female", value: "Female" },
             { label: "Other", value: "Other" },
           ]}
         />
+        </View>
       </View>
         
       <TouchableOpacity 
