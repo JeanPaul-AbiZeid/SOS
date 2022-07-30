@@ -71,21 +71,21 @@ const styles = StyleSheet.create({
     marginBottom: 20
   },
   buttonCalendar: {
-    backgroundColor: '#e6e6e6',
+    backgroundColor: 'darkgray',
     alignSelf: 'stretch',
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: 2,
     borderRadius: 4,
-    borderColor: 'red',
+    borderColor: 'black',
     borderWidth: 2,
-    elevation: 3,
+    elevation: 8,
     marginVertical: 10
   },
   calendarText: {
-    color: 'red',
+    color: 'black',
     fontSize: 16,
-    fontWeight: '300',
+    fontWeight: '400',
   }
 });
 
