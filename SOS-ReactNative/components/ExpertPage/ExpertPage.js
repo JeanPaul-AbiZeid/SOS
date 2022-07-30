@@ -9,6 +9,7 @@ import { FontAwesome5 } from '@expo/vector-icons';
 import MapViewDirections from 'react-native-maps-directions';
 import { getFirestore, collection, doc, getDocs, getDoc, setDoc } from "firebase/firestore";
 import { initializeApp } from "firebase/app";
+import RedButton from '../RedButton/RedButton';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -178,9 +179,9 @@ export default function ExpertPage() {
           </MapView>
         </View>
 
-        <TouchableOpacity style={styles.button}>
-            <Text style={styles.btnText}>Done</Text>
-        </TouchableOpacity>
+        <RedButton 
+          styling={styles.button}
+          text="Done"/>
       </View> 
     </View>
   );
