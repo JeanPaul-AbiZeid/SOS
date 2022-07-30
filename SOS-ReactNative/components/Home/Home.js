@@ -36,7 +36,7 @@ const firebaseConfig = {
 
 
 export default function Home({navigation}) {
-    const {user} = useUserInfo();
+    const {user, axiosUrl} = useUserInfo();
     const [notification, setNotification] = React.useState(false);
     const notificationListener = React.useRef();
     const responseListener = React.useRef();
@@ -107,7 +107,7 @@ export default function Home({navigation}) {
     const getExperts = (role_id) => 
         axios({
             method: 'get',
-            url: 'http://192.168.1.149:8000/api/getexperts/' +`${role_id}`,
+            url: axiosUrl + 'getexperts/' +`${role_id}`,
             })
             .then(function (response) {
                 return (response.data.experts)
@@ -146,7 +146,7 @@ export default function Home({navigation}) {
     const update = (data) => {
         axios({
             method: 'post',
-            url: 'http://192.168.1.149:8000/api/editprofile', 
+            url: axiosUrl + 'editprofile', 
             data: data,
             })
             .then(function (response) {
@@ -167,7 +167,7 @@ export default function Home({navigation}) {
           }
           axios({
             method: 'post',
-            url: 'http://192.168.1.149:8000/api/createcase', 
+            url: axiosUrl + 'createcase', 
             data: data,
             })
             .then(function (response) {

@@ -39,7 +39,7 @@ export default function CreateAlert() {
   const responseListener = React.useRef();
   const [title, setTitle] = React.useState("");
   const [description, setDescription] = React.useState("");
-  const {user} = useUserInfo();
+  const {user, axiosUrl} = useUserInfo();
   const titleRef = React.useRef();
   const descRef = React.useRef();
 
@@ -111,7 +111,7 @@ export default function CreateAlert() {
           }
           axios({
             method: 'post',
-            url: 'http://192.168.1.149:8000/api/createalert', 
+            url: axiosUrl + 'createalert', 
             data: data,
             })
           .then(function (response) {

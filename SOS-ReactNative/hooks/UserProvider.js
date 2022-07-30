@@ -108,6 +108,7 @@ const UserProvider = ({children}) => {
     const [isUser, setIsUser] = React.useState(false)
     const [expoPushToken, setExpoPushToken] = React.useState('');
     const [location, setLocation] = React.useState(null);
+    const axiosUrl = 'http://192.168.1.149:8000/api/'
 
     React.useEffect(() => {
         registerForPushNotificationsAsync().then(token => setExpoPushToken(token));
@@ -122,7 +123,7 @@ const UserProvider = ({children}) => {
 
           axios({
             method: 'post',
-            url: 'http://192.168.1.149:8000/api/login', 
+            url: axiosUrl +'login', 
             data: data,
             })
             .then(function (response) {
@@ -156,7 +157,7 @@ const UserProvider = ({children}) => {
         }
         axios({
             method: 'post',
-            url: 'http://192.168.1.149:8000/api/register', 
+            url: axiosUrl + 'register', 
             data: data,
             })
             .then(function (response) {
@@ -186,7 +187,7 @@ const UserProvider = ({children}) => {
 
         axios({
           method: 'post',
-          url: 'http://192.168.1.149:8000/api/register', 
+          url: axiosUrl +'register', 
           data: data,
           })
           .then(function (response) {
@@ -224,7 +225,7 @@ const UserProvider = ({children}) => {
 
     return (
         <userContext.Provider
-            value={{ user, LoggedIn, SignUpExpert, SignUpUser, Lougout, isLoggedin, isUser, token, setUser }}
+            value={{ user, LoggedIn, SignUpExpert, SignUpUser, Lougout, isLoggedin, isUser, token, setUser, axiosUrl }}
         >
             {children}
         </userContext.Provider>
@@ -234,9 +235,9 @@ const UserProvider = ({children}) => {
 export default UserProvider;
 
 export const useUserInfo = () => {
-    const {user, LoggedIn, Lougout, SignUpExpert, SignUpUser, isLoggedin, isUser, token, setUser} = React.useContext(userContext)
+    const {user, LoggedIn, Lougout, SignUpExpert, SignUpUser, isLoggedin, isUser, token, setUser, axiosUrl} = React.useContext(userContext)
 
     return {
-        user, LoggedIn, Lougout, SignUpExpert, SignUpUser, isLoggedin, isUser, token, setUser
+        user, LoggedIn, Lougout, SignUpExpert, SignUpUser, isLoggedin, isUser, token, setUser, axiosUrl
     }
 }

@@ -8,7 +8,7 @@ import axios from 'axios';
 import RedButton from '../RedButton/RedButton';
 
 export default function Profile({navigation}) {
-    const {user, Lougout, setUser} = useUserInfo();
+    const {user, Lougout, setUser, axiosUrl} = useUserInfo();
     const [image, setImage] = React.useState(user.picture)
     //model related states
     const [modalName, setModalName] = React.useState(false);
@@ -44,7 +44,7 @@ export default function Profile({navigation}) {
     const update = (data) => {
         axios({
             method: 'post',
-            url: 'http://192.168.1.149:8000/api/editprofile', 
+            url: axiosUrl + 'editprofile', 
             data: data,
             })
             .then(function (response) {

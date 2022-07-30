@@ -35,7 +35,7 @@ const updateLocation = async (id, loc) => {
 }
 
 export default function ExpertPage() {
-  const {user} = useUserInfo();
+  const {user, axiosUrl} = useUserInfo();
   const [refreshing, setRefreshing] = React.useState(true);
   const [userFName, setUserFName] = React.useState("")
   const [userLName, setUserLName] = React.useState("")
@@ -66,7 +66,7 @@ export default function ExpertPage() {
   const getCase = () => {
     axios({
       method: 'get',
-      url: 'http://192.168.1.149:8000/api/getcase/' + `${user.id}`,
+      url: axiosUrl +'getcase/' + `${user.id}`,
       })
       .then(function (response) {
         if(response.data.case.length > 0){
@@ -181,7 +181,8 @@ export default function ExpertPage() {
 
         <RedButton 
           styling={styles.button}
-          text="Done"/>
+          text="Done"
+        />
       </View> 
     </View>
   );

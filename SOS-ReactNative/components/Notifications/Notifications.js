@@ -8,7 +8,7 @@ import axios from 'axios';
 export default function Notification({navigation}) {
   const [refreshing, setRefreshing] = React.useState(true);
   const [userData, setUserData] = React.useState([]);
-  const {user} = useUserInfo();
+  const {user, axiosUrl} = useUserInfo();
 
   const alert = ({ item }) => {
     return (
@@ -43,7 +43,7 @@ export default function Notification({navigation}) {
   const loadUserData = () => {
     axios({
       method: 'get',
-      url: 'http://192.168.1.149:8000/api/getalerts/' + `${user.id}`,
+      url: axiosUrl + 'getalerts/' + `${user.id}`,
       })
       .then(function (response) {
         setRefreshing(false);

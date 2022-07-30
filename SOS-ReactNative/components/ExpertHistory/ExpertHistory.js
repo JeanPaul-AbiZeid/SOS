@@ -8,7 +8,7 @@ import axios from 'axios';
 export default function ExpertHistory() {
   const [refreshing, setRefreshing] = React.useState(true);
   const [expertData, setExpertData] = React.useState([]);
-  const {user} = useUserInfo();
+  const {user, axiosUrl} = useUserInfo();
 
   const Case = ({ item }) => {
     return (
@@ -36,7 +36,7 @@ export default function ExpertHistory() {
   const loadExpertData = () => {
     axios({
       method: 'get',
-      url: 'http://192.168.1.149:8000/api/getcases/' + `${user.id}`,
+      url: axiosUrl + 'getcases/' + `${user.id}`,
       })
       .then(function (response) {
         setRefreshing(false);
