@@ -1,20 +1,16 @@
 import React from 'react';
-import { Pressable, Text, TouchableOpacity, View } from 'react-native';
+import { Text, View } from 'react-native';
 import styles from './styles';
+import RedButton from '../RedButton/RedButton';
 
 export default function SignUp({navigation}) {
     
   return (
     <View style={styles.container}>
-        <Text style={styles.title}>SOS</Text>      
-
-        <TouchableOpacity style={styles.button} onPress={() => navigation.push('SignUpUser')}>
-            <Text style={styles.btnText}>Sign Up User</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.button} onPress={() => navigation.push('SignUpExpert')}>
-            <Text style={styles.btnText}>Sign Up Expert</Text>
-        </TouchableOpacity>
+        <Text style={styles.title}>SOS</Text> 
+        
+        <RedButton styling={styles.button} text="Sign up User" onPress={() => navigation.push('SignUpUser')}/>
+        <RedButton styling={styles.button} text="Sign up Expert" onPress={() => navigation.push('SignUpExpert')}/>     
       
     </View>
   );

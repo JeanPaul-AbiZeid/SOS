@@ -4,11 +4,11 @@ import styles from './styles';
 
 
 
-export default function RedButton( {text, onPress}) {
+export default function RedButton( {text, onPress, styling}) {
 
   return (
       
-      <TouchableOpacity style={styles.button}
+      <TouchableOpacity style={styling}
       onPress={onPress}>
         <Text style={styles.btnText}>{text}</Text>
       </TouchableOpacity>

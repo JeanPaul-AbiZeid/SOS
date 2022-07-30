@@ -5,6 +5,7 @@ import styles from './styles';
 import { MaterialCommunityIcons, Octicons } from '@expo/vector-icons';
 import { toggle } from '../../hooks/toggle';
 import { useUserInfo } from '../../hooks/UserProvider';
+import RedButton from '../RedButton/RedButton';
 
 export default function SignUpExpert({navigation}) {
     const [first_name, setFname] = React.useState("");
@@ -79,15 +80,14 @@ export default function SignUpExpert({navigation}) {
             </View>
             
         </View>
-    
-        <TouchableOpacity style={styles.button}>
-            <Text 
-                style={styles.btnText}
-                onPress={() => {
-                    SignUpExpert(first_name, last_name, email, password, role, {navigation})
-                }
-            }>Sign Up</Text>
-        </TouchableOpacity>
+
+        <RedButton 
+            styling={styles.button} 
+            text="Sign Up" 
+            onPress={() => {
+                SignUpExpert(first_name, last_name, email, password, role, {navigation})
+            }}
+        />
     </ScrollView>
     </View>
   );

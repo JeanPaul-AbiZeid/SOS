@@ -4,7 +4,7 @@ import styles from './styles';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { toggle } from '../../hooks/toggle';
 import { useUserInfo } from '../../hooks/UserProvider';
-
+import RedButton from '../RedButton/RedButton';
 
 export default function LogIn({navigation}) {
     const [email, setEmail] = React.useState("");
@@ -33,14 +33,7 @@ export default function LogIn({navigation}) {
         <Pressable onPress={handlePasswordVisibility}><MaterialCommunityIcons name={rightIcon} size={22} color="#232323" /></Pressable></View>
       </View>
       
-      
-      <TouchableOpacity style={styles.button}
-      onPress={() => {
-        LoggedIn(email, password, {navigation})
-      }}          
-        >
-        <Text style={styles.btnText}>Sign in</Text>
-      </TouchableOpacity>
+      <RedButton styling={styles.button} text="Sign in" onPress={() => {LoggedIn(email, password, {navigation})}}/>
       <View style={styles.signup}>
         <Text>New Account? </Text>
           <TouchableOpacity onPress={() => navigation.push('SignUp')}>
