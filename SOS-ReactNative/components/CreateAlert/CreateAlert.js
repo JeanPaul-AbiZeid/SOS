@@ -7,6 +7,7 @@ import {useUserInfo} from '../../hooks/UserProvider';
 import { getFirestore, collection, doc, getDocs } from "firebase/firestore";
 import { initializeApp } from "firebase/app";
 import axios from 'axios';
+import RedButton from '../RedButton/RedButton';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -98,40 +99,37 @@ export default function CreateAlert() {
           </TouchableOpacity>
       </View>
 
-      <TouchableOpacity style={styles.button}
-      onPress={() => {
-      let data = {
-        "title" : title,
-        "description" : description,
-        "image" : image,
-        "user_id" : user.id
-      }
-      axios({
-        method: 'post',
-        url: 'http://192.168.1.149:8000/api/createalert', 
-        data: data,
-        })
-        .then(function (response) {
-          sendPushNotificationToAllUsers(user.id, user.first_name + ' ' + user.last_name, title);
-          titleRef.current.clear();
-          descRef.current.clear();
-          setImage("")
-          alert("Alert Sent")
-        
-        })
-        .catch(function (error){
-          console.log(error)
-          titleRef.current.clear();
-          descRef.current.clear();
-          alert("Alert Not sent please try again")
-
-      })
-      }
-        }>
-          <Text style={styles.btnText}>Send Alert</Text>
-      </TouchableOpacity>
-        
-        
+      <RedButton 
+        styling={styles.button}
+        text="Send Alert"
+        onPress={() => {
+          let data = {
+            "title" : title,
+            "description" : description,
+            "image" : image,
+            "user_id" : user.id
+          }
+          axios({
+            method: 'post',
+            url: 'http://192.168.1.149:8000/api/createalert', 
+            data: data,
+            })
+          .then(function (response) {
+            sendPushNotificationToAllUsers(user.id, user.first_name + ' ' + user.last_name, title);
+            titleRef.current.clear();
+            descRef.current.clear();
+            setImage("")
+            alert("Alert Sent")
+          
+          })
+          .catch(function (error){
+            console.log(error)
+            titleRef.current.clear();
+            descRef.current.clear();
+            alert("Alert Not sent please try again")
+          })
+        }}
+      />
     </ScrollView>
   );
 }

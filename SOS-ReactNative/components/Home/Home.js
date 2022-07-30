@@ -8,6 +8,7 @@ import { getFirestore, collection, doc, getDocs, getDoc } from "firebase/firesto
 import { initializeApp } from "firebase/app";
 import { getDistance } from 'geolib';
 import * as Notifications from 'expo-notifications';
+import RedButton from '../RedButton/RedButton';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -226,9 +227,12 @@ export default function Home({navigation}) {
                 </TouchableOpacity>
                 
             </View>
-            <TouchableOpacity style={styles.button} onPress={() => navigation.push('CreateAlert')}>
-                <Text style={styles.btnText}>Alert</Text>
-            </TouchableOpacity>
+
+            <RedButton 
+                styling={styles.button}
+                onPress={() => navigation.push('CreateAlert')}
+                text="Alert"
+            />
         </ScrollView>
     )
     

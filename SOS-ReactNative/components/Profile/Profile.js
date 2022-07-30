@@ -5,6 +5,7 @@ import { Fontisto, Feather, MaterialIcons, FontAwesome, AntDesign, MaterialCommu
 import * as ImagePicker from 'expo-image-picker';
 import { useUserInfo } from '../../hooks/UserProvider';
 import axios from 'axios';
+import RedButton from '../RedButton/RedButton';
 
 export default function Profile({navigation}) {
     const {user, Lougout, setUser} = useUserInfo();
@@ -145,14 +146,15 @@ export default function Profile({navigation}) {
             </TouchableOpacity>
             
         </View>
-        
-        <TouchableOpacity style={styles.button}
-        onPress={() => {
-            Lougout({navigation})
-        }}          
-            >
-            <Text style={styles.btnText}>Log Out</Text>
-        </TouchableOpacity>
+
+        <RedButton 
+            styling={styles.button}
+            text="Logout"
+            onPress={() => {
+                Lougout({navigation})
+            }}  
+        />
+
 
         <Modal
         animationType="slide"

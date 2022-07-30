@@ -3,9 +3,10 @@ import { StyleSheet, StatusBar } from 'react-native';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 50,
+    paddingTop: 10,
     backgroundColor: '#e6e6e6',
-  },label:{
+  },
+  label:{
     alignSelf: 'stretch',
     marginHorizontal: 50,
     marginVertical: 10,
