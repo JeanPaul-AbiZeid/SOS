@@ -9,7 +9,7 @@ const ExpertTab = createBottomTabNavigator();
 
 
 export default function BottomTabExpert({navigation}) {
-  const {Lougout} = useUserInfo();
+  const {Logout} = useUserInfo();
     return (
         <ExpertTab.Navigator 
         screenOptions={{
@@ -30,7 +30,7 @@ export default function BottomTabExpert({navigation}) {
                 },
                 headerRight: () => (
                   <Button
-                    onPress={() => Lougout({navigation})}
+                    onPress={() => Logout({navigation})}
                     title="Logout"
                     color="red"
                   />
@@ -50,7 +50,7 @@ export default function BottomTabExpert({navigation}) {
                 },
                 headerRight: () => (
                   <Button
-                    onPress={() => Lougout({navigation})}
+                    onPress={() => Logout({navigation})}
                     title="Logout"
                     color="red"
                   />

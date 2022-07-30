@@ -31,6 +31,10 @@ const styles = StyleSheet.create({
         height: 2,
         backgroundColor: 'gray',
         marginTop: 15
+    },
+    conditionTitle: {
+        fontSize: 20,
+        marginTop: 10
     }
 });
 

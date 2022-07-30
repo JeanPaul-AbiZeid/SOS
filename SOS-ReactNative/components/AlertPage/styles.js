@@ -3,9 +3,8 @@ import { StyleSheet, StatusBar } from 'react-native';
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingTop: 30,
         backgroundColor: '#e6e6e6',
-        paddingHorizontal: 30,
+        paddingHorizontal: 25
     },
     main: {
         alignItems: 'center',
@@ -18,9 +17,9 @@ const styles = StyleSheet.create({
         borderRadius: 60
     },
     name: {
-        fontSize: 24,
+        fontSize: 22,
         fontWeight: '500',
-        marginLeft: 40,
+        marginLeft: 20,
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
@@ -40,7 +39,8 @@ const styles = StyleSheet.create({
         borderColor: 'gray',
         borderWidth: 1,
         width: "auto",
-        height: 300
+        height: 300,
+        marginBottom: 40
     },
     image: {
         flex: 1

@@ -209,7 +209,7 @@ const UserProvider = ({children}) => {
         })
     }
 
-    const Lougout = ({navigation}) => {
+    const Logout = ({navigation}) => {
         update({"id": user.id, "is_available": 1})
         deleteToken(user.id)
         Clear();
@@ -233,7 +233,7 @@ const UserProvider = ({children}) => {
 
     return (
         <userContext.Provider
-            value={{ user, LoggedIn, SignUpExpert, SignUpUser, Lougout, isLoggedin, isUser, token, setUser, axiosUrl }}
+            value={{ user, LoggedIn, SignUpExpert, SignUpUser, Logout, isLoggedin, isUser, token, setUser, axiosUrl }}
         >
             {children}
         </userContext.Provider>
@@ -243,9 +243,9 @@ const UserProvider = ({children}) => {
 export default UserProvider;
 
 export const useUserInfo = () => {
-    const {user, LoggedIn, Lougout, SignUpExpert, SignUpUser, isLoggedin, isUser, token, setUser, axiosUrl} = React.useContext(userContext)
+    const {user, LoggedIn, Logout, SignUpExpert, SignUpUser, isLoggedin, isUser, token, setUser, axiosUrl} = React.useContext(userContext)
 
     return {
-        user, LoggedIn, Lougout, SignUpExpert, SignUpUser, isLoggedin, isUser, token, setUser, axiosUrl
+        user, LoggedIn, Logout, SignUpExpert, SignUpUser, isLoggedin, isUser, token, setUser, axiosUrl
     }
 }

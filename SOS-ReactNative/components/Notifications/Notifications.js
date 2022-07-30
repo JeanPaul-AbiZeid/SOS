@@ -81,7 +81,7 @@ export default function Notification({navigation}) {
           />
         }
       >
-        <Text>No Notications Yet</Text>
+        <Text style={styles.conditionTitle}>No Notications Yet</Text>
       </ScrollView>
     </SafeAreaView>}
     </View>

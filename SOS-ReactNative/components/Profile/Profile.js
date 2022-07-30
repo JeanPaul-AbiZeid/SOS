@@ -8,7 +8,7 @@ import axios from 'axios';
 import RedButton from '../RedButton/RedButton';
 
 export default function Profile({navigation}) {
-    const {user, Lougout, setUser, axiosUrl} = useUserInfo();
+    const {user, Logout, setUser, axiosUrl} = useUserInfo();
     const [image, setImage] = React.useState(user.picture)
     //model related states
     const [modalName, setModalName] = React.useState(false);
@@ -151,7 +151,7 @@ export default function Profile({navigation}) {
             styling={styles.button}
             text="Logout"
             onPress={() => {
-                Lougout({navigation})
+                Logout({navigation})
             }}  
         />
 
