@@ -27,7 +27,7 @@ const firestore = getFirestore(app, {experimentalForceDetectLongPolling : true})
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
     shouldShowAlert: true,
-    shouldPlaySound: false,
+    shouldPlaySound: true,
     shouldSetBadge: false,
   }),
 });
