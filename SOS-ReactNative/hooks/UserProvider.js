@@ -113,7 +113,7 @@ const UserProvider = ({children}) => {
 
     React.useEffect(() => {
         registerForPushNotificationsAsync().then(token => setExpoPushToken(token));
-        getLiveLocation()
+        getLocationAsync()
     }, []);
 
     //update data in mySQL
@@ -235,15 +235,21 @@ const UserProvider = ({children}) => {
     }
 
     //location function
-    const getLiveLocation = async () => {
+    const getLocationAsync = async() => {
         let { status } = await Location.requestForegroundPermissionsAsync();
         if (status !== 'granted') {
           setErrorMsg('Permission to access location was denied');
           return;
         }
-    
-        let loc = await Location.getCurrentPositionAsync({});
-        setLocation(loc);      
+        await Location.watchPositionAsync({
+          accuracy: Location.Accuracy.BestForNavigation,
+          timeInterval: 10000,
+          distanceInterval : 20
+        }, 
+          (newLocation) => {
+            setLocation(newLocation); 
+          }
+        );
     };
 
     return (
