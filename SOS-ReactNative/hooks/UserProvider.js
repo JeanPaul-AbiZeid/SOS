@@ -243,11 +243,14 @@ const UserProvider = ({children}) => {
         }
         await Location.watchPositionAsync({
           accuracy: Location.Accuracy.BestForNavigation,
-          timeInterval: 10000,
+          timeInterval: 5000,
           distanceInterval : 20
         }, 
           (newLocation) => {
-            setLocation(newLocation); 
+            setLocation(newLocation);
+            if(isLoggedin){
+                updateLocation(user.id, newLocation)
+            }
           }
         );
     };
