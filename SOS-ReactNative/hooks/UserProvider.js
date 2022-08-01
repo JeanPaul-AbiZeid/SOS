@@ -108,6 +108,7 @@ const UserProvider = ({children}) => {
     const [isUser, setIsUser] = React.useState(false)
     const [expoPushToken, setExpoPushToken] = React.useState('');
     const [location, setLocation] = React.useState(null);
+    const [isCase, setisCase] = React.useState(false)
     const axiosUrl = 'http://192.168.1.149:8000/api/'
 
     React.useEffect(() => {
@@ -247,7 +248,7 @@ const UserProvider = ({children}) => {
 
     return (
         <userContext.Provider
-            value={{ user, LoggedIn, SignUpExpert, SignUpUser, Logout, isLoggedin, isUser, token, setUser, axiosUrl }}
+            value={{ user, LoggedIn, SignUpExpert, SignUpUser, Logout, isLoggedin, isUser, token, setUser, axiosUrl, isCase, setisCase }}
         >
             {children}
         </userContext.Provider>
@@ -257,9 +258,9 @@ const UserProvider = ({children}) => {
 export default UserProvider;
 
 export const useUserInfo = () => {
-    const {user, LoggedIn, Logout, SignUpExpert, SignUpUser, isLoggedin, isUser, token, setUser, axiosUrl} = React.useContext(userContext)
+    const {user, LoggedIn, Logout, SignUpExpert, SignUpUser, isLoggedin, isUser, token, setUser, axiosUrl, isCase, setisCase} = React.useContext(userContext)
 
     return {
-        user, LoggedIn, Logout, SignUpExpert, SignUpUser, isLoggedin, isUser, token, setUser, axiosUrl
+        user, LoggedIn, Logout, SignUpExpert, SignUpUser, isLoggedin, isUser, token, setUser, axiosUrl, isCase, setisCase
     }
 }

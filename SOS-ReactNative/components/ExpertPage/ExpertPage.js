@@ -140,12 +140,12 @@ export default function ExpertPage() {
     text = JSON.stringify(location);
   }
 
-  React.useEffect(() => {
-    const interval = setInterval(() => {
-        getLiveLocation()
-    }, 6000);
-    return () => clearInterval(interval)
-  }, [])
+  // React.useEffect(() => {
+  //   const interval = setInterval(() => {
+  //       getLiveLocation()
+  //   }, 6000);
+  //   return () => clearInterval(interval)
+  // }, [])
 
   return (
     <View style={styles.container}>

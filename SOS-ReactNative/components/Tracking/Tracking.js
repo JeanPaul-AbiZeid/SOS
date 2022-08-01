@@ -1,13 +1,15 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
 import styles from './styles';
 import MapView, { Marker, AnimatedRegion } from 'react-native-maps';
 import * as Location from 'expo-location';
 import { FontAwesome5 } from '@expo/vector-icons'; 
 import MapViewDirections from 'react-native-maps-directions';
 import {API_KEY} from '@env'
+import { useUserInfo } from '../../hooks/UserProvider';
 
 export default function Tracking() {
+  const {isCase} = useUserInfo()
   const [location, setLocation] = React.useState(null);
   const [errorMsg, setErrorMsg] = React.useState(null);
   const mapRef = React.useRef()
@@ -88,6 +90,7 @@ export default function Tracking() {
     
   return (
     <View style={styles.container}>
+      {isCase?
         <View style={styles.map}>
           <MapView
             ref={mapRef}
@@ -114,7 +117,8 @@ export default function Tracking() {
             />)}
               
           </MapView>
-        </View>
+        </View>:
+        <Text style={styles.text}>No Tracking to show at the moment</Text>}
     </View>
   );
 }
