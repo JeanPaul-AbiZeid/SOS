@@ -34,7 +34,7 @@ const firebaseConfig = {
   });
 
 export default function Home({navigation}) {
-    const {user, axiosUrl, setisCase} = useUserInfo();
+    const {user, axiosUrl, setisCase, setCaseLat, setCaseLong} = useUserInfo();
     const [notification, setNotification] = React.useState(false);
     const notificationListener = React.useRef();
     const responseListener = React.useRef();
@@ -179,6 +179,8 @@ export default function Home({navigation}) {
                 sendPushNotification(token)
                 update({"id": expert_id, "is_available": 1})
                 setisCase(true)
+                setCaseLat(user_lat)
+                setCaseLong(user_long)
                 alert("Request Sent")
             })
             .catch(function (error){

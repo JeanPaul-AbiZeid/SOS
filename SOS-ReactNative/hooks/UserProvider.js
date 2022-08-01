@@ -109,12 +109,20 @@ const UserProvider = ({children}) => {
     const [expoPushToken, setExpoPushToken] = React.useState('');
     const [location, setLocation] = React.useState(null);
     const [isCase, setisCase] = React.useState(false)
+    const [caseLat, setCaseLat] = React.useState(null)
+    const [caseLong, setCaseLong] = React.useState(null)
     const axiosUrl = 'http://192.168.1.149:8000/api/'
 
     React.useEffect(() => {
         registerForPushNotificationsAsync().then(token => setExpoPushToken(token));
         getLocationAsync()
     }, []);
+
+    React.useEffect(() => {
+        if(isLoggedin){
+            updateLocation(user.id, location)
+        }
+    }, [location]);
 
     //update data in mySQL
     const update = (data) => {
@@ -248,16 +256,16 @@ const UserProvider = ({children}) => {
         }, 
           (newLocation) => {
             setLocation(newLocation);
-            if(isLoggedin){
-                updateLocation(user.id, newLocation)
-            }
+            // if(isLoggedin){
+            //     updateLocation(user.id, newLocation)
+            // }
           }
         );
     };
 
     return (
         <userContext.Provider
-            value={{ user, LoggedIn, SignUpExpert, SignUpUser, Logout, isLoggedin, isUser, token, setUser, axiosUrl, isCase, setisCase }}
+            value={{ user, LoggedIn, SignUpExpert, SignUpUser, Logout, isLoggedin, isUser, token, setUser, axiosUrl, isCase, setisCase, setCaseLat, setCaseLong, caseLat, caseLong }}
         >
             {children}
         </userContext.Provider>
@@ -267,9 +275,9 @@ const UserProvider = ({children}) => {
 export default UserProvider;
 
 export const useUserInfo = () => {
-    const {user, LoggedIn, Logout, SignUpExpert, SignUpUser, isLoggedin, isUser, token, setUser, axiosUrl, isCase, setisCase} = React.useContext(userContext)
+    const {user, LoggedIn, Logout, SignUpExpert, SignUpUser, isLoggedin, isUser, token, setUser, axiosUrl, isCase, setisCase, caseLat, setCaseLat, caseLong, setCaseLong} = React.useContext(userContext)
 
     return {
-        user, LoggedIn, Logout, SignUpExpert, SignUpUser, isLoggedin, isUser, token, setUser, axiosUrl, isCase, setisCase
+        user, LoggedIn, Logout, SignUpExpert, SignUpUser, isLoggedin, isUser, token, setUser, axiosUrl, isCase, setisCase, caseLat, setCaseLat, caseLong, setCaseLong
     }
 }
