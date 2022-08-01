@@ -43,6 +43,7 @@ export default function CreateAlert() {
   const titleRef = React.useRef();
   const descRef = React.useRef();
 
+  //pick image function
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -134,7 +135,7 @@ export default function CreateAlert() {
   );
 }
 
-
+//send notification function
 async function sendPushNotification(expoPushToken, user, caseTitle) {
   const message = {
     to: expoPushToken,
@@ -156,6 +157,7 @@ async function sendPushNotification(expoPushToken, user, caseTitle) {
 }
 
 const sendPushNotificationToAllUsers = async (id, userInfo, caseTitle) => {
+  //getting all users
   const users = await getDocs(collection(firestore, "users"));
   users.forEach((res) => {
     if (res.id != id) {

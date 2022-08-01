@@ -13,7 +13,7 @@ export default function Notification({navigation}) {
   const alert = ({ item }) => {
     return (
       <TouchableOpacity onPress={() => navigation.push('Alert',
-      {
+      {//sending params to child
         first_name: item.user_info.first_name,
         last_name: item.user_info.last_name,
         title: item.title,
@@ -40,6 +40,7 @@ export default function Notification({navigation}) {
     );
   }
 
+  //getting all alerts
   const loadUserData = () => {
     axios({
       method: 'get',

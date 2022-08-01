@@ -1,5 +1,6 @@
 import React from "react";
 
+//Hook to toggle password visibility
 export const toggle = () => {
     const [passwordVisibility, setPasswordVisibility] = React.useState(true);
     const [rightIcon, setRightIcon] = React.useState('eye');

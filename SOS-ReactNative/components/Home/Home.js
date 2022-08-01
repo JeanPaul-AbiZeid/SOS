@@ -33,8 +33,6 @@ const firebaseConfig = {
     }),
   });
 
-
-
 export default function Home({navigation}) {
     const {user, axiosUrl} = useUserInfo();
     const [notification, setNotification] = React.useState(false);
@@ -57,6 +55,7 @@ export default function Home({navigation}) {
         };
     }, []);
 
+    //sending notification to expert
     async function sendPushNotification(expoPushToken) {
     const message = {
         to: expoPushToken,
@@ -76,12 +75,14 @@ export default function Home({navigation}) {
         body: JSON.stringify(message),
     });
     }
-      
+    
+    //getting the expert push token
     const getToken = async(expertID) => {
         const token = await getDoc(doc(firestore, "users", JSON.stringify(expertID)))
         return (token.data().token)
     }
 
+    //getting the expert's location
     const getLocations = async (expertId) => {
         const obj = {expertLocations : []}
         const userLoc = await getDoc(doc(firestore, "users", JSON.stringify(user.id)))
@@ -104,6 +105,7 @@ export default function Home({navigation}) {
         return(obj)  
     }
 
+    //getting all the available experts' ids
     const getExperts = (role_id) => 
         axios({
             method: 'get',
@@ -118,6 +120,7 @@ export default function Home({navigation}) {
         }) 
     
 
+    //finging the nearest expert
     const getNearest = (userLocation, expertLocation) => {
         let nearest_expert_id = expertLocation[0].id
         let minimum_distance = getDistance(
@@ -158,6 +161,7 @@ export default function Home({navigation}) {
         })
     }
 
+    //creating new case
     const createCase = (user_id, expert_id, user_lat, user_long, token) => {
         let data = {
             "user_id" : user_id,

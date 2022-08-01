@@ -155,8 +155,7 @@ export default function Profile({navigation}) {
             }}  
         />
 
-
-        <Modal
+        <Modal //name modal
         animationType="slide"
         transparent={true}
         visible={modalName}
@@ -195,7 +194,7 @@ export default function Profile({navigation}) {
             </View>
         </Modal>
         
-        <Modal
+        <Modal //phone number modal
         animationType="slide"
         transparent={true}
         visible={modalPhone}
@@ -230,7 +229,7 @@ export default function Profile({navigation}) {
             </View>
         </Modal>
 
-        <Modal
+        <Modal  //preferred contact modal
         animationType="slide"
         transparent={true}
         visible={modalContact}
@@ -239,7 +238,7 @@ export default function Profile({navigation}) {
         }}>
             <View style={styles.centereddView}>
                 <View style={styles.modalView}>
-                    <TextInput value={preferredContact} placeholder="Prefered Contact Number" onChangeText={setPreferredContact}/>
+                    <TextInput value={preferredContact} placeholder="Preferred Contact Number" onChangeText={setPreferredContact}/>
                     <View style={styles.row}>
                         <TouchableOpacity
                             style={styles.cancel}

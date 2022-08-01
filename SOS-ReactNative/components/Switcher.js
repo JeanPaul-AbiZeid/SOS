@@ -9,6 +9,7 @@ export default function Switcher() {
     const {token, isUser} = useUserInfo();
 
     return (
+        //condition to show stacks
         <NavigationContainer>
             {!token? <LoginStack/> : isUser? <BottomTabUser/> :<BottomTabExpert/>}
         </NavigationContainer>

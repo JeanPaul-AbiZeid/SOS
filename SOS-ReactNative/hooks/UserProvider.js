@@ -22,6 +22,7 @@ const app = initializeApp(firebaseConfig);
 // Initialize Cloud Firestore and get a reference to the service
 const firestore = initializeFirestore(app, {experimentalForceDetectLongPolling : true});
 
+//function to update push token
 const updateToken = async (id, pushtoken) => {
     try{
         await setDoc(doc(firestore, "users", JSON.stringify(id)), {token: pushtoken}, {merge: true});
@@ -30,6 +31,7 @@ const updateToken = async (id, pushtoken) => {
     }
 }
 
+//function to delete push token
 const deleteToken = async (id) => {
     try{
         await deleteDoc(doc(firestore, "users", JSON.stringify(id)));
@@ -46,6 +48,7 @@ const updateLocation = async (id, userLocation) => {
     }
 }
 
+//displaying notification popup on device
 Notifications.setNotificationHandler({
     handleNotification: async () => ({
       shouldShowAlert: true,
@@ -54,6 +57,7 @@ Notifications.setNotificationHandler({
     }),
 });
 
+//function to create a push token for every device
 async function registerForPushNotificationsAsync() {
     let token;
     const { status: existingStatus } = await Notifications.getPermissionsAsync();
@@ -80,6 +84,7 @@ async function registerForPushNotificationsAsync() {
     return token;
   }
 
+//storing data in async storage
 const storeData = async (key, value) => {
     try {
       await AsyncStorage.setItem(key , value)
@@ -88,24 +93,11 @@ const storeData = async (key, value) => {
     }
 }
 
+//clear async storage
 const Clear = async () => {
     await AsyncStorage.clear();
 }
 
-const update = (data) => {
-    axios({
-        method: 'post',
-        url: 'http://192.168.1.149:8000/api/editprofile', 
-        data: data,
-        })
-        .then(function (response) {
-            console.log(response)
-        })
-        .catch(function (error){
-            console.log(error)
-            alert(error)
-    })
-}
 
 export const userContext = React.createContext()
 
@@ -123,6 +115,23 @@ const UserProvider = ({children}) => {
         getLiveLocation()
     }, []);
 
+    //update data in mySQL
+    const update = (data) => {
+        axios({
+            method: 'post',
+            url: axiosUrl + 'editprofile', 
+            data: data,
+            })
+            .then(function (response) {
+                console.log(response)
+            })
+            .catch(function (error){
+                console.log(error)
+                alert(error)
+        })
+    }
+
+    //login function
     const LoggedIn = (email, password, {navigation}) => {
         let data = {
             "email": email,
@@ -135,11 +144,11 @@ const UserProvider = ({children}) => {
             data: data,
             })
             .then(function (response) {
-                storeData('token', response.data.authorisation.token)
-                setUser(response.data.user)
-                setToken(response.data.authorisation.token)
-                updateLocation(response.data.user.id, location)
-                updateToken(response.data.user.id, expoPushToken)
+                storeData('token', response.data.authorisation.token) //storing jwt token in async storage
+                setUser(response.data.user) //saving user info
+                setToken(response.data.authorisation.token) 
+                updateLocation(response.data.user.id, location) //storing location
+                updateToken(response.data.user.id, expoPushToken) //storing push token
                 setIsLoggedin(true)
                 if (response.data.user.role_id != 1) {
                     update({"id": response.data.user.id, "is_available": 2})
@@ -154,6 +163,7 @@ const UserProvider = ({children}) => {
           })
     }
 
+    //sign up expert function
     const SignUpExpert = (first_name, last_name, email, password, role, {navigation}) => {
         let data = {
             "first_name" : first_name,
@@ -179,6 +189,7 @@ const UserProvider = ({children}) => {
         })
     }
 
+    //sign up user function
     const SignUpUser = (first_name, last_name, email, password, phone, blood_type, date, gender, {navigation}) => {
         let data = {
             "first_name" : first_name,
@@ -209,7 +220,9 @@ const UserProvider = ({children}) => {
         })
     }
 
+    //logout function
     const Logout = ({navigation}) => {
+        //resetting everything
         update({"id": user.id, "is_available": 1})
         deleteToken(user.id)
         Clear();
@@ -220,6 +233,7 @@ const UserProvider = ({children}) => {
         
     }
 
+    //location function
     const getLiveLocation = async () => {
         let { status } = await Location.requestForegroundPermissionsAsync();
         if (status !== 'granted') {
