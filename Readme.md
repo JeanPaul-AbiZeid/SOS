@@ -67,11 +67,9 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-<!-- This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ``` -->
+Composer
+
+NodeJs
 
 ### Installation
 
@@ -122,5 +120,15 @@ Go to [Expo](https://expo.dev/) and create an account. If you aleady have an acc
     expo login
    ```
 Create a .env file and put your google API key (ex: API_KEY="YOUR API KEY") for the map to work
+
+Go to ./hooks/userProvider, locate the axiosUrl constant and change (192.168.1.149) to your IP address
+
+Download Expo Go on your Android device
+
+Run the app
+   ```sh
+    npm start
+   ```
+
 
 
