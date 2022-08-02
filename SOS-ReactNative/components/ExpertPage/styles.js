@@ -46,6 +46,11 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: '500',
   },
+  text:{
+    marginLeft: 10,
+    marginTop: 10,
+    fontSize: 18
+  }
 });
 
 export default styles;

@@ -92,6 +92,7 @@ export default function ExpertPage() {
 
   return (
     <View style={styles.container}>
+      {isReady?
       <View>
         <View style={styles.info}>
             <Text style={styles.title}>{userFName} {userLName}</Text>            
@@ -131,6 +132,8 @@ export default function ExpertPage() {
           text="Done"
         />
       </View> 
+      :
+      <Text style={styles.text}>There is no task at the moment</Text>}
     </View>
   );
 }
