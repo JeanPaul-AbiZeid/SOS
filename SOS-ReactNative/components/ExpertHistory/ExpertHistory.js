@@ -33,7 +33,7 @@ export default function ExpertHistory() {
         <Text style={styles.name}>{item.user_info.first_name} {item.user_info.last_name}</Text>
         <View style={styles.loc}>
             <Entypo name="location-pin" size={20} color="red" />
-            <Text>{name} {locationName[0]}</Text>
+            <Text>{/*{name}*/} {/*{locationName[0]}*/}</Text>
         </View>
         
       </View>

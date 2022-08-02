@@ -37,12 +37,13 @@ const updateLocation = async (id, loc) => {
 
 export default function ExpertPage() {
   const {user, axiosUrl, location} = useUserInfo();
-  const [refreshing, setRefreshing] = React.useState(true);
+  const [refreshing, setRefreshing] = React.useState(false);
   const [userFName, setUserFName] = React.useState("")
   const [userLName, setUserLName] = React.useState("")
   const [userBlood, setUserBlood] = React.useState("")
   const [userDob, setUserDob] = React.useState("")
   const [userGender, setUserGender] = React.useState("")
+  const [caseId, setCaseId] = React.useState(null)
   const [userLat, setUserLat] = React.useState(null)
   const [userLong, setUserLong] = React.useState(null)
   const [isReady, setIsReady] = React.useState(false)
@@ -54,24 +55,40 @@ export default function ExpertPage() {
     axios({
       method: 'get',
       url: axiosUrl +'getcase/' + `${user.id}`,
-      })
-      .then(function (response) {
-        if(response.data.case.length > 0){
-          setUserFName(response.data.case[0].user_info.first_name)
-          setUserLName(response.data.case[0].user_info.last_name)
-          setUserBlood(response.data.case[0].user_info.blood_type)
-          setUserDob(response.data.case[0].user_info.dob)
-          setUserGender(response.data.case[0].user_info.gender)
-          setUserLat(response.data.case[0].user_lat)
-          setUserLong(response.data.case[0].user_long)
-          setIsReady(true)
-        }
-
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    })
+    .then(function (response) {
+      if(response.data.case.length > 0){
+        setCaseId(response.data.case[0].id)
+        setUserFName(response.data.case[0].user_info.first_name)
+        setUserLName(response.data.case[0].user_info.last_name)
+        setUserBlood(response.data.case[0].user_info.blood_type)
+        setUserDob(response.data.case[0].user_info.dob)
+        setUserGender(response.data.case[0].user_info.gender)
+        setUserLat(response.data.case[0].user_lat)
+        setUserLong(response.data.case[0].user_long)
+        setIsReady(true)
+        setRefreshing(false);
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+    });
   };
+
+  const updateCase = () => {
+    axios({
+      method: 'post',
+      url: axiosUrl +'updatecase',
+      data: {"id" : caseId}
+    })
+    .then(function (response) {
+      console.log(response)
+      setIsReady(false)
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+  }
 
   //expert coordinates
   const ExpertCoords = {
@@ -130,10 +147,23 @@ export default function ExpertPage() {
         <RedButton 
           styling={styles.button}
           text="Done"
+          onPress={() => {updateCase()}}
         />
       </View> 
       :
-      <Text style={styles.text}>There is no task at the moment</Text>}
+      <SafeAreaView>
+        <ScrollView
+          refreshControl={
+            <RefreshControl
+              refreshing={refreshing}
+              onRefresh={getCase}
+            />
+          }
+        >
+          <Text style={styles.text}>There is no task at the moment</Text>
+        </ScrollView>
+      </SafeAreaView>}
+  
     </View>
   );
 }
