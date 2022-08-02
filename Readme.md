@@ -62,7 +62,7 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 | <img src="./readme/notification.jpg"/> | <img src="./readme/user_tracking.jpg"/> | <img src="./readme/profile.jpg"/> |
 
 | Expert Page  | Expert History  |
-| -----------------| -----| -----|
+| -----------------| -----|
 | <img src="./readme/tracking.jpg"/> | <img src="./readme/expert.jpg"/> |
 
 
