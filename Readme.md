@@ -32,11 +32,11 @@ Note that i didn't use any styling library or theme, all from scratch and using 
 
 | Home  | Tracking  |
 | -----------------| -----|
-| <img src="./readme/figma_home.png"/> | <img src="./readme/figma_tracking.png"/> |
+| !<img src="./readme/figma_home.png"/> | !<img src="./readme/figma_tracking.png"/> |
 
 | Create Alert  | Profile  |
 | -----------------| -----|
-<!-- | ![Artists results](https://github.com/julescript/spotifyndr/blob/master/demo/Artists_Page.jpg) | ![Artist's Albums](https://github.com/julescript/spotifyndr/blob/master/demo/Albums_Page.jpg) | -->
+| !<img src="./readme/figma_create_alert.png"/> | ![Artist's Albums](https://github.com/julescript/spotifyndr/blob/master/demo/Albums_Page.jpg) |
 
 
 <br><br>
