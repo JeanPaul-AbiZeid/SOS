@@ -265,7 +265,7 @@ const UserProvider = ({children}) => {
 
     return (
         <userContext.Provider
-            value={{ user, LoggedIn, SignUpExpert, SignUpUser, Logout, isLoggedin, isUser, token, setUser, axiosUrl, isCase, setisCase, setCaseLat, setCaseLong, caseLat, caseLong }}
+            value={{ user, LoggedIn, SignUpExpert, SignUpUser, Logout, isLoggedin, isUser, token, setUser, axiosUrl, isCase, setisCase, setCaseLat, setCaseLong, caseLat, caseLong, location }}
         >
             {children}
         </userContext.Provider>
@@ -275,9 +275,9 @@ const UserProvider = ({children}) => {
 export default UserProvider;
 
 export const useUserInfo = () => {
-    const {user, LoggedIn, Logout, SignUpExpert, SignUpUser, isLoggedin, isUser, token, setUser, axiosUrl, isCase, setisCase, caseLat, setCaseLat, caseLong, setCaseLong} = React.useContext(userContext)
+    const {user, LoggedIn, Logout, SignUpExpert, SignUpUser, isLoggedin, isUser, token, setUser, axiosUrl, isCase, setisCase, caseLat, setCaseLat, caseLong, setCaseLong, location} = React.useContext(userContext)
 
     return {
-        user, LoggedIn, Logout, SignUpExpert, SignUpUser, isLoggedin, isUser, token, setUser, axiosUrl, isCase, setisCase, caseLat, setCaseLat, caseLong, setCaseLong
+        user, LoggedIn, Logout, SignUpExpert, SignUpUser, isLoggedin, isUser, token, setUser, axiosUrl, isCase, setisCase, caseLat, setCaseLat, caseLong, setCaseLong, location
     }
 }

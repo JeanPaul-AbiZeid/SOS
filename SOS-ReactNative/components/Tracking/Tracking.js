@@ -84,7 +84,8 @@ export default function Tracking() {
     latitude: caseLat,
     longitude: caseLong,
     latitudeDelta: 0.09,
-    longitudeDelta: 0.04}
+    longitudeDelta: 0.04
+  }
 
     
   return (

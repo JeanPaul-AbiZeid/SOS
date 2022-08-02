@@ -35,7 +35,7 @@ const updateLocation = async (id, loc) => {
 }
 
 export default function ExpertPage() {
-  const {user, axiosUrl} = useUserInfo();
+  const {user, axiosUrl, location} = useUserInfo();
   const [refreshing, setRefreshing] = React.useState(true);
   const [userFName, setUserFName] = React.useState("")
   const [userLName, setUserLName] = React.useState("")
@@ -46,23 +46,9 @@ export default function ExpertPage() {
   const [userLong, setUserLong] = React.useState(null)
   const [isReady, setIsReady] = React.useState(false)
 
-  const [location, setLocation] = React.useState(null);
-  const [errorMsg, setErrorMsg] = React.useState(null);
   const mapRef = React.useRef()
   const markerRef = React.useRef()
-  const [state, setState] = React.useState({
-    curLoc: {
-      latitude: 33.9680386,
-      longitude: 35.6206043,
-    },
-    isLoading: false,
-    coordinate: new AnimatedRegion({
-      latitude: 33.9680386,
-      longitude: 35.6206043,
-      latitudeDelta: 0.09,
-      longitudeDelta: 0.04
-    }),
-  })
+
   const getCase = () => {
     axios({
       method: 'get',
@@ -86,66 +72,21 @@ export default function ExpertPage() {
       });
   };
 
-  const { curLoc, isLoading, coordinate } = state
-  const updateState = (data) => setState((state) => ({ ...state, ...data }));
-
   const destinationCords = {
-    latitude:34.013184,
-    longitude:35.6417536
+    latitude: location.coords.latitude,
+    longitude: location.coords.longitude
   }
 
   React.useEffect(() => {
-    getLiveLocation();
     getCase()
   }, []);
 
-  const getLiveLocation = async () => {
-    let { status } = await Location.requestForegroundPermissionsAsync();
-    if (status !== 'granted') {
-      setErrorMsg('Permission to access location was denied');
-      return;
-    }
-
-    let loc = await Location.getCurrentPositionAsync({});
-    setLocation(loc);
-    let latitude = loc.coords.latitude;
-    let longitude = loc.coords.longitude;
-    animate(latitude, longitude);
-    updateState({
-      curLoc: { latitude, longitude },
-      coordinate: new AnimatedRegion({
-        latitude: 33.9680386,
-        longitude: 35.6206043,
-        latitudeDelta: 0.09,
-        longitudeDelta: 0.04
-      })
-    })
-  };
-
-  const animate = (latitude, longitude) => {
-    const newCoordinate = { latitude, longitude };
-    if (Platform.OS == 'android') {
-        if (markerRef.current) {
-            markerRef.current.animateMarkerToCoordinate(newCoordinate, 7000);
-        }
-    } else {
-        coordinate.timing(newCoordinate).start();
-    }
+  const userPosition = {
+    latitude: 33.9680386,
+    longitude: 35.6206043,
+    latitudeDelta: 0.09,
+    longitudeDelta: 0.04
   }
-
-  let text = 'Waiting..';
-  if (errorMsg) {
-    text = errorMsg;
-  } else if (location) {
-    text = JSON.stringify(location);
-  }
-
-  // React.useEffect(() => {
-  //   const interval = setInterval(() => {
-  //       getLiveLocation()
-  //   }, 6000);
-  //   return () => clearInterval(interval)
-  // }, [])
 
   return (
     <View style={styles.container}>
@@ -162,15 +103,10 @@ export default function ExpertPage() {
           <MapView
             ref={mapRef}
             style={StyleSheet.absoluteFill}
-            initialRegion={{
-              latitude: 33.9680386,
-              longitude: 35.6206043,
-              latitudeDelta: 0.09,
-              longitudeDelta: 0.04,
-          }}
+            initialRegion={userPosition}
           >
 
-            <Marker.Animated ref={markerRef} coordinate={coordinate} />
+            <Marker.Animated ref={markerRef} coordinate={userPosition} />
 
             {Object.keys(destinationCords).length > 0 && (<Marker
               coordinate={destinationCords}
