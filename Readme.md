@@ -36,7 +36,7 @@ Note that i didn't use any styling library or theme, all from scratch and using 
 
 | Create Alert  | Profile  |
 | -----------------| -----|
-| <img src="./readme/figma_create_alert.png"/> | !<img src="./readme/figma_profile.png"/> |
+| <img src="./readme/figma_create_alert.png"/> | <img src="./readme/figma_profile.png"/> |
 
 
 <br><br>
@@ -53,9 +53,17 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 
 > Using the above mentioned tech stacks and the wireframes build with figma from the user sotries we have, the implementation of the app is shown as below, these are screenshots from the real app
 
-| Landing  | Home/Search  |
-| -----------------| -----|
-<!-- | ![Landing](https://github.com/julescript/spotifyndr/blob/master/demo/Landing_Page.jpg) | ![Home/Search](https://github.com/julescript/spotifyndr/blob/master/demo/Search_Page.jpg) | -->
+| Sign In  | Sign Up  | Home  |
+| -----------------| -----| -----|
+| <img src="./readme/landing.jpg"/> | <img src="./readme/signup.jpg"/> | <img src="./readme/home.jpg"/> |
+
+| Notification  | Tracking  | Profile  |
+| -----------------| -----| -----|
+| <img src="./readme/notification.jpg"/> | <img src="./readme/user_tracking.jpg"/> | <img src="./readme/profile.jpg"/> |
+
+| Expert Page  | Expert History  |
+| -----------------| -----| -----|
+| <img src="./readme/tracking.jpg"/> | <img src="./readme/expert.jpg"/> |
 
 
 <br><br>
