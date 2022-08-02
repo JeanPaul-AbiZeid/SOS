@@ -4,13 +4,28 @@ import styles from './styles';
 import { useUserInfo } from '../../hooks/UserProvider';
 import { Entypo } from '@expo/vector-icons'; 
 import axios from 'axios';
+import * as Location from 'expo-location';
 
 export default function ExpertHistory() {
   const [refreshing, setRefreshing] = React.useState(true);
   const [expertData, setExpertData] = React.useState([]);
   const {user, axiosUrl} = useUserInfo();
+  const [name, setName] = React.useState("")
 
   const Case = ({ item }) => {
+    
+    const getAddress = async () => {
+      let pos = {
+        latitude: item.user_lat,
+        longitude: item.user_long
+      };
+      let address = await Location.reverseGeocodeAsync(pos);
+      const loc = [`${address[0].city}, ${address[0].country}`]
+      setName(`${address[0].city}, ${address[0].country}`)
+      return (loc)
+    }
+    const locationName = getAddress()
+  
     return (
       
       <View style={styles.main1}>
@@ -18,7 +33,7 @@ export default function ExpertHistory() {
         <Text style={styles.name}>{item.user_info.first_name} {item.user_info.last_name}</Text>
         <View style={styles.loc}>
             <Entypo name="location-pin" size={20} color="red" />
-            <Text>{item.user_long}</Text>
+            <Text>{name} {locationName[0]}</Text>
         </View>
         
       </View>

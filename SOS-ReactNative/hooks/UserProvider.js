@@ -256,9 +256,9 @@ const UserProvider = ({children}) => {
         }, 
           (newLocation) => {
             setLocation(newLocation);
-            // if(isLoggedin){
-            //     updateLocation(user.id, newLocation)
-            // }
+            if(isLoggedin){
+                updateLocation(user.id, newLocation)
+            }
           }
         );
     };
