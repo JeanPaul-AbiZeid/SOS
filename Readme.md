@@ -19,7 +19,7 @@
 
 ### User Stories
 - As a user, I ask for help with a click of a button to connect me to the nearest expert.
-- As a user, I want to start a voice call with my emergency contact.
+- As a user, I want to start a phone call with my emergency contact.
 - As a user, I want to notify all the remaining users of a certain case.
 - As a expert, I recieve the call for help and get the location of the person in need to reach out.
 
@@ -46,7 +46,6 @@ Note that i didn't use any styling library or theme, all from scratch and using 
 Here's a brief high-level overview of the tech stack the Well app uses:
 
 - This project uses the [React Native](https://reactnative.dev/). React Native is an open-source JavaScript framework, designed for building apps on multiple platforms like iOS, Android, and also web applications.
-<!-- - For persistent storage (database), the app uses the [Hive](https://hivedb.dev/) package which allows the app to create a custom storage schema and save it to a local database. -->
 - To send local push notifications, the app uses the [Firebase](https://rnfirebase.io/messaging/notifications) which supports Android and iOS.
 
 <br><br>
@@ -76,20 +75,52 @@ To get a local copy up and running follow these simple example steps.
 
 ### Installation
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
+Clone the repository
+   ```sh
+    git clone https://github.com/JeanPaul-AbiZeid/SOS.git
+   ```
+Switch to the server repo folder
+   ```sh
+    cd SOS-server
+   ```
+Install all the dependencies using composer
+   ```sh
+    composer install
+   ```
+Copy the example env file and make the required configuration changes in the .env file
+   ```sh
+    cp .env.example .env
+   ```
+Generate a new application key
+   ```sh
+    php artisan key:generate
+   ```
+Generate a new JWT authentication secret key
+   ```sh
+    php artisan jwt:generate
+   ```
+Run the database migrations (**Set the database connection in .env before migrating**)
+   ```sh
+    php artisan migrate
+   ```
+Start the local development server
+   ```sh
+    php artisan serve --host=YOUR IP ADDRESS
+   ```
+Open a new terminal
 
-<!-- 1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+Switch to the frontend repo folder
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+    cd SOS-ReactNative
    ```
-3. Install NPM packages
+Install NPM packages
    ```sh
-   npm install
+    npm install
    ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
+Go to [Expo](https://expo.dev/) and create an account. If you aleady have an account, sign in using: 
+   ```sh
+    expo login
    ```
- -->
+Create a .env file and put your google API key (ex: API_KEY="YOUR API KEY") for the map to work
+
 

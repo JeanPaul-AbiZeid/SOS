@@ -27,16 +27,15 @@ const firestore = getFirestore(app, {experimentalForceDetectLongPolling : true})
 
 export default function Tracking() {
   const {isCase, caseLat, caseLong, expertId, expertLoc} = useUserInfo()
-  const [expertCoord, setExpertCoord] = React.useState({})
   const mapRef = React.useRef()
   const markerRef = React.useRef()
 
-  const q = query(collection(firestore, "users"), where("id", "==", expertId));
-  const getLocationExpert = onSnapshot(q, (querySnapshot) => {
-    querySnapshot.forEach((doc) => {
+  // const q = query(collection(firestore, "users"), where("id", "==", expertId));
+  // const getLocationExpert = onSnapshot(q, (querySnapshot) => {
+  //   querySnapshot.forEach((doc) => {
 
-    });
-  });
+  //   });
+  // });
 
   const userCoordinates = {
     latitude: caseLat,
