@@ -10,6 +10,7 @@ import MapViewDirections from 'react-native-maps-directions';
 import { getFirestore, collection, doc, getDocs, getDoc, setDoc } from "firebase/firestore";
 import { initializeApp } from "firebase/app";
 import RedButton from '../RedButton/RedButton';
+import {API_KEY} from '@env'
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -72,7 +73,8 @@ export default function ExpertPage() {
       });
   };
 
-  const destinationCords = {
+  //expert coordinates
+  const ExpertCoords = {
     latitude: location.coords.latitude,
     longitude: location.coords.longitude
   }
@@ -108,9 +110,18 @@ export default function ExpertPage() {
 
             <Marker.Animated ref={markerRef} coordinate={userPosition} />
 
-            {Object.keys(destinationCords).length > 0 && (<Marker
-              coordinate={destinationCords}
+            {Object.keys(ExpertCoords).length > 0 && (<Marker
+              coordinate={ExpertCoords}
             ><FontAwesome5 name="car-side" size={24} color="red" /></Marker>)}
+
+            {Object.keys(ExpertCoords).length > 0 && (<MapViewDirections
+              origin={userPosition}
+              destination={ExpertCoords}
+              apikey={API_KEY}
+              strokeWidth={6}
+              strokeColor="blue"
+              optimizeWaypoints={true}
+            />)}
               
           </MapView>
         </View>

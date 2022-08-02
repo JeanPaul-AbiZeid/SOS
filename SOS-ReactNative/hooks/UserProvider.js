@@ -252,7 +252,7 @@ const UserProvider = ({children}) => {
         await Location.watchPositionAsync({
           accuracy: Location.Accuracy.BestForNavigation,
           timeInterval: 5000,
-          distanceInterval : 20
+          distanceInterval : 10
         }, 
           (newLocation) => {
             setLocation(newLocation);
