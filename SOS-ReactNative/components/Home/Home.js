@@ -34,7 +34,7 @@ const firestore = getFirestore(app, {experimentalForceDetectLongPolling : true})
   });
 
 export default function Home({navigation}) {
-    const {user, axiosUrl, setisCase, setCaseLat, setCaseLong, setExpertId} = useUserInfo();
+    const {user, axiosUrl, setisCase, setCaseLat, setCaseLong, setExpertId, setExpertLoc} = useUserInfo();
     const [notification, setNotification] = React.useState(false);
     const notificationListener = React.useRef();
     const responseListener = React.useRef();
@@ -188,6 +188,15 @@ export default function Home({navigation}) {
           })
     }
 
+    const getExpertCoord = async(id) => {
+        const userLoc = await getDoc(doc(firestore, "users", JSON.stringify(id)))
+        let coord = {
+            latitude: userLoc.data().location.coords.latitude,
+            longitude: userLoc.data().location.coords.longitude
+        }
+        setExpertLoc(coord)
+      }
+
     const result = async (role_id) => {
         const expertId = await getExperts(role_id);
         if(expertId.length > 0) {
@@ -195,6 +204,7 @@ export default function Home({navigation}) {
             const nearest_expert_id = getNearest(locations.userLocation, locations.expertLocations);
             const token = await getToken(nearest_expert_id)
             setExpertId(nearest_expert_id)
+            getExpertCoord(nearest_expert_id)
             createCase(user.id, nearest_expert_id, locations.userLocation.lat, locations.userLocation.long, token)
         }else{
             alert("No expert is available")

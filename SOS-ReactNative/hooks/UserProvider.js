@@ -112,6 +112,7 @@ const UserProvider = ({children}) => {
     const [isCase, setisCase] = React.useState(false)
     const [caseLat, setCaseLat] = React.useState(null)
     const [caseLong, setCaseLong] = React.useState(null)
+    const [expertLoc, setExpertLoc] = React.useState({})
     const axiosUrl = 'http://192.168.1.149:8000/api/'
 
     React.useEffect(() => {
@@ -267,7 +268,7 @@ const UserProvider = ({children}) => {
 
     return (
         <userContext.Provider
-            value={{ user, LoggedIn, SignUpExpert, SignUpUser, Logout, isLoggedin, isUser, token, setUser, axiosUrl, isCase, setisCase, setCaseLat, setCaseLong, caseLat, caseLong, location, expertId, setExpertId }}
+            value={{ user, LoggedIn, SignUpExpert, SignUpUser, Logout, isLoggedin, isUser, token, setUser, axiosUrl, isCase, setisCase, setCaseLat, setCaseLong, caseLat, caseLong, location, expertId, setExpertId, expertLoc, setExpertLoc }}
         >
             {children}
         </userContext.Provider>
@@ -277,9 +278,9 @@ const UserProvider = ({children}) => {
 export default UserProvider;
 
 export const useUserInfo = () => {
-    const {user, LoggedIn, Logout, SignUpExpert, SignUpUser, isLoggedin, isUser, token, setUser, axiosUrl, isCase, setisCase, caseLat, setCaseLat, caseLong, setCaseLong, location, expertId, setExpertId} = React.useContext(userContext)
+    const {user, LoggedIn, Logout, SignUpExpert, SignUpUser, isLoggedin, isUser, token, setUser, axiosUrl, isCase, setisCase, caseLat, setCaseLat, caseLong, setCaseLong, location, expertId, setExpertId, expertLoc, setExpertLoc} = React.useContext(userContext)
 
     return {
-        user, LoggedIn, Logout, SignUpExpert, SignUpUser, isLoggedin, isUser, token, setUser, axiosUrl, isCase, setisCase, caseLat, setCaseLat, caseLong, setCaseLong, location, expertId, setExpertId
+        user, LoggedIn, Logout, SignUpExpert, SignUpUser, isLoggedin, isUser, token, setUser, axiosUrl, isCase, setisCase, caseLat, setCaseLat, caseLong, setCaseLong, location, expertId, setExpertId, expertLoc, setExpertLoc
     }
 }
