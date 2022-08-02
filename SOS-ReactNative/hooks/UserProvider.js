@@ -106,6 +106,7 @@ const UserProvider = ({children}) => {
     const [token, setToken] = React.useState("")
     const [isLoggedin, setIsLoggedin] = React.useState(false)
     const [isUser, setIsUser] = React.useState(false)
+    const [expertId, setExpertId] = React.useState(null)
     const [expoPushToken, setExpoPushToken] = React.useState('');
     const [location, setLocation] = React.useState(null);
     const [isCase, setisCase] = React.useState(false)
@@ -250,12 +251,13 @@ const UserProvider = ({children}) => {
           return;
         }
         await Location.watchPositionAsync({
-          accuracy: Location.Accuracy.BestForNavigation,
-          timeInterval: 5000,
-          distanceInterval : 15
+          accuracy: Location.Accuracy.High,
+          timeInterval: 1000,
+          distanceInterval : 5
         }, 
           (newLocation) => {
             setLocation(newLocation);
+            console.log(location)
             if(isLoggedin){
                 updateLocation(user.id, newLocation)
             }
@@ -265,7 +267,7 @@ const UserProvider = ({children}) => {
 
     return (
         <userContext.Provider
-            value={{ user, LoggedIn, SignUpExpert, SignUpUser, Logout, isLoggedin, isUser, token, setUser, axiosUrl, isCase, setisCase, setCaseLat, setCaseLong, caseLat, caseLong, location }}
+            value={{ user, LoggedIn, SignUpExpert, SignUpUser, Logout, isLoggedin, isUser, token, setUser, axiosUrl, isCase, setisCase, setCaseLat, setCaseLong, caseLat, caseLong, location, expertId, setExpertId }}
         >
             {children}
         </userContext.Provider>
@@ -275,9 +277,9 @@ const UserProvider = ({children}) => {
 export default UserProvider;
 
 export const useUserInfo = () => {
-    const {user, LoggedIn, Logout, SignUpExpert, SignUpUser, isLoggedin, isUser, token, setUser, axiosUrl, isCase, setisCase, caseLat, setCaseLat, caseLong, setCaseLong, location} = React.useContext(userContext)
+    const {user, LoggedIn, Logout, SignUpExpert, SignUpUser, isLoggedin, isUser, token, setUser, axiosUrl, isCase, setisCase, caseLat, setCaseLat, caseLong, setCaseLong, location, expertId, setExpertId} = React.useContext(userContext)
 
     return {
-        user, LoggedIn, Logout, SignUpExpert, SignUpUser, isLoggedin, isUser, token, setUser, axiosUrl, isCase, setisCase, caseLat, setCaseLat, caseLong, setCaseLong, location
+        user, LoggedIn, Logout, SignUpExpert, SignUpUser, isLoggedin, isUser, token, setUser, axiosUrl, isCase, setisCase, caseLat, setCaseLat, caseLong, setCaseLong, location, expertId, setExpertId
     }
 }

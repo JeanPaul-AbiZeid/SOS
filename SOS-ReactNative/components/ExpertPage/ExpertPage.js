@@ -101,8 +101,8 @@ export default function ExpertPage() {
   }, []);
 
   const userPosition = {
-    latitude: 33.9680386,
-    longitude: 35.6206043,
+    latitude: userLat,
+    longitude: userLong,
     latitudeDelta: 0.09,
     longitudeDelta: 0.04
   }
@@ -120,6 +120,8 @@ export default function ExpertPage() {
         
         <Text style={styles.direction}>Direction</Text>
         <View style={styles.map}>
+          {userLat && userLong &&
+          
           <MapView
             ref={mapRef}
             style={StyleSheet.absoluteFill}
@@ -141,7 +143,7 @@ export default function ExpertPage() {
               optimizeWaypoints={true}
             />)}
               
-          </MapView>
+          </MapView>}
         </View>
 
         <RedButton 

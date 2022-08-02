@@ -19,11 +19,11 @@ const firebaseConfig = {
     messagingSenderId: "552222011747",
     appId: "1:552222011747:web:cd7cb766e463a47dd92356",
     measurementId: "G-6SMB0X6W6Y"
-  };
-  
-  const app = initializeApp(firebaseConfig);
-  // Initialize Cloud Firestore and get a reference to the service
-  const firestore = getFirestore(app, {experimentalForceDetectLongPolling : true});
+};
+
+const app = initializeApp(firebaseConfig);
+// Initialize Cloud Firestore and get a reference to the service
+const firestore = getFirestore(app, {experimentalForceDetectLongPolling : true});
 
   Notifications.setNotificationHandler({
     handleNotification: async () => ({
@@ -34,7 +34,7 @@ const firebaseConfig = {
   });
 
 export default function Home({navigation}) {
-    const {user, axiosUrl, setisCase, setCaseLat, setCaseLong} = useUserInfo();
+    const {user, axiosUrl, setisCase, setCaseLat, setCaseLong, setExpertId} = useUserInfo();
     const [notification, setNotification] = React.useState(false);
     const notificationListener = React.useRef();
     const responseListener = React.useRef();
@@ -190,14 +190,11 @@ export default function Home({navigation}) {
 
     const result = async (role_id) => {
         const expertId = await getExperts(role_id);
-        console.log(expertId)
         if(expertId.length > 0) {
             const locations = await getLocations(expertId);
-            // console.log(locations)
             const nearest_expert_id = getNearest(locations.userLocation, locations.expertLocations);
-            // console.log(nearest_expert_id)
             const token = await getToken(nearest_expert_id)
-            // console.log(token)
+            setExpertId(nearest_expert_id)
             createCase(user.id, nearest_expert_id, locations.userLocation.lat, locations.userLocation.long, token)
         }else{
             alert("No expert is available")
