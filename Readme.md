@@ -53,17 +53,13 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 
 > Using the above mentioned tech stacks and the wireframes build with figma from the user sotries we have, the implementation of the app is shown as below, these are screenshots from the real app
 
-| Sign In  | Sign Up  | Home  |
-| -----------------| -----| -----|
-| <img src="./readme/landing.jpg"/> | <img src="./readme/signup.jpg"/> | <img src="./readme/home.jpg"/> |
+| Sign In  | Sign Up  | Home  | Notification  |
+| -----| -----| -----| -----|
+| <img src="./readme/landing.jpg"/> | <img src="./readme/signup.jpg"/> | <img src="./readme/home.jpg"/> | <img src="./readme/notification.jpg"/> |
 
-| Notification  | Tracking  | Profile  |
-| -----------------| -----| -----|
-| <img src="./readme/notification.jpg"/> | <img src="./readme/user_tracking.jpg"/> | <img src="./readme/profile.jpg"/> |
-
-| Expert Page  | Expert History  |
-| -----------------| -----|
-| <img src="./readme/tracking.jpg"/> | <img src="./readme/expert.jpg"/> |
+| Tracking  | Profile  | Expert Page  | Expert History  |
+| -----| -----| -----| -----|
+| <img src="./readme/user_tracking.jpg"/> | <img src="./readme/profile.jpg"/> | <img src="./readme/tracking.jpg"/> | <img src="./readme/expert.jpg"/> |
 
 
 <br><br>
