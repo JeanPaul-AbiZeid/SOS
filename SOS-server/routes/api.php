@@ -14,16 +14,17 @@ Route::controller(AuthController::class)->group(function () {
     Route::get('roles', 'getAllroles');
 
 });
-
-Route::controller(UserController::class)->group(function () {
-    Route::get('/getroles', 'getAllroles');
-    Route::get('/getalerts/{id}', 'getAllalerts');
-    Route::post('/createalert', 'createAlert');
-    Route::post('/userinfo', 'getUserInfo');
-    Route::post('/editprofile', 'editProfile');
-    Route::get('/getexperts/{id}', 'getAvailable');
-    Route::post('/createcase', 'createCase');
-    Route::get('/getcases/{id}', 'getCases');
-    Route::get('/getcase/{id}', 'getCurrentCase');
-    Route::post('/updatecase', 'updateCase');
+Route::group(['middleware' => 'role.user'], function() {
+    Route::controller(UserController::class)->group(function () {
+        Route::get('/getroles', 'getAllroles');
+        Route::get('/getalerts/{id}', 'getAllalerts');
+        Route::post('/createalert', 'createAlert');
+        Route::post('/userinfo', 'getUserInfo');
+        Route::post('/editprofile', 'editProfile');
+        Route::get('/getexperts/{id}', 'getAvailable');
+        Route::post('/createcase', 'createCase');
+        Route::get('/getcases/{id}', 'getCases');
+        Route::get('/getcase/{id}', 'getCurrentCase');
+        Route::post('/updatecase', 'updateCase');
+    });
 });
