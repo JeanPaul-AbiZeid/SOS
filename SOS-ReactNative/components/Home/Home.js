@@ -19,7 +19,7 @@ import {firestore} from '../firebase';
   });
 
 export default function Home({navigation}) {
-    const {user, axiosUrl, setisCase, setCaseLat, setCaseLong, setExpertId, setExpertLoc} = useUserInfo();
+    const {user, axiosUrl, setisCase, setCaseLat, setCaseLong, setExpertId, setExpertLoc, token} = useUserInfo();
     const [notification, setNotification] = React.useState(false);
     const notificationListener = React.useRef();
     const responseListener = React.useRef();
@@ -95,6 +95,7 @@ export default function Home({navigation}) {
         axios({
             method: 'get',
             url: axiosUrl + 'getexperts/' +`${role_id}`,
+            headers: {'Authorization': `token ${token}`},
             })
             .then(function (response) {
                 return (response.data.experts)
@@ -134,7 +135,8 @@ export default function Home({navigation}) {
     const update = (data) => {
         axios({
             method: 'post',
-            url: axiosUrl + 'editprofile', 
+            url: axiosUrl + 'editprofile',
+            headers: {'Authorization': `token ${token}`},
             data: data,
             })
             .then(function (response) {
@@ -156,7 +158,8 @@ export default function Home({navigation}) {
           }
           axios({
             method: 'post',
-            url: axiosUrl + 'createcase', 
+            url: axiosUrl + 'createcase',
+            headers: {'Authorization': `token ${token}`}, 
             data: data,
             })
             .then(function (response) {

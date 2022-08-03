@@ -7,7 +7,7 @@ import axios from 'axios';
 export default function Notification({navigation}) {
   const [refreshing, setRefreshing] = React.useState(true);
   const [userData, setUserData] = React.useState([]);
-  const {user, axiosUrl} = useUserInfo();
+  const {user, axiosUrl, token} = useUserInfo();
 
   const alert = ({ item }) => {
     return (
@@ -44,6 +44,7 @@ export default function Notification({navigation}) {
     axios({
       method: 'get',
       url: axiosUrl + 'getalerts/' + `${user.id}`,
+      headers: {'Authorization': `token ${token}`},
       })
       .then(function (response) {
         setRefreshing(false);

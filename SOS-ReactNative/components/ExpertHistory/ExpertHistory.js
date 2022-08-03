@@ -42,7 +42,7 @@ const Case = ({ item }) => {
 export default function ExpertHistory() {
   const [refreshing, setRefreshing] = React.useState(true);
   const [expertData, setExpertData] = React.useState([]);
-  const {user, axiosUrl} = useUserInfo();
+  const {user, axiosUrl, token} = useUserInfo();
 
   const ItemDivider = () => {
     return (
@@ -57,6 +57,7 @@ export default function ExpertHistory() {
     axios({
       method: 'get',
       url: axiosUrl + 'getcases/' + `${user.id}`,
+      headers: {'Authorization': `token ${token}`},
       })
       .then(function (response) {
         setRefreshing(false);

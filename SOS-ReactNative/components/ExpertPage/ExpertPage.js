@@ -11,7 +11,7 @@ import {API_KEY} from '@env';
 
 
 export default function ExpertPage() {
-  const {user, axiosUrl, location} = useUserInfo();
+  const {user, axiosUrl, location, token} = useUserInfo();
   const [refreshing, setRefreshing] = React.useState(false);
   const [userFName, setUserFName] = React.useState("")
   const [userLName, setUserLName] = React.useState("")
@@ -30,6 +30,7 @@ export default function ExpertPage() {
     axios({
       method: 'get',
       url: axiosUrl +'getcase/' + `${user.id}`,
+      headers: {'Authorization': `token ${token}`},
     })
     .then(function (response) {
       if(response.data.case.length > 0){
@@ -54,6 +55,7 @@ export default function ExpertPage() {
     axios({
       method: 'post',
       url: axiosUrl +'updatecase',
+      headers: {'Authorization': `token ${token}`},
       data: {"id" : caseId}
     })
     .then(function (response) {

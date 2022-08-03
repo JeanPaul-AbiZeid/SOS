@@ -8,7 +8,7 @@ import axios from 'axios';
 import RedButton from '../RedButton/RedButton';
 
 export default function Profile({navigation}) {
-    const {user, Logout, setUser, axiosUrl} = useUserInfo();
+    const {user, Logout, setUser, axiosUrl, token} = useUserInfo();
     const [image, setImage] = React.useState(user.picture)
     //model related states
     const [modalName, setModalName] = React.useState(false);
@@ -46,6 +46,7 @@ export default function Profile({navigation}) {
             method: 'post',
             url: axiosUrl + 'editprofile', 
             data: data,
+            headers: {'Authorization': `token ${token}`},
             })
             .then(function (response) {
                 console.log(response)

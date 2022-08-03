@@ -111,18 +111,19 @@ const UserProvider = ({children}) => {
     }, [location]);
 
     //update data in mySQL
-    const update = (data) => {
+    const update = (data, jwt) => {
         axios({
             method: 'post',
-            url: axiosUrl + 'editprofile', 
+            url: axiosUrl + 'editprofile',
+            headers: {'Authorization': `token ${jwt}`},
             data: data,
-            })
-            .then(function (response) {
-                console.log(response)
-            })
-            .catch(function (error){
-                console.log(error)
-                alert(error)
+        })
+        .then(function (response) {
+            console.log(response)
+        })
+        .catch(function (error){
+            console.log(error)
+            alert(error)
         })
     }
 
@@ -146,7 +147,7 @@ const UserProvider = ({children}) => {
                 updateToken(response.data.user.id, expoPushToken) //storing push token
                 setIsLoggedin(true)
                 if (response.data.user.role_id != 1) {
-                    update({"id": response.data.user.id, "is_available": 2})
+                    update({"id": response.data.user.id, "is_available": 2}, response.data.authorisation.token)
                 }else{
                     setIsUser(true)
                 }
@@ -218,7 +219,7 @@ const UserProvider = ({children}) => {
     //logout function
     const Logout = ({navigation}) => {
         //resetting everything
-        update({"id": user.id, "is_available": 1})
+        update({"id": user.id, "is_available": 1}, token)
         deleteToken(user.id)
         Clear();
         setToken("")

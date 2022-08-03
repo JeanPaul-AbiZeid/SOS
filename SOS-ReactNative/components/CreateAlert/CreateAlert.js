@@ -24,7 +24,7 @@ export default function CreateAlert() {
   const responseListener = React.useRef();
   const [title, setTitle] = React.useState("");
   const [description, setDescription] = React.useState("");
-  const {user, axiosUrl} = useUserInfo();
+  const {user, axiosUrl, token} = useUserInfo();
   const titleRef = React.useRef();
   const descRef = React.useRef();
 
@@ -98,6 +98,7 @@ export default function CreateAlert() {
           axios({
             method: 'post',
             url: axiosUrl + 'createalert', 
+            headers: {'Authorization': `token ${token}`},
             data: data,
             })
           .then(function (response) {
