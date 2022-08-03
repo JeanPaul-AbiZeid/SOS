@@ -4,7 +4,6 @@ import styles from './styles';
 import { useUserInfo } from '../../hooks/UserProvider';
 import axios from 'axios';
 
-
 export default function Notification({navigation}) {
   const [refreshing, setRefreshing] = React.useState(true);
   const [userData, setUserData] = React.useState([]);

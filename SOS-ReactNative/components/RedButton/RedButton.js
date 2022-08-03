@@ -2,8 +2,6 @@ import { Pressable, ScrollView, Text, TextInput, TouchableOpacity, View } from '
 import React from "react";
 import styles from './styles';
 
-
-
 export default function RedButton( {text, onPress, styling}) {
 
   return (

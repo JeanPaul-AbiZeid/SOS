@@ -4,25 +4,10 @@ import styles from './styles';
 import * as ImagePicker from 'expo-image-picker';
 import * as Notifications from 'expo-notifications';
 import {useUserInfo} from '../../hooks/UserProvider';
-import { getFirestore, collection, doc, getDocs } from "firebase/firestore";
-import { initializeApp } from "firebase/app";
+import { collection, doc, getDocs } from "firebase/firestore";
 import axios from 'axios';
 import RedButton from '../RedButton/RedButton';
-
-// Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyAD4M-WQhjPkCaWfhRSIRmPfsHWReItWxw",
-  authDomain: "sosapp-877db.firebaseapp.com",
-  projectId: "sosapp-877db",
-  storageBucket: "sosapp-877db.appspot.com",
-  messagingSenderId: "552222011747",
-  appId: "1:552222011747:web:cd7cb766e463a47dd92356",
-  measurementId: "G-6SMB0X6W6Y"
-};
-
-const app = initializeApp(firebaseConfig);
-// Initialize Cloud Firestore and get a reference to the service
-const firestore = getFirestore(app, {experimentalForceDetectLongPolling : true});
+import {firestore} from '../firebase';
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({

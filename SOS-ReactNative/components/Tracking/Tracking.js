@@ -2,28 +2,12 @@ import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import styles from './styles';
 import MapView, { Marker, AnimatedRegion } from 'react-native-maps';
-import * as Location from 'expo-location';
 import { FontAwesome5 } from '@expo/vector-icons'; 
 import MapViewDirections from 'react-native-maps-directions';
 import {API_KEY} from '@env'
 import { useUserInfo } from '../../hooks/UserProvider';
-import { doc, getFirestore, collection, query, where, onSnapshot, getDoc } from "firebase/firestore";
-import { initializeApp } from "firebase/app";
-
-// Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyAD4M-WQhjPkCaWfhRSIRmPfsHWReItWxw",
-  authDomain: "sosapp-877db.firebaseapp.com",
-  projectId: "sosapp-877db",
-  storageBucket: "sosapp-877db.appspot.com",
-  messagingSenderId: "552222011747",
-  appId: "1:552222011747:web:cd7cb766e463a47dd92356",
-  measurementId: "G-6SMB0X6W6Y"
-};
-
-const app = initializeApp(firebaseConfig);
-// Initialize Cloud Firestore and get a reference to the service
-const firestore = getFirestore(app, {experimentalForceDetectLongPolling : true});
+import { doc, collection, query, where, onSnapshot, getDoc } from "firebase/firestore";
+import {firestore} from '../firebase';
 
 export default function Tracking() {
   const {isCase, caseLat, caseLong, expertId, expertLoc} = useUserInfo()

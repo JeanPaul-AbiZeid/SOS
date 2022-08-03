@@ -1,39 +1,14 @@
 import React from 'react';
-import { Text, TouchableOpacity, View, StyleSheet, SafeAreaView, ScrollView, RefreshControl } from 'react-native';
+import { Text, View, StyleSheet, SafeAreaView, ScrollView, RefreshControl } from 'react-native';
 import styles from './styles';
 import { useUserInfo } from '../../hooks/UserProvider';
 import axios from 'axios';
 import MapView, { Marker, AnimatedRegion } from 'react-native-maps';
-import * as Location from 'expo-location';
 import { FontAwesome5 } from '@expo/vector-icons'; 
 import MapViewDirections from 'react-native-maps-directions';
-import { getFirestore, collection, doc, getDocs, getDoc, setDoc } from "firebase/firestore";
-import { initializeApp } from "firebase/app";
 import RedButton from '../RedButton/RedButton';
-import {API_KEY} from '@env'
+import {API_KEY} from '@env';
 
-// Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyAD4M-WQhjPkCaWfhRSIRmPfsHWReItWxw",
-  authDomain: "sosapp-877db.firebaseapp.com",
-  projectId: "sosapp-877db",
-  storageBucket: "sosapp-877db.appspot.com",
-  messagingSenderId: "552222011747",
-  appId: "1:552222011747:web:cd7cb766e463a47dd92356",
-  measurementId: "G-6SMB0X6W6Y"
-};
-
-const app = initializeApp(firebaseConfig);
-// Initialize Cloud Firestore and get a reference to the service
-const firestore = getFirestore(app, {experimentalForceDetectLongPolling : true});
-
-const updateLocation = async (id, loc) => {
-  try{
-      await setDoc(doc(firestore, "users", JSON.stringify(id)), {location: loc}, {merge: true});
-  } catch (error) {
-      console.log(error)
-  }
-}
 
 export default function ExpertPage() {
   const {user, axiosUrl, location} = useUserInfo();
