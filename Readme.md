@@ -53,13 +53,23 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 
 > Using the above mentioned tech stacks and the wireframes build with figma from the user sotries we have, the implementation of the app is shown as below, these are screenshots from the real app
 
-| Sign In  | Sign Up  | Home  | Notification  |
+| Sign In | Sign Up | Home | Notification |
 | -----| -----| -----| -----|
 | <img src="./readme/landing.jpg"/> | <img src="./readme/signup.jpg"/> | <img src="./readme/home.jpg"/> | <img src="./readme/notification.jpg"/> |
 
-| Tracking  | Profile  | Expert Page  | Expert History  |
+| Tracking | Profile | Expert Page | Expert History |
 | -----| -----| -----| -----|
 | <img src="./readme/user_tracking.jpg"/> | <img src="./readme/profile.jpg"/> | <img src="./readme/tracking.jpg"/> | <img src="./readme/expert.jpg"/> |
+
+Gifs
+| Sign In | Sign Up | Call | Send Alert |
+| -----| -----| -----| -----|
+| <img src="./readme/signin.gif"/> | <img src="./readme/signup.gif"/> | <img src="./readme/call.gif"/> | <img src="./readme/sendalert.gif"/> |
+
+| Asking for Help | Recieving Notificattion | Create Alert | Notification List |
+| -----| -----| -----| -----|
+| <img src="./readme/help.gif"/> | <img src="./readme/notification.gif"/> | <img src="./readme/alert.gif"/> | <img src="./readme/updatenotification.gif"/> |
+
 
 
 <br><br>
