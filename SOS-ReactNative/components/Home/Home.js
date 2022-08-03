@@ -149,7 +149,7 @@ export default function Home({navigation}) {
     }
 
     //creating new case
-    const createCase = (user_id, expert_id, user_lat, user_long, token) => {
+    const createCase = (user_id, expert_id, user_lat, user_long, pushtoken) => {
         let data = {
             "user_id" : user_id,
             "expert_id" : expert_id,
@@ -164,7 +164,7 @@ export default function Home({navigation}) {
             })
             .then(function (response) {
                 console.log(response)
-                sendPushNotification(token)
+                sendPushNotification(pushtoken)
                 update({"id": expert_id, "is_available": 1})
                 setisCase(true)
                 setCaseLat(user_lat)

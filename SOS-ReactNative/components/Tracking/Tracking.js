@@ -6,20 +6,24 @@ import { FontAwesome5 } from '@expo/vector-icons';
 import MapViewDirections from 'react-native-maps-directions';
 import {API_KEY} from '@env'
 import { useUserInfo } from '../../hooks/UserProvider';
-import { doc, collection, query, where, onSnapshot, getDoc } from "firebase/firestore";
+import { doc, onSnapshot } from "firebase/firestore";
 import {firestore} from '../firebase';
 
 export default function Tracking() {
-  const {isCase, caseLat, caseLong, expertId, expertLoc} = useUserInfo()
+  const {isCase, caseLat, caseLong, expertId, expertLoc, setExpertLoc} = useUserInfo()
   const mapRef = React.useRef()
   const markerRef = React.useRef()
 
-  // const q = query(collection(firestore, "users"), where("id", "==", expertId));
-  // const getLocationExpert = onSnapshot(q, (querySnapshot) => {
-  //   querySnapshot.forEach((doc) => {
-
-  //   });
-  // });
+  //updating expert location
+  const unsub = onSnapshot(doc(firestore, "users", JSON.stringify(expertId)), (doc) => {
+    if(isCase){
+      let newExpertLoc = {
+      latitude: doc.data().location.coords.latitude,
+      longitude: doc.data().location.coords.longitude
+    }
+    setExpertLoc(newExpertLoc)
+    }
+  });
 
   const userCoordinates = {
     latitude: caseLat,
@@ -46,13 +50,13 @@ export default function Tracking() {
 
             <Marker.Animated ref={markerRef} coordinate={userCoordinates} />
 
-            {Object.keys(expertLoc).length > 0 && (<Marker
-              coordinate={expertLoc}
+            {Object.keys(test).length > 0 && (<Marker
+              coordinate={test}
             ><FontAwesome5 name="car-side" size={24} color="red" /></Marker>)}
 
-            {Object.keys(expertLoc).length > 0 && (<MapViewDirections
+            {Object.keys(test).length > 0 && (<MapViewDirections
               origin={userCoordinates}
-              destination={expertLoc}
+              destination={test}
               apikey={API_KEY}
               strokeWidth={6}
               strokeColor="blue"
