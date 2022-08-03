@@ -9,10 +9,16 @@ import { useUserInfo } from '../../hooks/UserProvider';
 import { doc, onSnapshot } from "firebase/firestore";
 import {firestore} from '../firebase';
 
+
 export default function Tracking() {
   const {isCase, caseLat, caseLong, expertId, expertLoc, setExpertLoc} = useUserInfo()
   const mapRef = React.useRef()
   const markerRef = React.useRef()
+
+  let distance = getDistance(
+    {latitude : caseLat, longitude: caseLong},
+    {latitude : expertLoc.latitude, longitude: expertLoc.longitude}
+  )
 
   //updating expert location
   const unsub = onSnapshot(doc(firestore, "users", JSON.stringify(expertId)), (doc) => {
@@ -39,7 +45,7 @@ export default function Tracking() {
 
   return (
     <View style={styles.container}>
-      {isCase?
+      {isCase || distance > 15?
         <View style={styles.map}>
           {userCoordinates && expertLoc &&
           <MapView
@@ -50,13 +56,13 @@ export default function Tracking() {
 
             <Marker.Animated ref={markerRef} coordinate={userCoordinates} />
 
-            {Object.keys(test).length > 0 && (<Marker
-              coordinate={test}
+            {Object.keys(expertLoc).length > 0 && (<Marker
+              coordinate={expertLoc}
             ><FontAwesome5 name="car-side" size={24} color="red" /></Marker>)}
 
-            {Object.keys(test).length > 0 && (<MapViewDirections
+            {Object.keys(expertLoc).length > 0 && (<MapViewDirections
               origin={userCoordinates}
-              destination={test}
+              destination={expertLoc}
               apikey={API_KEY}
               strokeWidth={6}
               strokeColor="blue"
