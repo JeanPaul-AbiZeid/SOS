@@ -42,7 +42,7 @@ Note that i didn't use any styling library or theme, all from scratch and using 
 | <img src="./readme/figma_home.png"/> | <img src="./readme/figma_tracking.png"/> | <img src="./readme/figma_profile.png"/> |
 
 | Create Alert  | Expert Page  | Expert History  |
-|  -----| -----| -----|
+| -----| -----| -----|
 | <img src="./readme/figma_create_alert.png"/> | <img src="./readme/expert.png"/> | <img src="./readme/expert_history.png"/> |
 
 
@@ -69,7 +69,12 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 | -----| -----| -----| -----|
 | <img src="./readme/help.gif"/> | <img src="./readme/notification.gif"/> | <img src="./readme/alert.gif"/> | <img src="./readme/updatenotification.gif"/> |
 
-And here are some screenshots of the actual application
+> Some Hardware animation to show the notifications
+
+| Recieving Notificattion | Notification List |
+| -----| -----|
+| <img src="./readme/notification.gif"/> | <img src="./readme/updatenotification.gif"/> |
+> And here are some screenshots of the actual application
 
 | Sign In | Sign Up | Home | Notification |
 | -----| -----| -----| -----|
