@@ -52,7 +52,8 @@ Note that i didn't use any styling library or theme, all from scratch and using 
 
 Here's a brief high-level overview of the tech stack the Well app uses:
 
-- This project uses the [React Native](https://reactnative.dev/). React Native is an open-source JavaScript framework, designed for building apps on multiple platforms like iOS, Android, and also web applications.
+- This project uses [React Native](https://reactnative.dev/). React Native is an open-source JavaScript framework, designed for building apps on multiple platforms like iOS, Android, and also web applications.
+- This project uses [Laravel](https://laravel.com/). Laravel is a backend framework that provides all of the features you need to build modern web applications.
 - To send local push notifications, the app uses the [Firebase](https://rnfirebase.io/messaging/notifications) which supports Android and iOS.
 
 <br><br>
