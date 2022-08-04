@@ -38,11 +38,11 @@
 Note that i didn't use any styling library or theme, all from scratch and using pure css modules
 
 | Home | Tracking | Profile |
-| -----| -----| -----|
+| -----| -------- | ------- |
 | <img src="./readme/figma_home.png"/> | <img src="./readme/figma_tracking.png"/> | <img src="./readme/figma_profile.png"/> |
 
 | Create Alert | Expert Page | Expert History |
-| ----| -----| -----|
+| ------------ | ----------- | -------------- |
 | <img src="./readme/figma_create_alert.png"/> | <img src="./readme/expert.png"/> | <img src="./readme/expert_history.png"/> |
 
 
@@ -62,29 +62,28 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 > Using the above mentioned tech stacks and the wireframes build with figma from the user sotries we have, the implementation of the app is shown as below, these are animations from the real app
 
 | Sign In | Sign Up | Call | Send Alert |
-| -----| -----| -----| -----|
+| ------- | ------- | ---- | ---------- |
 | <img src="./readme/signin.gif"/> | <img src="./readme/signup.gif"/> | <img src="./readme/call.gif"/> | <img src="./readme/sendalert.gif"/> |
 
 | Asking for Help | Create Alert | Expert Page | Expert History |
-| -----| -----| -----| -----|
+| --------------- | ------------ | ----------- | -------------- |
 | <img src="./readme/help.gif"/> | <img src="./readme/alert.gif"/> | <img src="./readme/current_job.gif"/> | <img src="./readme/done_job.gif"/> |
 
 > Some Hardware animation to show the notifications
 
-| Recieving Notification |  Notification List  |
-| ---------| -------------|
-| *a* { width="50%" } | *b* { width="50%" } |
+| Recieving Notification |  Notification List |
+| ---------------------- | ------------------ |
 | <img src="./readme/notification.gif"/> | <img src="./readme/updatenotification.gif"/> |
 
 
 > And here are some screenshots of the actual application
 
 | Sign In | Sign Up | Home | Notification |
-| -----| -----| -----| -----|
+| ------- | ------- | ---- | ------------ |
 | <img src="./readme/landing.jpg"/> | <img src="./readme/signup.jpg"/> | <img src="./readme/home.jpg"/> | <img src="./readme/notification.jpg"/> |
 
 | Tracking | Profile | Expert Page | Expert History |
-| -----| -----| -----| -----|
+| -------- | ------- | ----------- | -------------- |
 | <img src="./readme/user_tracking.jpg"/> | <img src="./readme/profile.jpg"/> | <img src="./readme/current.jpg"/> | <img src="./readme/history.jpg"/> |
 
 
