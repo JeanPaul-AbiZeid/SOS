@@ -37,13 +37,13 @@
 > This design was planned before on paper, then moved to Figma app for the fine details.
 Note that i didn't use any styling library or theme, all from scratch and using pure css modules
 
-| Home  | Tracking  |
-| -----------------| -----|
-| <img src="./readme/figma_home.png"/> | <img src="./readme/figma_tracking.png"/> |
+| Home  | Tracking  | Profile  |
+| -----| -----| -----|
+| <img src="./readme/figma_home.png"/> | <img src="./readme/figma_tracking.png"/> | <img src="./readme/figma_profile.png"/> |
 
-| Create Alert  | Profile  |
-| -----------------| -----|
-| <img src="./readme/figma_create_alert.png"/> | <img src="./readme/figma_profile.png"/> |
+| Create Alert  | Expert Page  | Expert History  |
+|  -----| -----| -----|
+| <img src="./readme/figma_create_alert.png"/> | <img src="./readme/expert.png"/> | <img src="./readme/expert_history.png"/> |
 
 
 <br><br>
