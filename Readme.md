@@ -1,17 +1,17 @@
-<img src="./readme/title1.svg"/>
+<img id="top" src="./readme/title1.svg"/>
 
 <div align="center">
 
 > Hello world! This is the project’s summary that describes the project plain and simple, limited to the space available.  
 
-<!-- **[PROJECT PHILOSOPHY](https://github.com/JeanPaul-AbiZeid/SOS#-project-philosophy) • [WIREFRAMES](https://github.com/JeanPaul-AbiZeid/SOS#-wireframes) • [TECH STACK](https://github.com/JeanPaul-AbiZeid/SOS#-tech-stack) • [IMPLEMENTATION](https://github.com/JeanPaul-AbiZeid/SOS#-impplementation) • [HOW TO RUN?](https://github.com/JeanPaul-AbiZeid/SOS#-how-to-run)** -->
+**[PROJECT PHILOSOPHY](#project_philosophy) • [WIREFRAMES](#wireframes) • [TECH STACK](#tech_stack) • [IMPLEMENTATION](#implementation) • [HOW TO RUN?](#how_to_run)**
 
 </div>
 
 <br><br>
 
 
-<img src="./readme/title2.svg"/>
+<img id="project_philosophy" src="./readme/title2.svg"/>
 
 > The SOS app is an emergency app is a user friendly app that helps him/her reach out for help fast when a certain emergency comes up.
 
@@ -32,7 +32,11 @@
 
 <br><br>
 
-<img src="./readme/title3.svg"/>
+**[PROJECT PHILOSOPHY](#project_philosophy) • [WIREFRAMES](#wireframes) • [TECH STACK](#tech_stack) • [IMPLEMENTATION](#implementation) • [HOW TO RUN?](#how_to_run)• [BACK TO TOP](#top)**
+
+<br><br>
+
+<img id="wireframes" src="./readme/title3.svg"/>
 
 > This design was planned before on paper, then moved to Figma app for the fine details.
 Note that i didn't use any styling library or theme, all from scratch and using pure css modules
@@ -48,7 +52,11 @@ Note that i didn't use any styling library or theme, all from scratch and using 
 
 <br><br>
 
-<img src="./readme/title4.svg"/>
+**[PROJECT PHILOSOPHY](#project_philosophy) • [WIREFRAMES](#wireframes) • [TECH STACK](#tech_stack) • [IMPLEMENTATION](#implementation) • [HOW TO RUN?](#how_to_run)• [BACK TO TOP](#top)**
+
+<br><br>
+
+<img id="tech_stack" src="./readme/title4.svg"/>
 
 Here's a brief high-level overview of the tech stack the Well app uses:
 
@@ -57,7 +65,12 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 - To send local push notifications, the app uses the [Firebase](https://rnfirebase.io/messaging/notifications) which supports Android and iOS.
 
 <br><br>
-<img src="./readme/title5.svg"/>
+
+**[PROJECT PHILOSOPHY](#project_philosophy) • [WIREFRAMES](#wireframes) • [TECH STACK](#tech_stack) • [IMPLEMENTATION](#implementation) • [HOW TO RUN?](#how_to_run)• [BACK TO TOP](#top)**
+
+<br><br>
+
+<img id="implementation" src="./readme/title5.svg"/>
 
 > Using the above mentioned tech stacks and the wireframes build with figma from the user sotries we have, the implementation of the app is shown as below, these are animations from the real app
 
@@ -71,8 +84,8 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 
 > Some Hardware animation to show the notifications
 
-| Recieving Notification |  Notification List &nbsp; &nbsp; &nbsp;  &nbsp;|
-| ---------------------- | -------------------------- |
+| Recieving Notification |  Notification List |
+| ---------------------- | ------------------ |
 | <img src="./readme/notification.gif"/> | <img src="./readme/updatenotification.gif"/> |
 
 
@@ -88,7 +101,12 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 
 
 <br><br>
-<img src="./readme/title6.svg"/>
+
+**[PROJECT PHILOSOPHY](#project_philosophy) • [WIREFRAMES](#wireframes) • [TECH STACK](#tech_stack) • [IMPLEMENTATION](#implementation) • [HOW TO RUN?](#how_to_run)• [BACK TO TOP](#top)**
+
+<br><br>
+
+<img id="how_to_run" src="./readme/title6.svg"/>
 
 
 > This is an example of how you may give instructions on setting up your project locally.
