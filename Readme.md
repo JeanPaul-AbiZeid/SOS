@@ -67,7 +67,7 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 
 | Asking for Help | Create Alert | Expert Page | Expert History |
 | -----| -----| -----| -----|
-| <img src="./readme/help.gif"/> | <img src="./readme/notification.gif"/> | <img src="./readme/alert.gif"/> | <img src="./readme/updatenotification.gif"/> |
+| <img src="./readme/help.gif"/> | <img src="./readme/alert.gif"/> | <img src="./readme/current_job.gif"/> | <img src="./readme/done_job.gif"/> |
 
 > Some Hardware animation to show the notifications
 
@@ -83,7 +83,7 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 
 | Tracking | Profile | Expert Page | Expert History |
 | -----| -----| -----| -----|
-| <img src="./readme/user_tracking.jpg"/> | <img src="./readme/profile.jpg"/> | <img src="./readme/tracking.jpg"/> | <img src="./readme/expert.jpg"/> |
+| <img src="./readme/user_tracking.jpg"/> | <img src="./readme/profile.jpg"/> | <img src="./readme/current.jpg"/> | <img src="./readme/history.jpg"/> |
 
 
 <br><br>
