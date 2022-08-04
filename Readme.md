@@ -18,10 +18,17 @@
 > The app sends the location of the person in need of help and connects him/her with the nearest specialist or expert to come for help.
 
 ### User Stories
-- As a user, I ask for help with a click of a button to connect me to the nearest expert.
-- As a user, I want to start a phone call with my emergency contact.
-- As a user, I want to notify all the remaining users of a certain case.
-- As a expert, I recieve the call for help and get the location of the person in need to reach out.
+- As a user, I can ask for help with a click of a button to connect me to the nearest expert.
+- As a user, I can start a phone call with my emergency contact.
+- As a user, I can notify all the remaining users of a certain case.
+- As a user, I can edit my profile photo, name, phone number...
+- As a user, I can check all the notification alerts with their details.
+
+### Expert Stories
+- As an expert, I can recieve the call for help and get the location of the person in need to reach out.
+- As an expert, I can recieve a notification whenever a new task arises.
+- As an expert, I can follow the map directions to reach the person in need of help.
+- As an expert, I can see all my old tasks.
 
 <br><br>
 
