@@ -71,9 +71,11 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 
 > Some Hardware animation to show the notifications
 
-| Recieving Notificattion | Notification List |
+| Recieving Notification |  Notification List  |
 | ---------| -------------|
+| *a* { width="50%" } | *b* { width="50%" } |
 | <img src="./readme/notification.gif"/> | <img src="./readme/updatenotification.gif"/> |
+
 
 > And here are some screenshots of the actual application
 
