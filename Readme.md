@@ -37,11 +37,11 @@
 > This design was planned before on paper, then moved to Figma app for the fine details.
 Note that i didn't use any styling library or theme, all from scratch and using pure css modules
 
-| Home  | Tracking  | Profile  |
+| Home | Tracking | Profile |
 | -----| -----| -----|
 | <img src="./readme/figma_home.png"/> | <img src="./readme/figma_tracking.png"/> | <img src="./readme/figma_profile.png"/> |
 
-| Create Alert  | Expert Page  | Expert History  |
+| Create Alert | Expert Page | Expert History |
 | -----| -----| -----|
 | <img src="./readme/figma_create_alert.png"/> | <img src="./readme/expert.png"/> | <img src="./readme/expert_history.png"/> |
 
@@ -65,15 +65,16 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 | -----| -----| -----| -----|
 | <img src="./readme/signin.gif"/> | <img src="./readme/signup.gif"/> | <img src="./readme/call.gif"/> | <img src="./readme/sendalert.gif"/> |
 
-| Asking for Help | Recieving Notificattion | Create Alert | Notification List |
+| Asking for Help | Create Alert | Expert Page | Expert History |
 | -----| -----| -----| -----|
 | <img src="./readme/help.gif"/> | <img src="./readme/notification.gif"/> | <img src="./readme/alert.gif"/> | <img src="./readme/updatenotification.gif"/> |
 
 > Some Hardware animation to show the notifications
 
 | Recieving Notificattion | Notification List |
-| -----| -----|
+| ---------| ---------|
 | <img src="./readme/notification.gif"/> | <img src="./readme/updatenotification.gif"/> |
+
 > And here are some screenshots of the actual application
 
 | Sign In | Sign Up | Home | Notification |
