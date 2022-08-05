@@ -13,7 +13,7 @@
 
 <img id="project_philosophy" src="./readme/title2.svg"/>
 
-> The SOS app is an emergency app is a user friendly app that helps him/her reach out for help fast when a certain emergency comes up.
+> The SOS app is an emergency and a user friendly app that helps him/her reach out for help fast when a certain emergency comes up.
 
 > The app sends the location of the person in need of help and connects him/her with the nearest specialist or expert to come for help.
 
@@ -72,7 +72,7 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 
 <img id="implementation" src="./readme/title5.svg"/>
 
-> Using the above mentioned tech stacks and the wireframes build with figma from the user sotries we have, the implementation of the app is shown as below, these are animations from the real app
+> Using the above mentioned tech stacks and the wireframes build with figma from the user and expert sotries we have, the implementation of the app is shown as below, these are animations from the real app
 
 | Sign In                          | Sign Up                          | Call                           | Send Alert                          |
 | -------------------------------- | -------------------------------- | ------------------------------ | ----------------------------------- |
