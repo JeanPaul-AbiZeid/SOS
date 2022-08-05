@@ -128,7 +128,7 @@ Clone the repository
    ```
 Switch to the server repo folder
    ```sh
-    cd SOS-backend
+    cd backend
    ```
 Install all the dependencies using composer
    ```sh
@@ -158,7 +158,7 @@ Open a new terminal
 
 Switch to the frontend repo folder
    ```sh
-    cd SOS-frontend
+    cd frontend
    ```
 Install NPM packages
    ```sh
