@@ -32,7 +32,7 @@
 
 <br><br>
 
-**[PROJECT PHILOSOPHY](#project_philosophy) • [WIREFRAMES](#wireframes) • [TECH STACK](#tech_stack) • [IMPLEMENTATION](#implementation) • [HOW TO RUN?](#how_to_run)• [BACK TO TOP](#top)**
+**[BACK TO TOP](#top)**
 
 <br><br>
 
@@ -52,7 +52,7 @@ Note that i didn't use any styling library or theme, all from scratch and using 
 
 <br><br>
 
-**[PROJECT PHILOSOPHY](#project_philosophy) • [WIREFRAMES](#wireframes) • [TECH STACK](#tech_stack) • [IMPLEMENTATION](#implementation) • [HOW TO RUN?](#how_to_run)• [BACK TO TOP](#top)**
+**[BACK TO TOP](#top)**
 
 <br><br>
 
@@ -66,7 +66,7 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 
 <br><br>
 
-**[PROJECT PHILOSOPHY](#project_philosophy) • [WIREFRAMES](#wireframes) • [TECH STACK](#tech_stack) • [IMPLEMENTATION](#implementation) • [HOW TO RUN?](#how_to_run)• [BACK TO TOP](#top)**
+**[BACK TO TOP](#top)**
 
 <br><br>
 
@@ -102,7 +102,7 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 
 <br><br>
 
-**[PROJECT PHILOSOPHY](#project_philosophy) • [WIREFRAMES](#wireframes) • [TECH STACK](#tech_stack) • [IMPLEMENTATION](#implementation) • [HOW TO RUN?](#how_to_run)• [BACK TO TOP](#top)**
+**[BACK TO TOP](#top)**
 
 <br><br>
 
