@@ -8,17 +8,15 @@ import {API_KEY} from '@env'
 import { useUserInfo } from '../../hooks/UserProvider';
 import { doc, onSnapshot } from "firebase/firestore";
 import {firestore} from '../firebase';
+import { getDistance } from 'geolib';
 
 
 export default function Tracking() {
   const {isCase, caseLat, caseLong, expertId, expertLoc, setExpertLoc} = useUserInfo()
+  const [distance, setDistance] = React.useState(0)
   const mapRef = React.useRef()
   const markerRef = React.useRef()
 
-  let distance = getDistance(
-    {latitude : caseLat, longitude: caseLong},
-    {latitude : expertLoc.latitude, longitude: expertLoc.longitude}
-  )
 
   //updating expert location
   const unsub = onSnapshot(doc(firestore, "users", JSON.stringify(expertId)), (doc) => {
@@ -28,6 +26,11 @@ export default function Tracking() {
       longitude: doc.data().location.coords.longitude
     }
     setExpertLoc(newExpertLoc)
+    let new_distance = getDistance(
+      {latitude : caseLat, longitude: caseLong},
+      {latitude : newExpertLoc.latitude, longitude: newExpertLoc.longitude}
+    )
+    setDistance(new_distance)
     }
   });
 
@@ -45,7 +48,7 @@ export default function Tracking() {
 
   return (
     <View style={styles.container}>
-      {isCase || distance > 15?
+      {isCase && distance > 15?
         <View style={styles.map}>
           {userCoordinates && expertLoc &&
           <MapView
