@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, Text, View, Image, TouchableOpacity } from 'react-native';
+import { ScrollView, Text, View, Image, TouchableOpacity, Alert } from 'react-native';
 import styles from './styles';
 import call from 'react-native-phone-call';
 import { useUserInfo } from '../../hooks/UserProvider';
@@ -183,9 +183,23 @@ export default function Home({navigation}) {
             longitude: userLoc.data().location.coords.longitude
         }
         setExpertLoc(coord)
-      }
+    }
 
-    const result = async (role_id) => {
+    //function to alert the user when no expert is available
+    const AsyncAlert = (number) =>
+        new Promise((resolve) =>{
+            Alert.alert("Alert", "No expert is available, switching to hotline",
+        [{text: 'OK', onPress: () => {resolve(call(
+            {
+                number: number, // String value with the number to call
+                prompt: false, // Optional boolean property. Determines if the user should be prompted prior to the call 
+                skipCanOpen: true // Skip the canOpenURL check
+            }
+        ).catch(console.error)); },},],
+        { cancelable: true },);
+    });
+
+    const result = async (role_id, hotline) => {
         const expertId = await getExperts(role_id);
         if(expertId.length > 0) {
             const locations = await getLocations(expertId);
@@ -195,7 +209,8 @@ export default function Home({navigation}) {
             getExpertCoord(nearest_expert_id)
             createCase(user.id, nearest_expert_id, locations.userLocation.lat, locations.userLocation.long, token)
         }else{
-            alert("No expert is available")
+            //switching to hotline in case no expert is available
+            await AsyncAlert(hotline)
         }   
     }
 
@@ -203,13 +218,13 @@ export default function Home({navigation}) {
         <ScrollView contentContainerStyle={styles.container}>
             <View style={styles.imageContainer}>
                 <TouchableOpacity onPress={() => {
-                    result(2)
+                    result(2, "112")
                 }}>
                     <Image style={styles.image} source={require('../../assets/police-logo.png')}/>
                 </TouchableOpacity>
                 
                 <TouchableOpacity onPress={() => {
-                    result(4)
+                    result(4, "140")
                 }}>
                     <Image style={styles.image} source={require('../../assets/ambulance-logo.png')}/>
                 </TouchableOpacity>
@@ -217,7 +232,7 @@ export default function Home({navigation}) {
             </View>
             <View style={styles.imageContainer}>
                 <TouchableOpacity onPress={() => {
-                    result(3)
+                    result(3, "175")
                 }}>
                     <Image style={styles.image} source={require('../../assets/fire-logo.png')}/>
                 </TouchableOpacity>
